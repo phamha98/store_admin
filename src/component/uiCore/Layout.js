@@ -5,7 +5,7 @@ export default function Layout ({children, ...rest}) {
   return (
     <SafeAreaView
       forceInset={{top: 'never'}}
-      style={[{flex: 1, backgroundColor: '#CCCACA'}, {...rest}]}>
+      style={[{flex: 1, backgroundColor: '#fff'}, {...rest}]}>
       {children}
     </SafeAreaView>
   )

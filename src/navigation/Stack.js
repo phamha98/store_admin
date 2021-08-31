@@ -1,9 +1,8 @@
-import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
-import {Login} from '../screen';
-import {ShowUser} from '../screen';
+import React,{useEffect} from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { Login } from '../screen';
+import { ShowUser } from '../screen';
 import {
   HomeOrder,
   ListOrder,
@@ -27,8 +26,7 @@ import {
   SearchCustomer,
   ListCustomer,
   HomeCustomer,
-  HomeStaff,
-  ListStaff,
+  Staff,
   HomePermission,
   ListPermission,
   ShowPermission,
@@ -42,14 +40,20 @@ import {
 } from '../screen';
 import Drawer from './Drawer';
 const Stack1 = createStackNavigator();
-
+import { navigationRef ,isReadyRef} from './rootNavigation';
 export default function Stack() {
+//   useEffect(() => {
+//     return () => {
+//         isReadyRef.current = false;
+//     };
+// }, []);
   return (
-    <NavigationContainer>
+    <NavigationContainer
+      ref={navigationRef}
+    >
       <Stack1.Navigator
-        initialRouteName="Login
-" //*
-        screenOptions={{headerShown: false}}>
+        initialRouteName="Login" //*
+        screenOptions={{ headerShown: false }}>
         <Stack1.Screen name="Login" component={Login} />
         <Stack1.Screen name="Drawer" component={Drawer} />
         <Stack1.Screen name="HomeOrder" component={HomeOrder} />
@@ -78,8 +82,7 @@ export default function Stack() {
         <Stack1.Screen name="HomeCustomer" component={HomeCustomer} />
         <Stack1.Screen name="ListCustomer" component={ListCustomer} />
         <Stack1.Screen name="SearchCustomer" component={SearchCustomer} />
-        <Stack1.Screen name="HomeStaff" component={HomeStaff} />
-        <Stack1.Screen name="ListStaff" component={ListStaff} />
+        <Stack1.Screen name="Staff" component={Staff} />
         <Stack1.Screen name="HomePermission" component={HomePermission} />
         <Stack1.Screen name="ListPermission" component={ListPermission} />
         <Stack1.Screen name="ShowPermission" component={ShowPermission} />

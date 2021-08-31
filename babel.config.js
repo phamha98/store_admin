@@ -10,7 +10,9 @@ const MODULE_RESOLVER = [
       "@saga": "./src/saga",
       "@screen": "./src/screen",
       "@image": "./src/img",
-      "@api": "./src/api"
+      "@api": "./src/api",
+      "@navigation": "./src/navigation",
+
     }
   },
 ];

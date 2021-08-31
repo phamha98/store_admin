@@ -28,7 +28,7 @@ import StatisticBills from './Element/Statistical/StatisticBills';
 import StatisticChart from './Element/Statistical/StatisticChart';
 import StatisticCustomer from './Element/Statistical/StatisticCustomer';
 import {SearchCustomer, ListCustomer, HomeCustomer} from './Element/Customer';
-import {HomeStaff, ListStaff} from './Element/Staff';
+import Staff from './Element/Staff';
 import {
   HomePermission,
   ListPermission,
@@ -73,8 +73,7 @@ export {
   ListCustomer,
   HomeCustomer,
   //
-  HomeStaff,
-  ListStaff,
+  Staff,
   //
   HomePermission,
   ListPermission,
