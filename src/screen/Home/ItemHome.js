@@ -32,7 +32,7 @@ export default function ItemHome ({item}) {
         {
           width: 0.5 * width - 10,
           height: 150,
-          backgroundColor: Light.blue_faint,
+          backgroundColor: item.background,
         },
         styles.container,
       ]}>
