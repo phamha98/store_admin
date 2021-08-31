@@ -8,6 +8,11 @@ import {
   AppContext,
   ViewCore,
   TextCore,
+  ItemUser,
+  ImageCore,
+  screen_width,
+  ButtonBasic,
+  screen_height,
 } from '@component'
 import {navigate, goBack} from '@navigation'
 import {apiPersonShow} from '@api'
@@ -31,12 +36,42 @@ export default function index () {
         onClickRight={() => {}}
       />
       {data && (
-        <ViewCore alignItems>
-          <TextCore size={16}>{data.name}</TextCore>
-          <TextCore>{data.email}</TextCore>
-          <TextCore>{data.phone}</TextCore>
-          <TextCore>{data.gender}</TextCore>
-          <TextCore>{data.address}</TextCore>
+        <ViewCore alignItems marginTop={10} style={styles.content}>
+          <ViewCore alignItems>
+            <ImageCore
+              source={data.img ? data.img : require('@image/avatar.jpeg')}
+            />
+            <TextCore bold color='blue' size={23}>
+              {data.name}
+            </TextCore>
+          </ViewCore>
+          <ViewCore width={0.5 * screen_width}>
+            <TextCore style={styles.text}>
+              Email:{data.email ? data.email : '*****'}
+            </TextCore>
+            <TextCore style={styles.text}>
+              Phone:{data.phone ? data.phone : 'Chưa có thông tin'}
+            </TextCore>
+            <TextCore style={styles.text}>
+              Gender:{data.gender ? data.gender : 'Chưa có thông tin'}
+            </TextCore>
+            <TextCore style={styles.text}>
+              Address:{data.address ? data.address : 'Chưa có thông tin'}
+            </TextCore>
+          </ViewCore>
+          <ViewCore>
+            <ButtonBasic
+              backgroundColor='orange'
+              title='Chỉnh sửa'
+              width={0.5 * screen_width}
+            />
+            <ButtonBasic
+              marginTop={10}
+              title='Đăng xuất khỏi hệ thống'
+              width={0.5 * screen_width}
+              backgroundColor='gray'
+            />
+          </ViewCore>
         </ViewCore>
       )}
     </Layout>
@@ -56,4 +91,17 @@ let o = {
   updated_at: null,
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  content: {
+    backgroundColor: Light.background,
+    marginHorizontal: 30,
+    paddingVertical: 30,
+    borderRadius: 5,
+    justifyContent: 'space-between',
+    height: 0.8 * screen_height,
+  },
+  text: {
+    color: '#05B9E6',
+    fontSize: 16,
+  },
+})

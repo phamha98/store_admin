@@ -18,3 +18,7 @@ export const Light = {
   sub: '#0B193F',
   blue_faint: '#3887ff',
 }
+import { Dimensions } from "react-native"
+const {width,height}=Dimensions.get("window")
+export const screen_width=width
+export const screen_height=height
