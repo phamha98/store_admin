@@ -1,55 +1,49 @@
-import React from 'react';
-import {Button, StyleSheet, Text, View} from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
-import Header from '../Header';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-export default function index({navigation}) {
+import React from 'react'
+import {Button, StyleSheet, Text, View} from 'react-native'
+import {TouchableOpacity} from 'react-native-gesture-handler'
+import {AppContext, HeaderC, Layout, ViewCore, TextCore} from '@component'
+import {navigate, goBack} from '@navigation'
+import Ionicons from 'react-native-vector-icons/Ionicons'
+export default function index () {
   return (
-    <View style={styles.container}>
-      <Header
-        navigation={navigation}
-        title="Quản lý mặt hàng"
-        rightIcon={true}
-        background="#0D9E00"
-        rightNameIcon="person-circle-outline"
-        onClickLeft={() => navigation.goBack()}
-        onClickRight={() => navigation.navigate('Person')}
-      />
+    <Layout>
+      <HeaderC title='Quản lý mặt hàng' />
       <View
         style={{marginHorizontal: 0, height: '80%', justifyContent: 'center'}}>
         <TouchableOpacity
           style={styles.box}
-          onPress={() => navigation.navigate('ShowGoods')}>
-          <Ionicons name="reader-outline" size={30} color="#2600FF" />
+          onPress={() => navigate('ShowGoods')}>
+          <Ionicons name='reader-outline' size={30} color='#2600FF' />
           <Text style={styles.text}>XEM MẶT HÀNG</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.box}
-          onPress={() => navigation.navigate('SearchGoods')}>
-          <Ionicons name="search" size={30} color="#26FF00" />
+          onPress={() => navigate('SearchGoods')}>
+          <Ionicons name='search' size={30} color='#26FF00' />
           <Text style={styles.text}>TÌM KIẾM </Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.box}
-          onPress={() => navigation.navigate('InsertGoods')}>
-          <Ionicons name="medkit-outline" size={30} color="#FF0000" />
+          onPress={() => navigate('InsertGoods')}>
+          <Ionicons name='medkit-outline' size={30} color='#FF0000' />
           <Text style={styles.text}>THÊM MẶT HÀNG</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.box}
           onPress={() =>
-            navigation.navigate('InsertTypeGoods', {
+            navigate('InsertTypeGoods', {
               idT: '',
               nameT: '',
-              imgT: 'https://thailamlandscape.vn/wp-content/uploads/2017/10/no-image.png',
+              imgT:
+                'https://thailamlandscape.vn/wp-content/uploads/2017/10/no-image.png',
             })
           }>
-          <Ionicons name="grid-outline" size={30} color="#FFD900" />
+          <Ionicons name='grid-outline' size={30} color='#FFD900' />
           <Text style={styles.text}>THÊM LOẠI HÀNG</Text>
         </TouchableOpacity>
       </View>
-    </View>
-  );
+    </Layout>
+  )
 }
 const styles = StyleSheet.create({
   container: {
@@ -71,4 +65,4 @@ const styles = StyleSheet.create({
     color: '#fff',
     marginHorizontal: 10,
   },
-});
+})

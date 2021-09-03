@@ -14,3 +14,4 @@ export {
   TextCore,
   TouchableCore,
 }
+export {default as InputBasic} from './InputBasic'

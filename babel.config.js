@@ -12,6 +12,7 @@ const MODULE_RESOLVER = [
       "@image": "./src/img",
       "@api": "./src/api",
       "@navigation": "./src/navigation",
+      "@utils": "./src/utils",
 
     }
   },

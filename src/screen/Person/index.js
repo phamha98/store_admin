@@ -1,14 +1,12 @@
 import React, {useState, useEffect, useContext} from 'react'
-import {FlatList, StatusBar, StyleSheet} from 'react-native'
+import {StyleSheet} from 'react-native'
 import {
   HeaderC,
-  data_home,
   Layout,
   Light,
   AppContext,
   ViewCore,
   TextCore,
-  ItemUser,
   ImageCore,
   screen_width,
   ButtonBasic,
@@ -20,6 +18,7 @@ import {apiPersonShow} from '@api'
 export default function index () {
   const {token, idUser, lEP, setLEP} = useContext(AppContext)
   const [data, setData] = useState(null)
+  const [render,setRender]=useState(false)
   useEffect(() => {
     apiPersonShow(token, idUser)
       .then(data => {
@@ -27,19 +26,20 @@ export default function index () {
         setData(data.data)
       })
       .catch(e => console.log(e))
-  }, [])
+  }, [lEP])
+  console.log('1.4',"person");
   return (
     <Layout>
       <HeaderC
         title='Thông tin cá nhân'
         onClickLeft={() => goBack()}
-        onClickRight={() => {}}
+        onClickRight={() => setRender(!render)}
       />
       {data && (
         <ViewCore alignItems marginTop={10} style={styles.content}>
           <ViewCore alignItems>
             <ImageCore
-              source={data.img ? data.img : require('@image/avatar.jpeg')}
+              source={data.img ? data.img : require('@image/noimage.jpg')}
             />
             <TextCore bold color='blue' size={23}>
               {data.name}
@@ -64,6 +64,7 @@ export default function index () {
               backgroundColor='orange'
               title='Chỉnh sửa'
               width={0.5 * screen_width}
+              onPress={()=>navigate("EditPerson",{data:data})}
             />
             <ButtonBasic
               marginTop={10}
@@ -76,19 +77,6 @@ export default function index () {
       )}
     </Layout>
   )
-}
-let o = {
-  address: null,
-  birthday: null,
-  created_at: null,
-  email: 'm',
-  email_verified_at: null,
-  gender: 'nam',
-  id: 1,
-  img: null,
-  name: 'Pham tran quang ha',
-  phone: null,
-  updated_at: null,
 }
 
 const styles = StyleSheet.create({
@@ -103,5 +91,6 @@ const styles = StyleSheet.create({
   text: {
     color: '#05B9E6',
     fontSize: 16,
+    marginVertical:2
   },
 })

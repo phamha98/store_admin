@@ -26,9 +26,11 @@ export default function ViewCore ({
       width: width,
       height: height,
       backgroundColor: backgroundColor,
+      ...rest
     },
+
   ]
-  return <View style={[styleAdd, style, {...rest}]}>{children}</View>
+  return <View style={[styleAdd, style]}>{children}</View>
 }
 
 const styles = StyleSheet.create({

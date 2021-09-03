@@ -1,35 +1,28 @@
-import React, {useEffect, useState, useContext} from 'react';
-import {ScrollView, StyleSheet, Text, View, Image} from 'react-native';
-import Header from '../Header';
-import {AppContext} from '../../../../component/AppContext';
-import {apiBillDetails} from '../../../../api';
+import React, {useEffect, useState, useContext} from 'react'
+import {ScrollView, StyleSheet, Text, View, Image} from 'react-native'
+import {AppContext, HeaderC, Layout, ViewCore, TextCore} from '@component'
+import {apiBillDetails} from '@api'
 
-export default function index({route, navigation}) {
-  const {data} = route.params;
-  console.log(data);
-  const {token} = useContext(AppContext);
-  const [billDetails, setBillDetails] = useState([]);
-  const [id_bill, setIdBill] = useState(data.id_bill);
-
+export default function index ({route}) {
+  const {data} = route.params
+  const {token} = useContext(AppContext)
+  const [billDetails, setBillDetails] = useState([])
+  const [id_bill, setIdBill] = useState(data.id_bill)
   useEffect(() => {
     apiBillDetails(token, id_bill)
       .then(data => {
         if (data.code === 200) {
-          setBillDetails(data.bills_details);
+          setBillDetails(data.bills_details)
         }
       })
-      .catch(e => console.log(e));
-  }, []);
+      .catch(e => console.log(e))
+  }, [])
   return (
-    <View style={styles.container}>
-      <Header
-        navigation={navigation}
-        title="Chi tiết đơn hàng"
-        onClickLeft={() => navigation.goBack()}
-      />
-      <ScrollView>
+    <Layout>
+      <HeaderC title='Chi tiết đơn hàng' />
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.content}>
-          <Text style={styles.font1}>CỬA HÀNG THỜI TRANG TIỆN LỢI CNS</Text>
+          <Text style={styles.font1}>CỬA HÀNG THỜI TRANG</Text>
           <Text>Địa Chỉ: 250 Kim Ngưu</Text>
           <Text>Điện thoại: 0974478284 </Text>
           <Text style={[styles.font1, {marginTop: 10}]}>HÓA ĐƠN BÁN HÀNG</Text>
@@ -98,8 +91,8 @@ export default function index({route, navigation}) {
           </Text>
         </View>
       </ScrollView>
-    </View>
-  );
+    </Layout>
+  )
 }
 
 const styles = StyleSheet.create({
@@ -158,6 +151,6 @@ const styles = StyleSheet.create({
   Money: {
     margin: 10,
   },
-});
+})
 const barcode =
-  'https://upload.wikimedia.org/wikipedia/commons/6/65/Code11_barcode.png';
+  'https://upload.wikimedia.org/wikipedia/commons/6/65/Code11_barcode.png'

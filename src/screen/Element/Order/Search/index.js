@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext} from 'react'
 import {
   StyleSheet,
   Text,
@@ -7,11 +7,12 @@ import {
   ToastAndroid,
   FlatList,
   TouchableOpacity,
-} from 'react-native';
-import {Picker} from '@react-native-picker/picker';
-import Header from '../Header';
-import Spinner from 'react-native-spinkit';
-import {AppContext} from '../../../../component/AppContext';
+} from 'react-native'
+import {Picker} from '@react-native-picker/picker'
+import Header from '../Header'
+import Spinner from 'react-native-spinkit'
+import {AppContext, HeaderC, Layout, ViewCore, TextCore} from '@component'
+import {navigate, goBack} from '@navigation'
 import {
   apiSearchCodeBill,
   apiSearchBillUser,
@@ -20,21 +21,21 @@ import {
   apiSortBillDate,
   apiSortBillNumber,
   apiSortBillPrice,
-} from '../../../../api';
-import styles from './styles';
-import {ScrollView} from 'react-native-gesture-handler';
-import DatePicker from 'react-native-date-picker';
-export default function index({navigation}) {
-  const {token} = useContext(AppContext);
-  const [sort, setSort] = useState('sortPrice');
-  const [search, setSearch] = useState('searchCode');
-  const [value, setValue] = useState();
+} from '@api'
+import styles from './styles'
+import {ScrollView} from 'react-native-gesture-handler'
+import DatePicker from 'react-native-date-picker'
+export default function index ({navigation}) {
+  const {token} = useContext(AppContext)
+  const [sort, setSort] = useState('sortPrice')
+  const [search, setSearch] = useState('searchCode')
+  const [value, setValue] = useState()
   const [data, setData] = useState({
     bill_details: '',
     user_order: '',
     user_confirm: '',
     user_transport: '',
-  });
+  })
   const [dataBillUser, setDataBillUser] = useState([
     {
       id: 1,
@@ -43,7 +44,7 @@ export default function index({navigation}) {
       user_confirm: '',
       user_transport: '',
     },
-  ]);
+  ])
   const [dataBillProduct, setDataBillProduct] = useState([
     {
       id: 1,
@@ -52,7 +53,7 @@ export default function index({navigation}) {
       user_confirm: '',
       user_transport: '',
     },
-  ]);
+  ])
   const [dataBillDate, setDataBillDate] = useState([
     {
       id: 1,
@@ -61,7 +62,7 @@ export default function index({navigation}) {
       user_confirm: '',
       user_transport: '',
     },
-  ]);
+  ])
   const [dataSort, setDataSort] = useState([
     {
       id: 1,
@@ -70,7 +71,7 @@ export default function index({navigation}) {
       user_confirm: '',
       user_transport: '',
     },
-  ]);
+  ])
   const [dataSortNumber, setDataSortNumber] = useState([
     {
       id: 1,
@@ -80,55 +81,55 @@ export default function index({navigation}) {
       user_transport: '',
       total_number: 0,
     },
-  ]);
-  const [typeSort, setTypeSort] = useState('desc');
-  const [dateLeft, setDateLeft] = useState(new Date('2021-05-25'));
-  const [dateRight, setDateRight] = useState(new Date('2021-05-28'));
-  const [progess, setProgess] = useState(false);
+  ])
+  const [typeSort, setTypeSort] = useState('desc')
+  const [dateLeft, setDateLeft] = useState(new Date('2021-05-25'))
+  const [dateRight, setDateRight] = useState(new Date('2021-05-28'))
+  const [progess, setProgess] = useState(false)
 
   const searchCodeBill = () => {
-    setProgess(true);
+    setProgess(true)
     if (search == 'searchCode') {
       apiSearchCodeBill(value, token)
         .then(data => {
-          setProgess(false);
+          setProgess(false)
           if (data.code == 200) {
-            setData(data.staterow);
+            setData(data.staterow)
           } else
             ToastAndroid.showWithGravity(
               'Không tìm thấy đơn hàng',
               ToastAndroid.LONG,
               ToastAndroid.CENTER,
-            );
+            )
         })
-        .catch(e => console.log(e));
+        .catch(e => console.log(e))
     }
     if (search == 'searchUser') {
       apiSearchBillUser(value, token).then(data => {
-        setProgess(false);
+        setProgess(false)
         if (data.code == 200) {
-          setDataBillUser(data.data);
+          setDataBillUser(data.data)
           //console.log(data);
         } else
           ToastAndroid.showWithGravity(
             'Không tìm thấy đơn hàng',
             ToastAndroid.LONG,
             ToastAndroid.CENTER,
-          );
-      });
+          )
+      })
     }
     if (search == 'searchProduct') {
       apiSearchBillProduct(value, token).then(data => {
-        setProgess(false);
+        setProgess(false)
         if (data.code == 200) {
-          setDataBillProduct(data.data);
+          setDataBillProduct(data.data)
         } else
           ToastAndroid.showWithGravity(
             'Không tìm thấy đơn hàng',
             ToastAndroid.LONG,
             ToastAndroid.CENTER,
-          );
-      });
+          )
+      })
     }
     if (search == 'searchDate') {
       setDataBillDate([
@@ -139,25 +140,25 @@ export default function index({navigation}) {
           user_confirm: '',
           user_transport: '',
         },
-      ]);
+      ])
 
       apiSearchBillDate(token, dateLeft, dateRight).then(data => {
-        setProgess(false);
+        setProgess(false)
         if (data.code == 200) {
           if (data.data.length === 0)
             ToastAndroid.showWithGravity(
               'Không tìm thấy ',
               ToastAndroid.LONG,
               ToastAndroid.CENTER,
-            );
-          else setDataBillDate(data.data);
+            )
+          else setDataBillDate(data.data)
         } else
           ToastAndroid.showWithGravity(
             'Không tìm thấy đơn hàng',
             ToastAndroid.LONG,
             ToastAndroid.CENTER,
-          );
-      });
+          )
+      })
     }
     if (search == 'sortPrice') {
       setDataSort([
@@ -168,27 +169,27 @@ export default function index({navigation}) {
           user_confirm: '',
           user_transport: '',
         },
-      ]);
+      ])
       apiSortBillPrice(token, typeSort).then(data => {
-        setProgess(false);
+        setProgess(false)
         if (data.code == 200) {
           if (data.data.length === 0)
             ToastAndroid.showWithGravity(
               'Không có đơn hàng ',
               ToastAndroid.LONG,
               ToastAndroid.CENTER,
-            );
+            )
           else {
-            console.log(data);
-            setDataSort(data.data);
+            console.log(data)
+            setDataSort(data.data)
           }
         } else
           ToastAndroid.showWithGravity(
             'Sự cố',
             ToastAndroid.LONG,
             ToastAndroid.CENTER,
-          );
-      });
+          )
+      })
     }
     if (search == 'sortDate') {
       setDataSort([
@@ -199,24 +200,24 @@ export default function index({navigation}) {
           user_confirm: '',
           user_transport: '',
         },
-      ]);
+      ])
       apiSortBillDate(token, typeSort).then(data => {
-        setProgess(false);
+        setProgess(false)
         if (data.code == 200) {
           if (data.data.length === 0)
             ToastAndroid.showWithGravity(
               'Không có đơn hàng ',
               ToastAndroid.LONG,
               ToastAndroid.CENTER,
-            );
-          else setDataSort(data.data);
+            )
+          else setDataSort(data.data)
         } else
           ToastAndroid.showWithGravity(
             'Sự cố',
             ToastAndroid.LONG,
             ToastAndroid.CENTER,
-          );
-      });
+          )
+      })
     }
     if (search == 'sortNumber') {
       setDataSortNumber([
@@ -228,35 +229,29 @@ export default function index({navigation}) {
           user_transport: '',
           total_number: 0,
         },
-      ]);
+      ])
       apiSortBillNumber(token, typeSort).then(data => {
-        setProgess(false);
+        setProgess(false)
         if (data.code == 200) {
           if (data.data.length === 0)
             ToastAndroid.showWithGravity(
               'Không có đơn hàng ',
               ToastAndroid.LONG,
               ToastAndroid.CENTER,
-            );
-          else setDataSortNumber(data.data);
+            )
+          else setDataSortNumber(data.data)
         } else
           ToastAndroid.showWithGravity(
             'Sự cố',
             ToastAndroid.LONG,
             ToastAndroid.CENTER,
-          );
-      });
+          )
+      })
     }
-  };
+  }
   return (
-    <View>
-      <Header
-        navigation={navigation}
-        title="Tìm kiếm đơn hàng"
-        rightIcon={true}
-        rightNameIcon="person"
-        onClickLeft={() => navigation.goBack()}
-      />
+    <Layout backgroundColor="#C7C4C4">
+      <HeaderC title='Tìm kiếm đơn hàng' />
       <ScrollView>
         <View style={styles.filter}>
           <TouchableOpacity
@@ -274,13 +269,13 @@ export default function index({navigation}) {
             selectedValue={search}
             style={{height: 50, width: 250}}
             onValueChange={(itemValue, itemIndex) => setSearch(itemValue)}>
-            <Picker.Item label="Theo mã đơn hàng" value="searchCode" />
-            <Picker.Item label="Theo mã khách hàng" value="searchUser" />
-            <Picker.Item label="Theo mã sản phẩm" value="searchProduct" />
-            <Picker.Item label="Theo ngày đặt hàng" value="searchDate" />
-            <Picker.Item label="Sắp sếp theo giá " value="sortPrice" />
-            <Picker.Item label="Sắp xếp theo ngày " value="sortDate" />
-            <Picker.Item label="Sắp xếp theo số lượng " value="sortNumber" />
+            <Picker.Item label='Theo mã đơn hàng' value='searchCode' />
+            <Picker.Item label='Theo mã khách hàng' value='searchUser' />
+            <Picker.Item label='Theo mã sản phẩm' value='searchProduct' />
+            <Picker.Item label='Theo ngày đặt hàng' value='searchDate' />
+            <Picker.Item label='Sắp sếp theo giá ' value='sortPrice' />
+            <Picker.Item label='Sắp xếp theo ngày ' value='sortDate' />
+            <Picker.Item label='Sắp xếp theo số lượng ' value='sortNumber' />
           </Picker>
         </View>
         {(search === 'searchCode' ||
@@ -288,7 +283,7 @@ export default function index({navigation}) {
           search === 'searchProduct') && (
           <TextInput
             style={styles.textInput}
-            placeholder="Tìm kiếm....."
+            placeholder='Tìm kiếm.....'
             value={value}
             onChangeText={text => setValue(text)}></TextInput>
         )}
@@ -300,7 +295,7 @@ export default function index({navigation}) {
             <DatePicker
               date={dateLeft}
               onDateChange={setDateLeft}
-              mode="date"
+              mode='date'
             />
             <Text style={{fontSize: 20, fontWeight: 'bold', color: 'green'}}>
               Đến ngày
@@ -308,7 +303,7 @@ export default function index({navigation}) {
             <DatePicker
               date={dateRight}
               onDateChange={setDateRight}
-              mode="date"
+              mode='date'
             />
           </View>
         )}
@@ -326,8 +321,8 @@ export default function index({navigation}) {
             <Picker
               selectedValue={typeSort}
               onValueChange={(itemValue, itemIndex) => setTypeSort(itemValue)}>
-              <Picker.Item label="Sắp xếp giảm dần" value="desc" />
-              <Picker.Item label="Sắp xếp tăng dần" value="asc" />
+              <Picker.Item label='Sắp xếp giảm dần' value='desc' />
+              <Picker.Item label='Sắp xếp tăng dần' value='asc' />
             </Picker>
           </View>
         )}
@@ -381,17 +376,17 @@ export default function index({navigation}) {
             <Spinner
               isVisible={progess}
               size={100}
-              type="ChasingDots"
-              color="blue"
+              type='ChasingDots'
+              color='blue'
             />
           </View>
         )}
       </ScrollView>
-    </View>
-  );
+    </Layout>
+  )
 }
 
-function ItemBill({item, navigation}) {
+function ItemBill ({item, navigation}) {
   return (
     <View style={styles.containerItem}>
       <View style={{flexDirection: 'row'}}>
@@ -406,14 +401,14 @@ function ItemBill({item, navigation}) {
         </Text>
       </View>
       <ViewName
-        title="Tên khách hàng"
+        title='Tên khách hàng'
         name={item.user_order.name}
         data={item.user_order}
         navigation={navigation}
       />
       {(item.state === '2' || item.state === '3') && (
         <ViewName
-          title="Nhân viên xác nhận"
+          title='Nhân viên xác nhận'
           name={item.user_confirm.name}
           data={item.user_confirm}
           navigation={navigation}
@@ -421,7 +416,7 @@ function ItemBill({item, navigation}) {
       )}
       {item.state === '3' && (
         <ViewName
-          title="Nhân viên vận chuyển"
+          title='Nhân viên vận chuyển'
           name={item.user_transport.name}
           data={item.user_transport}
           navigation={navigation}
@@ -451,7 +446,7 @@ function ItemBill({item, navigation}) {
         </TouchableOpacity>
       </View>
     </View>
-  );
+  )
 }
 
 const ViewName = ({name, data, navigation, title}) => {
@@ -471,8 +466,8 @@ const ViewName = ({name, data, navigation, title}) => {
         <Text>Chi tiết</Text>
       </TouchableOpacity>
     </View>
-  );
-};
+  )
+}
 {
   /* <View style={styles.filter}>
         <Text>Sắp xếp</Text>

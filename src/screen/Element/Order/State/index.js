@@ -1,84 +1,66 @@
-import React, {useState, useContext, useEffect} from 'react';
-import {
-  FlatList,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  Image,
-  Modal,
-  Pressable,
-  Alert,
-  ToastAndroid,
-} from 'react-native';
+import React, {useState, useContext, useEffect} from 'react'
+import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native'
+import Header from '../Header'
+import {apiBillState} from '@api'
+import {AppContext, HeaderC, Layout, ViewCore, TextCore} from '@component'
+import {navigate, goBack} from '@navigation'
+import ItemState from './ItemState'
 
-import Header from '../Header';
-import {apiBillState} from '../../../../api';
-import {AppContext} from '../../../../component/AppContext';
-import ItemState from './ItemState';
+export default function index ({navigation}) {
+  const {token, lEP, setLEP, permission} = useContext(AppContext)
+  const [isConfirm, setIsConfirm] = useState(true)
+  const [isTransport, setIstransport] = useState(false)
+  const [isComplete, setIsComplete] = useState(false)
+  const [isCancel, setIsCancel] = useState(false)
 
-export default function index({navigation}) {
-  const {token, lEP, setLEP, permission} = useContext(AppContext);
-  const [isConfirm, setIsConfirm] = useState(true);
-  const [isTransport, setIstransport] = useState(false);
-  const [isComplete, setIsComplete] = useState(false);
-  const [isCancel, setIsCancel] = useState(false);
-
-  const [dataConfirm, setDataConfirm] = useState([]);
-  const [dataTransport, setDataTransport] = useState([]);
-  const [dataComplete, setDataComplete] = useState([]);
-  const [dataCancel, setDataCancel] = useState([]);
+  const [dataConfirm, setDataConfirm] = useState([])
+  const [dataTransport, setDataTransport] = useState([])
+  const [dataComplete, setDataComplete] = useState([])
+  const [dataCancel, setDataCancel] = useState([])
 
   useEffect(() => {
     apiBillState(token)
       .then(data => {
         if (data.code === 200) {
-          console.log(data);
-          setDataConfirm(data.billconfirm);
-          setDataTransport(data.billtransport);
-          setDataComplete(data.billsuccess);
-          setDataCancel(data.billcancel);
-        } else alert(data.code);
+          console.log(data)
+          setDataConfirm(data.billconfirm)
+          setDataTransport(data.billtransport)
+          setDataComplete(data.billsuccess)
+          setDataCancel(data.billcancel)
+        } else alert(data.code)
       })
-      .catch(e => console.log(e));
-  }, [lEP]);
+      .catch(e => console.log(e))
+  }, [lEP])
   const handleState = key => {
     if (key == 1) {
-      setIsConfirm(true);
-      setIstransport(false);
-      setIsComplete(false);
-      setIsCancel(false);
+      setIsConfirm(true)
+      setIstransport(false)
+      setIsComplete(false)
+      setIsCancel(false)
     }
     if (key == 2) {
-      setIsConfirm(false);
-      setIstransport(true);
-      setIsComplete(false);
-      setIsCancel(false);
+      setIsConfirm(false)
+      setIstransport(true)
+      setIsComplete(false)
+      setIsCancel(false)
     }
 
     if (key == 3) {
-      setIsConfirm(false);
-      setIstransport(false);
-      setIsComplete(false);
-      setIsCancel(true);
+      setIsConfirm(false)
+      setIstransport(false)
+      setIsComplete(false)
+      setIsCancel(true)
     }
     if (key == 4) {
-      setIsConfirm(false);
-      setIstransport(false);
-      setIsComplete(true);
-      setIsCancel(false);
+      setIsConfirm(false)
+      setIstransport(false)
+      setIsComplete(true)
+      setIsCancel(false)
     }
-  };
+  }
   return (
-    <View style={styles.container}>
-      <Header
-        title="Trang thai don hang"
-        navigation={navigation}
-        title="Trạng thái đơn hàng"
-        onClickLeft={() => navigation.goBack()}
-        rightIcon={true}
-        rightNameIcon="reload-outline"
-        onClickRight={() => setLEP(!lEP)}></Header>
+    <Layout>
+      <HeaderC title='Trạng thái đơn hàng'/>
       <View style={styles.rowState}>
         <TouchableOpacity
           onPress={() => handleState(1)}
@@ -167,8 +149,8 @@ export default function index({navigation}) {
             )}></FlatList>
         )}
       </View>
-    </View>
-  );
+    </Layout>
+  )
 }
 
 const styles = StyleSheet.create({
@@ -209,4 +191,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 5,
   },
-});
+})

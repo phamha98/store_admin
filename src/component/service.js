@@ -10,7 +10,7 @@ export const data_home=[
     },
     {
       id: 2,
-      name: 'Quản lý khách hàng thành viên',
+      name: 'Quản lý khách hàng',
       icon: 'people-outline',
       background: '#FFA600',
       colorText: '#fff',

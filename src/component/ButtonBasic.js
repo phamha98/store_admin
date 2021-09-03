@@ -47,7 +47,7 @@ ButtonBasic.defaultProps = {
   width: 100,
   height: 40,
   title: '',
-  backgroundColor: '#11ca71',
+  backgroundColor: '#3887ff',
   onPress: null,
   styleTitle: {},
 }
