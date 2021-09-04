@@ -23,3 +23,12 @@ import { Dimensions } from "react-native"
 const {width,height}=Dimensions.get("window")
 export const screen_width=width
 export const screen_height=height
+export function formatVND(price, sign = 'VND') {
+  const pieces = parseFloat(price).toFixed(0).split(''); 
+  let ii = pieces.length - 3; 
+  while (ii > 0) {
+    pieces.splice(ii, 0, '.'); 
+    ii -= 3; 
+  }
+  return pieces.join('') + ' ' + sign;
+}

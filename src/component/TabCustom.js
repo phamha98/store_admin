@@ -54,12 +54,12 @@ TabCustom.defaultProps = {
   Tab4: <></>,
   data: [],
 }
-const colorA = '#18C6CC'
+const colorA = '#3887ff'
 const colorZ = '#00df72'
-const color0 = '#C9720E'
-const color1 = '#00DFD4'
-const color2 = '#FFFFFF'
-const color4 = '#FF0000'
+const color0 = '#FF0000'
+const color1 = '#FFB005'
+const color2 = '#6D6D6D'
+const color4 = '#FFFFFF'
 const styles = StyleSheet.create({
   content: {
     height: 45,

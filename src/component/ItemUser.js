@@ -36,7 +36,7 @@ export default function ItemUser ({item, onPress}) {
           {item.address && <TextCore>{item.address}</TextCore>}
           {item.birthday && <TextCore>{item.birthday}</TextCore>}
           {item.gender && <TextCore>{item.gender}</TextCore>}
-          <TextCore>{item.role ? 'Chức vụ:' : ''}</TextCore>
+          {item.role&&<TextCore>Chức vụ:</TextCore>}
           {item.role
             ? item.role.map((item, index) => (
                 <ViewCore key={index}>

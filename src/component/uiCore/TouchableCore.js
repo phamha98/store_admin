@@ -20,6 +20,7 @@ export default function TouchableCore ({
   spaceBetween,
   centerHorizontal,
   style,
+  activeOpacity,
   ...rest
 }) {
   const styleAdd = [
@@ -29,11 +30,12 @@ export default function TouchableCore ({
     midle && {alignItems: 'center', justifyContent: 'center'},
     spaceBetween && {justifyContent: 'space-between'},
     centerHorizontal && {alignItems: 'center', justifyContent: 'space-between'},
-    style
+    style,
   ]
   if (title)
     return (
       <TouchableOpacity
+        activeOpacity={activeOpacity}
         onPress={onPress}
         style={[
           {
@@ -78,4 +80,5 @@ TouchableCore.defaultProps = {
   width: 100,
   height: 40,
   onPress: null,
+  activeOpacity:0.8
 }

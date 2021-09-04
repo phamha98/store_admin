@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext, useRef} from 'react';
+import React, {useState, useEffect, useContext, useRef} from 'react'
 import {
   Button,
   StyleSheet,
@@ -11,52 +11,52 @@ import {
   Modal,
   ToastAndroid,
   Alert,
-} from 'react-native';
+} from 'react-native'
 
-import ImagePicker from 'react-native-image-crop-picker';
-import Header from '../Header';
-import {AppContext} from '../../../../component/AppContext';
-import {apiInsertRole} from '../../../../api';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-export default function index({navigation}) {
-  const {token} = useContext(AppContext);
-  const [name, setName] = useState();
-  const [displayName, setDisplayName] = useState();
+import ImagePicker from 'react-native-image-crop-picker'
+import Header from '../Header'
+import {
+  AppContext,
+  HeaderC,
+  Layout,
+  screen_width,
+  TabCustom,
+  ViewCore,
+} from '@component'
+import {apiInsertRole} from '@api'
+export default function index ({navigation}) {
+  const {token} = useContext(AppContext)
+  const [name, setName] = useState()
+  const [displayName, setDisplayName] = useState()
 
   const handleSubmit = () => {
-    console.log(name + displayName + token);
+    console.log(name + displayName + token)
     apiInsertRole(token, name, displayName)
       .then(result => {
-        console.log(result);
+        console.log(result)
         if (result.msg) {
           ToastAndroid.showWithGravity(
             'Thêm thành công',
             ToastAndroid.LONG,
             ToastAndroid.CENTER,
-          );
+          )
         } else
           ToastAndroid.showWithGravity(
             'Tên đã tồn tại',
             ToastAndroid.LONG,
             ToastAndroid.CENTER,
-          );
+          )
       })
-      .catch(err => console.log(err));
-  };
+      .catch(err => console.log(err))
+  }
 
   return (
-    <View style={styles.container}>
-      <Header
-        navigation={navigation}
-        title="Thêm nhóm người dùng mới"
-        rightIcon={true}
-        background="#99BFCA"
-        onClickLeft={() => navigation.goBack()}
-      />
+    <Layout>
+      <HeaderC title='Thêm nhóm người dùng mới' />
       <View style={styles.viewInput}>
         <TextInput
           style={styles.textInput}
-          placeholder="Nhập vào khóa nhóm người dùng"
+          placeholder='Nhập vào khóa nhóm người dùng'
           value={name}
           onChangeText={text => setName(text)}
         />
@@ -69,7 +69,7 @@ export default function index({navigation}) {
       <View style={styles.viewInput}>
         <TextInput
           style={styles.textInput}
-          placeholder="Nhập vào tên nhóm người dùng"
+          placeholder='Nhập vào tên nhóm người dùng'
           value={displayName}
           onChangeText={text => setDisplayName(text)}
         />
@@ -79,8 +79,8 @@ export default function index({navigation}) {
         style={[styles.button, {backgroundColor: '#006DFC'}]}>
         <Text style={styles.textW}>Thêm nhóm người dùng mới</Text>
       </TouchableOpacity>
-    </View>
-  );
+    </Layout>
+  )
 }
 
 const styles = StyleSheet.create({
@@ -138,4 +138,4 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFB570',
     padding: 5,
   },
-});
+})

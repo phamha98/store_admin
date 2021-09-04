@@ -24,9 +24,17 @@ import RBSheet from 'react-native-raw-bottom-sheet'
 import ImagePicker from 'react-native-image-crop-picker'
 import styles from './styles'
 import {apiInsertPost, apiUpdatePost} from '../../../api'
-import {AppContext} from '../../../component/AppContext'
+import {
+  AppContext,
+  HeaderC,
+  Layout,
+  screen_width,
+  TabCustom,
+  ViewCore,
+} from '@component'
+import {navigate} from '@navigation'
 export default function InsertPost ({route, navigation}) {
-  const {token}=useContext(AppContext)
+  const {token} = useContext(AppContext)
   const {idT, titleT, contentT, imgT} = route.params
   const [id, setId] = useState(idT)
   const [title, setTitle] = useState(titleT)
@@ -81,7 +89,7 @@ export default function InsertPost ({route, navigation}) {
         })
         .catch(() => console.log(e))
     } else {
-      console.log(id,title,content,img);
+      console.log(id, title, content, img)
       apiUpdatePost(
         id,
         title,
@@ -89,22 +97,14 @@ export default function InsertPost ({route, navigation}) {
         url ? 'data:' + img.mime + ';base64,' + img.data : img.path,
       )
         .then(r => {
-          if (r.code === 200)  navigation.goBack()
+          if (r.code === 200) navigation.goBack()
         })
         .catch(() => console.log(e))
     }
   }
   return (
-    <View style={styles.container}>
-      <Header
-        navigation={navigation}
-        title='Thêm bài'
-        rightIcon={true}
-        background='#85827A'
-        rightNameIcon='person-circle-outline'
-        onClickLeft={() => navigation.goBack()}
-        onClickRight={() => navigation.navigate('Person')}
-      />
+    <Layout backgroundColor="#c7c7c7">
+      <HeaderC title='Thêm bài' />
       <View style={styles.content}>
         <Textarea
           containerStyle={[
@@ -191,6 +191,6 @@ export default function InsertPost ({route, navigation}) {
           </View>
         </RBSheet>
       </View>
-    </View>
+    </Layout>
   )
 }

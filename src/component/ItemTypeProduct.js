@@ -1,19 +1,8 @@
 import React from 'react'
-import {StyleSheet, Text, View} from 'react-native'
-import {
-  AppContext,
-  HeaderC,
-  Layout,
-  ViewCore,
-  TextCore,
-  Light,
-  screen_width,
-  ImageCore,
-} from '@component'
-import {navigate, goBack} from '@navigation'
+import {StyleSheet, Text, TouchableOpacity} from 'react-native'
+ import {ViewCore, TextCore, Light, screen_width, ImageCore} from './index'
 import ButtonBasic from './ButtonBasic'
-import {TouchableOpacity} from 'react-native'
-
+import {isEmpty} from 'underscore'
 export default function ItemTypeProduct ({
   item,
   onPress,
@@ -21,6 +10,8 @@ export default function ItemTypeProduct ({
   onSeen,
   onUpdate,
 }) {
+
+  if (isEmpty(item)) return null
   return (
     <TouchableOpacity activeOpacity={0.9} onPress={onPress}>
       <ViewCore
@@ -64,6 +55,13 @@ export default function ItemTypeProduct ({
   )
 }
 
+ItemTypeProduct.defaultProps = {
+  item: {},
+  onPress: null,
+  onRemove: null,
+  onSeen: null,
+  onUpdate: null,
+}
 const styles = StyleSheet.create({
   button: {
     width: 50,
@@ -72,7 +70,7 @@ const styles = StyleSheet.create({
   container: {
     borderRadius: 5,
     borderWidth: 1,
-    borderColor: Light.blue_faint,
-    backgroundColor: Light.background,
+    borderColor:"#3887ff",
+    backgroundColor: '#eceff2',
   },
 })

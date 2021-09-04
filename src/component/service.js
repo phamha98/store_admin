@@ -14,7 +14,7 @@ export const data_home=[
       icon: 'people-outline',
       background: '#FFA600',
       colorText: '#fff',
-      navigation: 'HomeCustomer',
+      navigation: 'CustomerHome',
       permision: 'NaviCustomer',
     },
     {

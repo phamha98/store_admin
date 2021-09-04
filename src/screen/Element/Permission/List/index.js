@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useEffect, useContext} from 'react'
 import {
   StyleSheet,
   Image,
@@ -9,35 +9,27 @@ import {
   TouchableOpacity,
   Modal,
   Alert,
-} from 'react-native';
-import Header from '../Header';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import {Avatar} from 'react-native-elements';
-import {Button} from 'react-native-elements';
-import {apiListGroupUser} from '../../../../api';
-import {AppContext} from '../../../../component/AppContext';
+} from 'react-native'
+import {HeaderC, Layout} from '@component'
+import Ionicons from 'react-native-vector-icons/Ionicons'
+import {Avatar} from 'react-native-elements'
+import {Button} from 'react-native-elements'
+import {apiListGroupUser} from '../../../../api'
+import {AppContext} from '../../../../component/AppContext'
 
-export default function index({navigation}) {
-  const {token} = useContext(AppContext);
-  const [data, setData] = useState([]);
+export default function index ({navigation}) {
+  const {token} = useContext(AppContext)
+  const [data, setData] = useState([])
 
   useEffect(() => {
     apiListGroupUser(token).then(result => {
-      console.log(result);
-      setData(result.data);
-    });
-  }, []);
+      console.log(result)
+      setData(result.data)
+    })
+  }, [])
   return (
-    <View style={styles.container}>
-      <Header
-        navigation={navigation}
-        title="Danh sách nhóm người dùng"
-        rightIcon={true}
-        background="#FFFFFF"
-        rightNameIcon="person-circle-outline"
-        onClickLeft={() => navigation.goBack()}
-        onClickRight={() => navigation.navigate('Person')}
-      />
+    <Layout>
+      <HeaderC title='Danh sách nhóm người dùng' />
       <FlatList
         data={data}
         keyExtractor={item => item.id}
@@ -45,8 +37,8 @@ export default function index({navigation}) {
           <ViewItem item={item} navigation={navigation}></ViewItem>
         )}
       />
-    </View>
-  );
+    </Layout>
+  )
 }
 const ViewItem = ({item, navigation}) => {
   return (
@@ -55,18 +47,18 @@ const ViewItem = ({item, navigation}) => {
         <View style={styles.rowItem}>
           <Ionicons
             style={{marginHorizontal: 5}}
-            name="person-outline"
+            name='person-outline'
             size={20}
-            color="red"
+            color='red'
           />
           <Text>Key:{item.name}</Text>
         </View>
         <View style={styles.rowItem}>
           <Ionicons
             style={{marginHorizontal: 5}}
-            name="mail-outline"
+            name='mail-outline'
             size={20}
-            color="red"
+            color='red'
           />
           <Text>Name:{item.display_name}</Text>
         </View>
@@ -79,7 +71,7 @@ const ViewItem = ({item, navigation}) => {
               displayName: item.display_name,
             })
           }
-          title="Xem thành viên"></Button>
+          title='Xem thành viên'></Button>
         <Text></Text>
         <Button
           onPress={() =>
@@ -88,11 +80,11 @@ const ViewItem = ({item, navigation}) => {
               displayName: item.display_name,
             })
           }
-          title="Xem các quyền"></Button>
+          title='Xem các quyền'></Button>
       </View>
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {flex: 1, backgroundColor: '#666560'},
@@ -125,4 +117,4 @@ const styles = StyleSheet.create({
     width: 130,
     margin: 5,
   },
-});
+})

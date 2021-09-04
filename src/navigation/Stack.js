@@ -19,13 +19,11 @@ import {
   ShowGoodAll,
   ShowGoodMainDetails,
   ShowGoodDetails,
-  Statistical,
+  Statistical_home,
   StatisticBills,
   StatisticChart,
   StatisticCustomer,
-  SearchCustomer,
-  ListCustomer,
-  HomeCustomer,
+  CustomerHome,
   Staff,
   HomePermission,
   ListPermission,
@@ -75,13 +73,11 @@ export default function Stack() {
         <Stack1.Screen name="InsertTypeGoods" component={InsertTypeGoods} />
         <Stack1.Screen name="ShowUser" component={ShowUser} />
         <Stack1.Screen name="BillDetails" component={BillDetails} />
-        <Stack1.Screen name="Statistical" component={Statistical} />
+        <Stack1.Screen name="Statistical" component={Statistical_home} />
         <Stack1.Screen name="StatisticBills" component={StatisticBills} />
         <Stack1.Screen name="StatisticCustomer" component={StatisticCustomer} />
         <Stack1.Screen name="StatisticChart" component={StatisticChart} />
-        <Stack1.Screen name="HomeCustomer" component={HomeCustomer} />
-        <Stack1.Screen name="ListCustomer" component={ListCustomer} />
-        <Stack1.Screen name="SearchCustomer" component={SearchCustomer} />
+        <Stack1.Screen name="CustomerHome" component={CustomerHome} />
         <Stack1.Screen name="Staff" component={Staff} />
         <Stack1.Screen name="HomePermission" component={HomePermission} />
         <Stack1.Screen name="ListPermission" component={ListPermission} />

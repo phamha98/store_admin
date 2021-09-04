@@ -17,7 +17,7 @@ export default function index ({navigation}) {
             id: -1,
             name: 'Tất cả',
             img:
-              'https://media3.scdn.vn/img3/2019/4_5/WZVc0y_simg_de2fe0_500x500_maxb.jpg',
+              'https://toplist.vn/images/800px/doc-menwear-323919.jpg',
           }
           temp.splice(0, 0, ptx)
           setDataMainGood(temp)
