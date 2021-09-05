@@ -1,6 +1,6 @@
 import localhost from './localhost'
 
-const apiUpdatePost = (id, title, content, img) =>
+export const apiUpdatePost = (id, title, content, img) =>
   fetch(localhost + 'api/post_tags/update', {
     method: 'POST',
     headers: {
@@ -16,4 +16,3 @@ const apiUpdatePost = (id, title, content, img) =>
   })
     .then(response => response.json())
     .catch(err => console.log(err))
-export default apiUpdatePost

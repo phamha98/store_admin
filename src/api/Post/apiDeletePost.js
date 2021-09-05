@@ -1,6 +1,5 @@
 import localhost from './localhost'
-
-const apiDeletePost = id =>
+export const apiDeletePost = id =>
   fetch(localhost + 'api/post_tags/delete', {
     method: 'POST',
     headers: {
@@ -13,4 +12,3 @@ const apiDeletePost = id =>
   })
     .then(response => response.json())
     .catch(err => console.log(err))
-export default apiDeletePost

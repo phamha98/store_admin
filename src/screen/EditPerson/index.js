@@ -18,39 +18,47 @@ import {
   InputBasic,
   Light,
   ViewCore,
-  AvatartCore,
+  TouchableCore,
+  ImageCore,
 } from '@component'
 import {AppContext} from '@component/AppContext'
-import {apiPersonUpdate} from '@api'
-import {navigate, goBack} from '@navigation'
+import {apiPersonUpdate, apiPersonShow} from '@api'
+import {replace, goBack} from '@navigation'
 import BottomSheetCamera from './BottomSheetCamera'
+import {isEmpty} from 'underscore'
+import {ImageComponent} from 'react-native'
 
-export default function index ({route}) {
-  const {token, idUser,lEP,setLEP} = useContext(AppContext)
-  const {data} = route.params
-  console.log('1.1', data)
+export default function index () {
+  const {token, idUser, lEP, setLEP} = useContext(AppContext)
   const refName = useRef()
   const refPhone = useRef()
   const refAddress = useRef()
   const sheetCam = useRef()
   const [img, setImg] = useState(null)
+  const [data, setData] = useState(null)
+  //
   const handleUpdate = () => {
     let name = refName.current.getValue()
     let phone = refPhone.current.getValue()
     let address = refAddress.current.getValue()
     let image = 'data:' + img.mime + ';base64,' + img.data
     apiPersonUpdate(token, idUser, name, phone, address, image)
-    .then(r=>console.log(r))
-    .catch(e =>
-      console.log(e),
-    )
+      .then(r => console.log(r))
+      .catch(e => console.log(e))
     goBack()
     setLEP(!lEP)
   }
+
   useEffect(() => {
-    setImg({path: data.img, data: '', mime: ''})
+    apiPersonShow(token, idUser)
+      .then(r => {
+        console.log(r.data)
+        setData(r.data)
+        setImg({path: r.data.img, data: '', mime: ''})
+      })
+      .catch(e => console.log(e))
   }, [])
-  console.log('1.5');
+  console.log('1.5')
   const gotoCamera = async () => {
     ImagePicker.openCamera({
       width: 300,
@@ -81,31 +89,33 @@ export default function index ({route}) {
         console.log('openCamera catch' + err.toString())
       })
   }
-  console.log('1.2', img)
-  console.log('1.3', data.name)
+  console.log('1.19', data)
+  if (isEmpty(data)) return null
   return (
     <Layout>
       <HeaderC
-        onClickLeft={() => goBack()}
         title='Chỉnh sửa '
         rightNameIcon='checkmark-circle-outline'
         onClickRight={handleUpdate}
       />
       <ScrollView style={{paddingHorizontal: 10}}>
         <ViewCore alignItems marginTop={20}>
-          <AvatartCore
-            src={
-              img
-                ? img.path
-                  ? {uri: img.path}
+          <TouchableOpacity
+            activeOpacity={0.8}
+            style={{borderRadius:100,overflow:'hidden'}}
+            onPress={() => sheetCam.current.open()}>
+            <ImageCore
+              source={
+                img
+                  ? img.path
+                    ? {uri: img.path}
+                    : require('@image/noimage.jpg')
                   : require('@image/noimage.jpg')
-                : require('@image/noimage.jpg')
-            }
-            size='xlarge'
-            onPress={() => sheetCam.current.open()}
-            activeOpacity={1}
-            rounded
-          />
+              }
+              width={200}
+              height={200}
+            />
+          </TouchableOpacity>
         </ViewCore>
 
         <InputBasic
@@ -115,10 +125,10 @@ export default function index ({route}) {
           placeholderTextColor='#fff'
           placeholder='Họ tên123'
           marginTop={10}
-          valueInit={data.name ? data.name : ''}
+          valueInit={data.name}
         />
         <InputBasic
-          valueInit={data.phone ? data.phone : ''}
+          valueInit={data.phone}
           ref={refPhone}
           backgroundColor={Light.blue_faint}
           color='#fff'
@@ -127,7 +137,7 @@ export default function index ({route}) {
           marginTop={10}
         />
         <InputBasic
-          valueInit={data.address ? data.address : ''}
+          valueInit={data.address}
           ref={refAddress}
           backgroundColor={Light.blue_faint}
           color='#fff'

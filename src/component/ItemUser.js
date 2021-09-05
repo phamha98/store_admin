@@ -15,7 +15,7 @@ export default function ItemUser ({item, onPress}) {
     navigate('ShowUser', {data: item})
   }
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity activeOpacity={0.8} onPress={onPress}>
       <ViewCore
         row
         style={{

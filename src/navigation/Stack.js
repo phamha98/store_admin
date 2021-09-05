@@ -21,7 +21,7 @@ import {
   ShowGoodDetails,
   Statistical_home,
   StatisticBills,
-  StatisticChart,
+  StatisticProduct,
   StatisticCustomer,
   CustomerHome,
   Staff,
@@ -35,16 +35,13 @@ import {
   HomePost,
   ListPost,
   InsertPost,
+  SettingInfo
 } from '../screen';
 import Drawer from './Drawer';
 const Stack1 = createStackNavigator();
 import { navigationRef ,isReadyRef} from './rootNavigation';
 export default function Stack() {
-//   useEffect(() => {
-//     return () => {
-//         isReadyRef.current = false;
-//     };
-// }, []);
+
   return (
     <NavigationContainer
       ref={navigationRef}
@@ -76,7 +73,7 @@ export default function Stack() {
         <Stack1.Screen name="Statistical" component={Statistical_home} />
         <Stack1.Screen name="StatisticBills" component={StatisticBills} />
         <Stack1.Screen name="StatisticCustomer" component={StatisticCustomer} />
-        <Stack1.Screen name="StatisticChart" component={StatisticChart} />
+        <Stack1.Screen name="StatisticProduct" component={StatisticProduct} />
         <Stack1.Screen name="CustomerHome" component={CustomerHome} />
         <Stack1.Screen name="Staff" component={Staff} />
         <Stack1.Screen name="HomePermission" component={HomePermission} />
@@ -88,6 +85,7 @@ export default function Stack() {
         <Stack1.Screen name="HomePost" component={HomePost} />
         <Stack1.Screen name="ListPost" component={ListPost} />
         <Stack1.Screen name="InsertPost" component={InsertPost} />
+        <Stack1.Screen name="SettingInfo" component={SettingInfo} />
       </Stack1.Navigator>
     </NavigationContainer>
   );

@@ -10,7 +10,7 @@ import {
   Modal,
   Alert,
 } from 'react-native'
-import {HeaderC, Layout} from '@component'
+import {HeaderC, Layout, Light} from '@component'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import {Avatar} from 'react-native-elements'
 import {Button} from 'react-native-elements'
@@ -28,7 +28,7 @@ export default function index ({navigation}) {
     })
   }, [])
   return (
-    <Layout>
+    <Layout backgroundColor={Light.border}>
       <HeaderC title='Danh sách nhóm người dùng' />
       <FlatList
         data={data}

@@ -11,6 +11,7 @@ export default function ViewCore ({
   midle,
   row,
   style,
+  borderRadius,
   spaceBetween,
   centerHorizontal,
   ...rest
@@ -26,6 +27,7 @@ export default function ViewCore ({
       width: width,
       height: height,
       backgroundColor: backgroundColor,
+      borderRadius:borderRadius,
       ...rest
     },
 

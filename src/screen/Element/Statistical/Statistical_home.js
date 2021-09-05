@@ -29,8 +29,8 @@ const temp_data = [
     screen: 'StatisticCustomer',
   },
   {
-    name: 'THỐNG KÊ BIỂU ĐỒ',
+    name: 'THỐNG KÊ MẶT HÀNG',
     icon: 'bar-chart-outline',
-    screen: 'StatisticChart',
+    screen: 'StatisticProduct',
   },
 ]

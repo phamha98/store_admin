@@ -1,6 +1,6 @@
 import localhost from './localhost';
 
-const apiLoadPost = () =>
+export const apiLoadPost = () =>
   fetch (localhost + 'api/post_tags/load', {
     method: 'GET',
     headers: {
@@ -10,4 +10,3 @@ const apiLoadPost = () =>
   })
     .then (response => response.json ())
     .catch (err => console.log (err));
-export default apiLoadPost;

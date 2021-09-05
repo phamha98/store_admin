@@ -26,7 +26,6 @@ const ListSt = () => {
   const [data, setData] = useState([])
   useEffect(() => {
     apiListUserRole(token, '4').then(result => {
-      console.log('1.15',result.data);
       setData(result.data)
     })
   }, [])

@@ -2,7 +2,6 @@ import Login from './Login';
 import Home from './Home';
 import Person from './Person';
 import EditPerson from './EditPerson';
-import ShowUser from './Element/ShowUser';
 import {
   HomeOrder,
   ListOrder,
@@ -57,7 +56,6 @@ export {
   ShowGoodDetails,
   //
   EditPerson,
-  ShowUser,
   BillDetails,
   //
   //

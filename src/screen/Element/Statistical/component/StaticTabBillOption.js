@@ -4,8 +4,6 @@ import {Table, Row} from 'react-native-table-component'
 import styles from '../styles'
 import localhost from '@api/localhost'
 import {
-  TabCustom,
-  Layout,
   ViewCore,
   screen_width,
   Light,

@@ -4,6 +4,8 @@ import {isEmpty} from 'underscore'
 import {formatStateBill} from '@utils'
 export default function ContainBill ({item, onPress}) {
   if (isEmpty(item)) return null
+  console.log('item');
+  console.log(item);
   return (
     <ViewCore
       marginBottom={10}
@@ -25,7 +27,7 @@ export default function ContainBill ({item, onPress}) {
       {item.user_confirm && (
         <>
           <RowInfo data={item.user_confirm.name} title='Nhân viên xác nhận' />
-          <RowInfo data={'NV' + item.user_confirm.id} title='Mã nhân viên' />
+          <RowInfo data={'NV' + item.user_confirm.id} title='Mã nhân viên xác nhận' />
         </>
       )}
       {item.user_transport && (
@@ -34,7 +36,7 @@ export default function ContainBill ({item, onPress}) {
             data={item.user_transport.name}
             title='Nhân viên giao hàng'
           />
-          <RowInfo data={'NV' + item.user_confirm.id} title='Mã nhân viên' />
+          <RowInfo data={'NV' + item.user_confirm.id} title='Mã nhân viên giao hàng' />
         </>
       )}
 

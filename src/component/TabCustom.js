@@ -21,7 +21,7 @@ export default function TabCustom ({mapView, mapTitle, styleTab, styleButton}) {
     return mapView[id]
   }
   return (
-    <ViewCore style={{flex: 1}}>
+    <ViewCore style={{flex: 1,}} marginTop={2}>
       <ViewCore style={[styles.content, styleTab]} row>
         {mapTitle.map((item, index) => (
           <TouchableOpacity

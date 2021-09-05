@@ -14,7 +14,7 @@ const InputBasic = (
     checkTestValidate,
     rightTouchButon,
     textTouch,
-    valueInit = '',
+    valueInit,
     backgroundColor = '#fff',
     color='#000',
     ...res

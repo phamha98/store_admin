@@ -1,6 +1,6 @@
 import localhost from './localhost'
 
-const apiInsertPost = (title, content, img) =>
+export const apiInsertPost = (title, content, img) =>
   fetch(localhost + 'api/post_tags/insert', {
     method: 'POST',
     headers: {
@@ -15,4 +15,3 @@ const apiInsertPost = (title, content, img) =>
   })
     .then(response => response.json())
     .catch(err => console.log(err))
-export default apiInsertPost

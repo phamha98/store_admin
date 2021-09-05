@@ -12,7 +12,7 @@ import {
   ButtonBasic,
   screen_height,
 } from '@component'
-import {navigate, goBack} from '@navigation'
+import {navigate, goBack,replace} from '@navigation'
 import {apiPersonShow} from '@api'
 
 export default function index () {
@@ -26,13 +26,12 @@ export default function index () {
         setData(data.data)
       })
       .catch(e => console.log(e))
-  }, [lEP])
+  }, [render])
   console.log('1.4',"person");
   return (
     <Layout>
       <HeaderC
         title='Thông tin cá nhân'
-        onClickLeft={() => goBack()}
         onClickRight={() => setRender(!render)}
       />
       {data && (
@@ -64,7 +63,7 @@ export default function index () {
               backgroundColor='orange'
               title='Chỉnh sửa'
               width={0.5 * screen_width}
-              onPress={()=>navigate("EditPerson",{data:data})}
+              onPress={()=>navigate("EditPerson")}
             />
             <ButtonBasic
               marginTop={10}

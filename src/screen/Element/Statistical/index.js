@@ -1,6 +1,6 @@
 
 import Statistical_home from './Statistical_home'
-import StatisticChart from './StatisticChart'
+import StatisticProduct from './StatisticProduct'
 import StatisticBills from './StatisticBills'
 import StatisticCustomer from './StatisticCustomer'
-export {Statistical_home, StatisticChart, StatisticBills, StatisticCustomer}
+export {Statistical_home, StatisticProduct, StatisticBills, StatisticCustomer}

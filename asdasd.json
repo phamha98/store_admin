@@ -1,29 +1,111 @@
 {
     "code": 200,
-    "data": [
-        {
+    "staterow": {
+        "bill_details": {
             "created_at": "2021-08-22 01:11:42",
             "date": "2021-08-22",
             "id": 1,
             "id_user": "1",
-            "state": [Object
-            ],
-            "total_number": [Object
-            ],
             "total_price": 123,
             "updated_at": "2021-08-22 01:11:42"
         },
-        {
-            "created_at": "2021-08-22 01:17:22",
-            "date": "2021-08-22",
-            "id": 2,
-            "id_user": "1",
-            "state": [Object
-            ],
-            "total_number": [],
-            "total_price": 123,
-            "updated_at": "2021-08-22 01:17:22"
+        "created_at": "2021-08-22 01:11:42",
+        "id": 1,
+        "id_bill": "1",
+        "id_user_cancel": null,
+        "id_user_confirm": "1",
+        "id_user_order": "1",
+        "id_user_transport": "1",
+        "state": "3",
+        "updated_at": "2021-09-05 22:04:31",
+        "user_confirm": {
+            "address": "hanoi",
+            "birthday": "2021-05-25",
+            "created_at": null,
+            "email": "m",
+            "email_verified_at": null,
+            "gender": "nam",
+            "id": 1,
+            "img": "http://192.168.0.102:8001/storage/imagetypemain",
+            "name": "Pham tran quang ha",
+            "phone": "0987654321",
+            "updated_at": "2021-09-05 00:14:20"
+        },
+        "user_order": {
+            "address": "hanoi",
+            "birthday": "2021-05-25",
+            "created_at": null,
+            "email": "m",
+            "email_verified_at": null,
+            "gender": "nam",
+            "id": 1,
+            "img": "http://192.168.0.102:8001/storage/imagetypemain",
+            "name": "Pham tran quang ha",
+            "phone": "0987654321",
+            "updated_at": "2021-09-05 00:14:20"
+        },
+        "user_transport": {
+            "address": "hanoi",
+            "birthday": "2021-05-25",
+            "created_at": null,
+            "email": "m",
+            "email_verified_at": null,
+            "gender": "nam",
+            "id": 1,
+            "img": "http://192.168.0.102:8001/storage/imagetypemain",
+            "name": "Pham tran quang ha",
+            "phone": "0987654321",
+            "updated_at": "2021-09-05 00:14:20"
         }
-    ],
-    "msg": "Tìm thành công"
+    }
+}
+
+{
+    "bill_details": {
+        "created_at": "2021-08-22 01:17:22",
+        "date": "2021-08-22",
+        "id": 2,
+        "id_user": "1",
+        "total_price": 123,
+        "updated_at": "2021-08-22 01:17:22"
+    },
+    "created_at": "2021-08-22 01:17:22",
+    "date": "2021-08-22",
+    "id": 2,
+    "id_bill": "2",
+    "id_user": "1",
+    "id_user_cancel": null,
+    "id_user_confirm": "1",
+    "id_user_order": "1",
+    "id_user_transport": null,
+    "state": "2",
+    "total_price": 123,
+    "updated_at": "2021-08-22 01:17:22",
+    "user_confirm": {
+        "address": "hanoi",
+        "birthday": "2021-05-25",
+        "created_at": null,
+        "email": "m",
+        "email_verified_at": null,
+        "gender": "nam",
+        "id": 1,
+        "img": null,
+        "name": "Pham tran quang ha",
+        "phone": "0987654321",
+        "updated_at": "2021-09-05 00:14:20"
+    },
+    "user_order": {
+        "address": "hanoi",
+        "birthday": "2021-05-25",
+        "created_at": null,
+        "email": "m",
+        "email_verified_at": null,
+        "gender": "nam",
+        "id": 1,
+        "img": null,
+        "name": "Pham tran quang ha",
+        "phone": "0987654321",
+        "updated_at": "2021-09-05 00:14:20"
+    },
+    "user_transport": null
 }

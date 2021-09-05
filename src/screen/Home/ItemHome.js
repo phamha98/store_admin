@@ -27,6 +27,7 @@ export default function ItemHome ({item}) {
   }
   return (
     <TouchableOpacity
+      activeOpacity={0.8}
       onPress={handleClick}
       style={[
         {
@@ -37,7 +38,7 @@ export default function ItemHome ({item}) {
         styles.container,
       ]}>
       <Ionicons name={item.icon} color={item.colorText} size={40} />
-      <ViewCore height={50} position="absolute" bottom={10}>
+      <ViewCore height={50} position='absolute' bottom={10}>
         <Text style={{color: '#fff', fontWeight: 'bold', fontSize: 18}}>
           {item.name}
         </Text>
@@ -52,8 +53,8 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     marginHorizontal: 5,
     borderRadius: 5,
-   
-    paddingTop:30,
+
+    paddingTop: 30,
     alignItems: 'center',
   },
 })
