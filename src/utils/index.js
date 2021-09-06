@@ -7,3 +7,7 @@ export function formatStateBill (state) {
   else if (state == '4') return 'Đã hủy'
   else return ''
 }
+export const uriImg=(uri)=>{
+if(isEmpty(uri)) return require("@image/noimage.jpg")
+else return {uri:uri}
+}

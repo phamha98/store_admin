@@ -1,4 +1,3 @@
-import HomePost from './HomePost';
-import InsertPost from './InsertPost';
-import ListPost from './ListPost';
-export  {HomePost,ListPost,InsertPost};
+export {default as HomePost} from './HomePost';
+export {default as InsertPost} from './InsertPost';
+export {default as ListPost} from './ListPost';

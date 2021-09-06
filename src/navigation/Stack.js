@@ -9,7 +9,6 @@ import {
   SearchOrder,
   StateOrder,
   BillDetails,
-  MyOrder,
   HomeGoods,
   ShowGoods,
   SearchGoods,
@@ -55,7 +54,6 @@ export default function Stack() {
         <Stack1.Screen name="ListOrder" component={ListOrder} />
         <Stack1.Screen name="SearchOrder" component={SearchOrder} />
         <Stack1.Screen name="StateOrder" component={StateOrder} />
-        <Stack1.Screen name="MyOrder" component={MyOrder} />
         <Stack1.Screen name="HomeGoods" component={HomeGoods} />
         <Stack1.Screen name="ShowGoods" component={ShowGoods} />
         <Stack1.Screen name="ShowGoodAll" component={ShowGoodAll} />

@@ -28,3 +28,13 @@ export const AlertFull = (msg1, msg2, onClick) => {
     {text: 'Đồng ý', onPress: () => onClick},
   ]);
 };
+export const AlertBasic = (msg1, msg2, onClick) => {
+  Alert.alert(msg1, msg2, [
+    {
+      text: 'Hủy',
+      onPress: () =>{},
+      style: 'cancel',
+    },
+    {text: 'Đồng ý', onPress: onClick},
+  ]);
+};

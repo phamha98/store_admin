@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useEffect, useContext} from 'react'
 import {
   Button,
   StyleSheet,
@@ -11,14 +11,14 @@ import {
   TouchableOpacity,
   ToastAndroid,
   ScrollView,
-} from 'react-native';
-import styles from './styles';
+} from 'react-native'
+import styles from './styles'
 
-import {Picker} from '@react-native-picker/picker';
-import Header from '../Header';
-import Spinner from 'react-native-spinkit';
-import {AppContext} from '../../../../component/AppContext';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import {Picker} from '@react-native-picker/picker'
+import Spinner from 'react-native-spinkit'
+import {AppContext, HeaderC, Layout, ItemTypeProduct} from '@component'
+import {navigate} from '@navigation'
+import Ionicons from 'react-native-vector-icons/Ionicons'
 import {
   apiGoodDetails,
   apiSearchGoodName,
@@ -27,150 +27,145 @@ import {
   apiSortGoodPrice,
   apiSortGoodSale,
   apiSortGoodTotalNumber,
-} from '../../../../api';
-export default function index({navigation}) {
-  console.log('hello search goods');
-  const {token} = useContext(AppContext);
-  const [search, setSearch] = useState('searchCode');
-  const [progess, setProgess] = useState(false);
-  const [value, setValue] = useState();
-  const [gender, setGender] = useState('nam');
-  const [new1, setNew1] = useState('1');
-  const [sale, setSale] = useState();
-  const [sort, setSort] = useState('asc');
+} from '../../../../api'
+export default function index ({navigation}) {
+  console.log('hello search goods')
+  const {token} = useContext(AppContext)
+  const [search, setSearch] = useState('searchCode')
+  const [progess, setProgess] = useState(false)
+  const [value, setValue] = useState()
+  const [gender, setGender] = useState('nam')
+  const [new1, setNew1] = useState('1')
+  const [sale, setSale] = useState()
+  const [sort, setSort] = useState('asc')
 
-  const [type, setType] = useState('');
+  const [type, setType] = useState('')
 
   const [dataSearch, setDataSearch] = useState({
     product: [{id: 0}],
     arraySize: [{id: 0}],
     products: [{id: 0}],
-  });
-  const [dataSearchName, setDataSearchName] = useState([]);
+  })
+  const [dataSearchName, setDataSearchName] = useState([])
 
   const searchGoods = () => {
-    setProgess(true);
+    setProgess(true)
     if (search == 'searchCode') {
       apiGoodDetails(token, value)
         .then(data => {
           // console.log(data);
-          setProgess(false);
+          setProgess(false)
           if (data.code == 200) {
-            setDataSearch(data.data);
+            setDataSearch(data.data)
           } else
             ToastAndroid.showWithGravity(
               'Không tìm thấy đơn hàng',
               ToastAndroid.LONG,
               ToastAndroid.CENTER,
-            );
+            )
         })
-        .catch(e => console.log(e));
+        .catch(e => console.log(e))
     }
     if (search == 'searchName') {
       apiSearchGoodName(token, value)
         .then(data => {
-          setProgess(false);
+          setProgess(false)
           if (data.code == 200) {
-            setDataSearchName(data.data);
+            setDataSearchName(data.data)
           } else
             ToastAndroid.showWithGravity(
               'Không tìm thấy đơn hàng',
               ToastAndroid.LONG,
               ToastAndroid.CENTER,
-            );
+            )
         })
-        .catch(e => console.log(e));
+        .catch(e => console.log(e))
     }
     if (search == 'filterGender') {
       apiSortGoodGender(token, gender)
         .then(data => {
-          setProgess(false);
+          setProgess(false)
           if (data.code == 200) {
-            setDataSearchName(data.data);
+            setDataSearchName(data.data)
           } else
             ToastAndroid.showWithGravity(
               'Không tìm thấy đơn hàng',
               ToastAndroid.LONG,
               ToastAndroid.CENTER,
-            );
+            )
         })
-        .catch(e => console.log(e));
+        .catch(e => console.log(e))
     }
     if (search == 'filterNew') {
       apiSortGoodNew(token, new1)
         .then(data => {
-          setProgess(false);
+          setProgess(false)
           if (data.code == 200) {
-            setDataSearchName(data.data);
+            setDataSearchName(data.data)
           } else
             ToastAndroid.showWithGravity(
               'Không tìm thấy đơn hàng',
               ToastAndroid.LONG,
               ToastAndroid.CENTER,
-            );
+            )
         })
-        .catch(e => console.log(e));
+        .catch(e => console.log(e))
     }
     if (search == 'filterSale') {
       if (sale == '0') {
-        setType('=');
+        setType('=')
       }
       if (sale == '1') {
-        setType('<>');
+        setType('<>')
       }
       apiSortGoodSale(token, type, '0')
         .then(data => {
-          setProgess(false);
+          setProgess(false)
           if (data.code == 200) {
-            setDataSearchName(data.data);
+            setDataSearchName(data.data)
           } else
             ToastAndroid.showWithGravity(
               'Không tìm thấy đơn hàng',
               ToastAndroid.LONG,
               ToastAndroid.CENTER,
-            );
+            )
         })
-        .catch(e => console.log(e));
+        .catch(e => console.log(e))
     }
     if (search == 'filterNumber') {
       apiSortGoodTotalNumber(token, sort)
         .then(data => {
-          setProgess(false);
+          setProgess(false)
           if (data.code == 200) {
-            setDataSearchName(data.data);
+            setDataSearchName(data.data)
           } else
             ToastAndroid.showWithGravity(
               'Không tìm thấy đơn hàng',
               ToastAndroid.LONG,
               ToastAndroid.CENTER,
-            );
+            )
         })
-        .catch(e => console.log(e));
+        .catch(e => console.log(e))
     }
     if (search == 'filterPrice') {
       apiSortGoodPrice(token, sort)
         .then(data => {
-          setProgess(false);
+          setProgess(false)
           if (data.code == 200) {
-            setDataSearchName(data.data);
+            setDataSearchName(data.data)
           } else
             ToastAndroid.showWithGravity(
               'Không tìm thấy đơn hàng',
               ToastAndroid.LONG,
               ToastAndroid.CENTER,
-            );
+            )
         })
-        .catch(e => console.log(e));
+        .catch(e => console.log(e))
     }
-  };
+  }
   return (
-    <View style={styles.container}>
-      <Header
-        navigation={navigation}
-        title="Tìm kiếm mặt hàng"
-        onClickLeft={() => navigation.goBack()}
-        background="#0D9E00"
-      />
+    <Layout>
+      <HeaderC title='Tìm kiếm mặt hàng' />
       <ScrollView>
         <View style={styles.filter}>
           <TouchableOpacity onPress={searchGoods} style={styles.buttonFilter}>
@@ -180,21 +175,21 @@ export default function index({navigation}) {
             selectedValue={search}
             style={{height: 50, width: 250}}
             onValueChange={(itemValue, itemIndex) => {
-              setSearch(itemValue);
+              setSearch(itemValue)
             }}>
-            <Picker.Item label="Theo mã sản phẩm" value="searchCode" />
-            <Picker.Item label="Theo tên sản phẩm" value="searchName" />
-            <Picker.Item label="Lọc theo sản phẩm mới " value="filterNew" />
-            <Picker.Item label="Lọc theo sale" value="filterSale" />
-            <Picker.Item label="Lọc theo giá sản phẩm" value="filterPrice" />
-            <Picker.Item label="Lọc theo giới tính" value="filterGender" />
-            <Picker.Item label="Lọc theo số lượng hàng" value="filterNumber" />
+            <Picker.Item label='Theo mã sản phẩm' value='searchCode' />
+            <Picker.Item label='Theo tên sản phẩm' value='searchName' />
+            <Picker.Item label='Lọc theo sản phẩm mới ' value='filterNew' />
+            <Picker.Item label='Lọc theo sale' value='filterSale' />
+            <Picker.Item label='Lọc theo giá sản phẩm' value='filterPrice' />
+            <Picker.Item label='Lọc theo giới tính' value='filterGender' />
+            <Picker.Item label='Lọc theo số lượng hàng' value='filterNumber' />
           </Picker>
         </View>
         {(search === 'searchCode' || search === 'searchName') && (
           <TextInput
             style={styles.textInput}
-            placeholder="Tìm kiếm....."
+            placeholder='Tìm kiếm.....'
             value={value}
             onChangeText={text => setValue(text)}></TextInput>
         )}
@@ -204,9 +199,9 @@ export default function index({navigation}) {
               selectedValue={gender}
               style={{height: 40, color: '#fff'}}
               onValueChange={(itemValue, itemIndex) => setGender(itemValue)}>
-              <Picker.Item label="Nam" value="nam" />
-              <Picker.Item label="Nu" value="nu" />
-              <Picker.Item label="Tất cả" value="tat" />
+              <Picker.Item label='Nam' value='nam' />
+              <Picker.Item label='Nu' value='nu' />
+              <Picker.Item label='Tất cả' value='tat' />
             </Picker>
           </View>
         )}
@@ -216,8 +211,8 @@ export default function index({navigation}) {
               selectedValue={new1}
               style={{height: 40, color: '#fff'}}
               onValueChange={(itemValue, itemIndex) => setNew1(itemValue)}>
-              <Picker.Item label="New" value="1" />
-              <Picker.Item label="Old" value="0" />
+              <Picker.Item label='New' value='1' />
+              <Picker.Item label='Old' value='0' />
             </Picker>
           </View>
         )}
@@ -227,8 +222,8 @@ export default function index({navigation}) {
               selectedValue={sale}
               style={{height: 40, color: '#fff'}}
               onValueChange={(itemValue, itemIndex) => setSale(itemValue)}>
-              <Picker.Item label="Không sale" value="0" />
-              <Picker.Item label="Sale" value="1" />
+              <Picker.Item label='Không sale' value='0' />
+              <Picker.Item label='Sale' value='1' />
             </Picker>
           </View>
         )}
@@ -238,8 +233,8 @@ export default function index({navigation}) {
               selectedValue={sort}
               style={{height: 40, color: '#fff'}}
               onValueChange={(itemValue, itemIndex) => setSort(itemValue)}>
-              <Picker.Item label="Tăng" value="asc" />
-              <Picker.Item label="Giảm" value="desc" />
+              <Picker.Item label='Tăng' value='asc' />
+              <Picker.Item label='Giảm' value='desc' />
             </Picker>
           </View>
         )}
@@ -265,17 +260,17 @@ export default function index({navigation}) {
             <Spinner
               isVisible={progess}
               size={100}
-              type="ChasingDots"
+              type='ChasingDots'
               F
-              color="blue"
+              color='blue'
             />
           </View>
         )}
       </ScrollView>
-    </View>
-  );
+    </Layout>
+  )
 }
-function ViewSearchCoder({dataSearch}) {
+function ViewSearchCoder ({dataSearch}) {
   return (
     <View style={styles.viewMain}>
       <Image source={{uri: dataSearch.img}} style={styles.image}></Image>
@@ -337,7 +332,7 @@ function ViewSearchCoder({dataSearch}) {
         <Text style={styles.fontWeight}>Giới:{dataSearch.gender}</Text>
       </View>
     </View>
-  );
+  )
 }
 const ViewMain = ({item, navigation}) => {
   return (
@@ -408,5 +403,5 @@ const ViewMain = ({item, navigation}) => {
         <Text style={styles.fontWeight}>Giới:{item.gender}</Text>
       </View>
     </View>
-  );
-};
+  )
+}

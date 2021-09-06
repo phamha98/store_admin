@@ -11,6 +11,7 @@ export default function ViewCore ({
   midle,
   row,
   style,
+  flex1,
   borderRadius,
   spaceBetween,
   centerHorizontal,
@@ -23,14 +24,15 @@ export default function ViewCore ({
     midle && {alignItems: 'center', justifyContent: 'center'},
     spaceBetween && {justifyContent: 'space-between'},
     centerHorizontal && {alignItems: 'center', justifyContent: 'space-between'},
+    flex1 && {flex: 1},
     {
       width: width,
       height: height,
       backgroundColor: backgroundColor,
-      borderRadius:borderRadius,
-      ...rest
-    },
+      borderRadius: borderRadius,
 
+      ...rest,
+    },
   ]
   return <View style={[styleAdd, style]}>{children}</View>
 }

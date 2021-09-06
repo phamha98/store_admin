@@ -1,23 +1,17 @@
 import React, {useState, useEffect, useContext} from 'react'
+import {FlatList} from 'react-native'
 import {
-  StyleSheet,
-  Image,
-  Text,
-  View,
-  FlatList,
-  Dimensions,
-  TouchableOpacity,
-  Modal,
-  Alert,
-} from 'react-native'
-import {HeaderC, Layout, Light} from '@component'
-import Ionicons from 'react-native-vector-icons/Ionicons'
-import {Avatar} from 'react-native-elements'
-import {Button} from 'react-native-elements'
-import {apiListGroupUser} from '../../../../api'
-import {AppContext} from '../../../../component/AppContext'
-
-export default function index ({navigation}) {
+  HeaderC,
+  Layout,
+  Light,
+  AppContext,
+  ViewCore,
+  ButtonBasic,
+  RowInfo,
+} from '@component'
+import { navigate } from '@navigation'
+import {apiListGroupUser} from '@api'
+export default function index () {
   const {token} = useContext(AppContext)
   const [data, setData] = useState([])
 
@@ -30,91 +24,55 @@ export default function index ({navigation}) {
   return (
     <Layout backgroundColor={Light.border}>
       <HeaderC title='Danh sách nhóm người dùng' />
-      <FlatList
-        data={data}
-        keyExtractor={item => item.id}
-        renderItem={({item}) => (
-          <ViewItem item={item} navigation={navigation}></ViewItem>
-        )}
-      />
+      <ViewCore flex1 marginHorizontal={5}>
+        <FlatList
+          data={data}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={({item}) => (
+            <ItemGroup
+              item={item}
+              onSeenPermission={() =>
+                navigate('ShowPermission', {
+                  idRole: item.id,
+                  displayName: item.display_name,
+                })
+              }
+              onSeenAccount={() =>
+                navigate('ListUserRole', {
+                  idRole: item.id,
+                  displayName: item.display_name,
+                })
+              }
+            />
+          )}
+        />
+      </ViewCore>
     </Layout>
   )
 }
-const ViewItem = ({item, navigation}) => {
+
+const ItemGroup = ({item, onSeenAccount, onSeenPermission}) => {
   return (
-    <View style={styles.viewItem}>
-      <View style={styles.content}>
-        <View style={styles.rowItem}>
-          <Ionicons
-            style={{marginHorizontal: 5}}
-            name='person-outline'
-            size={20}
-            color='red'
-          />
-          <Text>Key:{item.name}</Text>
-        </View>
-        <View style={styles.rowItem}>
-          <Ionicons
-            style={{marginHorizontal: 5}}
-            name='mail-outline'
-            size={20}
-            color='red'
-          />
-          <Text>Name:{item.display_name}</Text>
-        </View>
-      </View>
-      <View style={styles.viewIcon}>
-        <Button
-          onPress={() =>
-            navigation.navigate('ListUserRole', {
-              idRole: item.id,
-              displayName: item.display_name,
-            })
-          }
-          title='Xem thành viên'></Button>
-        <Text></Text>
-        <Button
-          onPress={() =>
-            navigation.navigate('ShowPermission', {
-              idRole: item.id,
-              displayName: item.display_name,
-            })
-          }
-          title='Xem các quyền'></Button>
-      </View>
-    </View>
+    <ViewCore
+      row
+      centerHorizontal
+      padding={10}
+      backgroundColor='#fff'
+      borderRadius={5}
+      marginVertical={5}>
+      <ViewCore flex1 marginRight={5}>
+        <RowInfo title='Key' data={item.name} />
+        <RowInfo title='Name' data={item.display_name} marginTop={5} />
+      </ViewCore>
+      <ViewCore>
+        <ButtonBasic title='Xem thành viên' onPress={onSeenAccount} />
+        <ButtonBasic
+          title='Xem các quyền'
+          onPress={onSeenPermission}
+          marginTop={5}
+          backgroundColor={Light.primary}
+        />
+      </ViewCore>
+    </ViewCore>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {flex: 1, backgroundColor: '#666560'},
-  viewItem: {
-    marginHorizontal: 5,
-    marginVertical: 5,
-    minHeight: 100,
-    backgroundColor: '#FFFFFF',
-    borderRadius: 5,
-    padding: 5,
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  content: {
-    width: 250,
-    padding: 10,
-  },
-  rowItem: {
-    minHeight: 30,
-    backgroundColor: '#fff',
-    marginVertical: 2,
-    flexDirection: 'row',
-    padding: 5,
-    borderRadius: 5,
-    minWidth: 200,
-    borderBottomWidth: 0.2,
-    marginHorizontal: 0,
-  },
-  viewIcon: {
-    width: 130,
-    margin: 5,
-  },
-})

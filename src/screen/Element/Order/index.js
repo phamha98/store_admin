@@ -1,7 +1,5 @@
-import HomeOrder from './Home';
-import ListOrder from './List';
-import SearchOrder from './Search';
-import StateOrder from './State';
-import BillDetails from './BillDetails';
-import  MyOrder  from './MyOrder';
-export {HomeOrder, ListOrder, SearchOrder, StateOrder, BillDetails,MyOrder};
+export {default as HomeOrder} from './HomeOrder'
+export {default as ListOrder} from './ListOrder'
+export {default as SearchOrder} from './SearchOrder'
+export {default as StateOrder} from './StateOrder'
+export {default as BillDetails} from './BillDetails'

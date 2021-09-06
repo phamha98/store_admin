@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext, useRef} from 'react';
+import React, {useState, useEffect, useContext, useRef} from 'react'
 import {
   StyleSheet,
   Image,
@@ -12,53 +12,60 @@ import {
   TextInput,
   ToastAndroid,
   Keyboard,
-} from 'react-native';
-import Header from '../Header';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import {Avatar} from 'react-native-elements';
-import {Button, SearchBar} from 'react-native-elements';
+} from 'react-native'
+import Header from '../Header'
+import Ionicons from 'react-native-vector-icons/Ionicons'
+import {Avatar} from 'react-native-elements'
+import {Button, SearchBar} from 'react-native-elements'
 import {
   apiListUserRole,
   apiSearchAcountName,
   apiInsertRoleUser,
   apiDeleteRoleUser,
-} from '../../../../api';
-import {AppContext} from '../../../../component/AppContext';
-import RBSheet from 'react-native-raw-bottom-sheet';
-import styles from './styles';
-export default function index({route, navigation}) {
-  const {token, lEP, setLEP} = useContext(AppContext);
-  const [data, setData] = useState([]);
-  const [listUser, setListUser] = useState([]);
-  const [show, setShow] = useState(false);
-  const [nameUser, setNameUser] = useState('');
-  const {idRole} = route.params;
+} from '@api'
+import {
+  AppContext,
+  HeaderC,
+  Layout,
+  ItemTypeProduct,
+  ButtonBasic,
+} from '@component'
+import {navigate} from '@navigation'
+import RBSheet from 'react-native-raw-bottom-sheet'
+import styles from './styles'
+export default function index ({route, navigation}) {
+  const {token, lEP, setLEP} = useContext(AppContext)
+  const [data, setData] = useState([])
+  const [listUser, setListUser] = useState([])
+  const [show, setShow] = useState(false)
+  const [nameUser, setNameUser] = useState('')
+  const {idRole} = route.params
   useEffect(() => {
     apiListUserRole(token, idRole).then(result => {
       //console.log(result.data);
-      setData(result.data);
-    });
-  }, [lEP]);
+      setData(result.data)
+    })
+  }, [lEP])
   const loadUser = () => {
     if (nameUser.trim() === '') {
       return ToastAndroid.showWithGravity(
         'Nhập vào tên...',
         ToastAndroid.SHORT,
         ToastAndroid.CENTER,
-      );
+      )
     }
     apiSearchAcountName(token, nameUser).then(result => {
-       console.log(result);
-      setListUser(result.data);
-    });
-  };
+      console.log(result)
+      setListUser(result.data)
+    })
+  }
   const check = id => {
     const isObject = v => {
-      return !!v && v.constructor === Object;
-    };
-    let temp = data.find(item => item.id == id);
-    return isObject(temp);
-  };
+      return !!v && v.constructor === Object
+    }
+    let temp = data.find(item => item.id == id)
+    return isObject(temp)
+  }
   const handleInsertRoleUser = idUser => {
     //console.log(idUser);
     apiInsertRoleUser(token, idRole, idUser)
@@ -67,40 +74,18 @@ export default function index({route, navigation}) {
           'Đã thêm',
           ToastAndroid.SHORT,
           ToastAndroid.CENTER,
-        );
+        )
       })
-      .catch(e => console.log(e));
-  };
+      .catch(e => console.log(e))
+  }
 
   return (
-    <View style={styles.container}>
-      <Header
-        navigation={navigation}
-        title="Danh sách Thành viên"
-        rightIcon={true}
-        background="#FFEE00"
-        rightNameIcon="person-circle-outline"
-        onClickLeft={() => navigation.goBack()}
-        onClickRight={() => navigation.navigate('Person')}
+    <Layout>
+      <HeaderC
+        title='Danh sách Thành viên'
+        rightNameIcon='add'
+        onClickRight={() => setShow(!show)}
       />
-      <TouchableOpacity
-        onPress={() => setShow(!show)}
-        style={{
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: '#04BBE9',
-          width: 100,
-          marginTop: 5,
-          borderRadius: 5,
-          minHeight: 35,
-          position: 'absolute',
-          top: 0,
-          right: 45,
-        }}>
-        <Text style={{color: '#fff', fontSize: 14, fontWeight: 'bold'}}>
-          Thêm người dùng
-        </Text>
-      </TouchableOpacity>
 
       <FlatList
         data={data}
@@ -114,22 +99,22 @@ export default function index({route, navigation}) {
         )}
       />
       <Modal
-        animationType="slide"
+        animationType='slide'
         transparent={true}
         visible={show}
         onRequestClose={() => {
-          Alert.alert('Modal has been closed.');
-          setShow(!show);
+          Alert.alert('Modal has been closed.')
+          setShow(!show)
         }}>
         <View style={styles.viewModal}>
           <Text style={{fontSize: 20, color: '#fff', fontWeight: 'bold'}}>
             Thêm người dùng vào nhóm
           </Text>
           <SearchBar
-            placeholder="Type Here..."
+            placeholder='Type Here...'
             onChangeText={text => setNameUser(text)}
             value={nameUser}
-            lightTheme="#fff"
+            lightTheme='#fff'
           />
           <View
             style={{
@@ -139,16 +124,16 @@ export default function index({route, navigation}) {
             }}>
             <Button
               onPress={() => {
-                loadUser();
-                Keyboard.dismiss();
+                loadUser()
+                Keyboard.dismiss()
               }}
-              title="Tìm kiếm"
+              title='Tìm kiếm'
             />
             <Button
-              title="Ẩn hộp thoại"
+              title='Ẩn hộp thoại'
               onPress={() => {
-                setShow(!show);
-                setLEP(!lEP);
+                setShow(!show)
+                setLEP(!lEP)
               }}
             />
           </View>
@@ -160,7 +145,7 @@ export default function index({route, navigation}) {
                 !check(item.id) && (
                   <View style={styles.rowPerson}>
                     <Avatar
-                      size="large"
+                      size='large'
                       rounded
                       source={{
                         uri: item.img != null ? item.img : noImage,
@@ -172,11 +157,11 @@ export default function index({route, navigation}) {
                     </View>
                     <TouchableOpacity
                       onPress={() => {
-                        handleInsertRoleUser(item.id);
-                        loadUser();
+                        handleInsertRoleUser(item.id)
+                        loadUser()
                       }}
                       style={styles.buttonAdd}>
-                      <Ionicons name="add" size={30} color="blue" />
+                      <Ionicons name='add' size={30} color='blue' />
                     </TouchableOpacity>
                   </View>
                 )
@@ -184,30 +169,30 @@ export default function index({route, navigation}) {
           </View>
         </View>
       </Modal>
-    </View>
-  );
+    </Layout>
+  )
 }
 
 const ViewItem = ({item, navigation, token, idRole}) => {
-  const refRBSheet = useRef();
-  const {lEP, setLEP} = useContext(AppContext);
+  const refRBSheet = useRef()
+  const {lEP, setLEP} = useContext(AppContext)
 
   const handleDeleteRoleUser = idUser => {
     apiDeleteRoleUser(token, idRole, idUser)
       .then(re => {
-        setLEP(!lEP);
+        setLEP(!lEP)
         //console.log(re);
         ToastAndroid.showWithGravity(
           'Đã xóa',
           ToastAndroid.SHORT,
           ToastAndroid.CENTER,
-        );
+        )
       })
-      .catch(e => console.log(e));
-  };
+      .catch(e => console.log(e))
+  }
   const noImage =
-    'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1200px-No-Image-Placeholder.svg.png';
-  console.log(item);
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1200px-No-Image-Placeholder.svg.png'
+  console.log(item)
   return (
     <View style={styles.viewItem}>
       <View
@@ -218,7 +203,7 @@ const ViewItem = ({item, navigation, token, idRole}) => {
           padding: 10,
         }}>
         <Avatar
-          size="large"
+          size='large'
           rounded
           source={{
             uri: item.img != null ? item.img : noImage,
@@ -227,16 +212,16 @@ const ViewItem = ({item, navigation, token, idRole}) => {
         <View style={[styles.rowItem, {marginHorizontal: 10}]}>
           <Ionicons
             style={{marginHorizontal: 5}}
-            name="person-outline"
+            name='person-outline'
             size={20}
-            color="red"
+            color='red'
           />
           <Text>Name:{item.name}</Text>
         </View>
         <Ionicons
-          name="play-forward-circle-outline"
+          name='play-forward-circle-outline'
           size={25}
-          color="red"
+          color='red'
           //onPress={() => setShow(!show)}
           onPress={() => refRBSheet.current.open()}
         />
@@ -246,45 +231,45 @@ const ViewItem = ({item, navigation, token, idRole}) => {
         <View style={styles.rowItem}>
           <Ionicons
             style={{marginHorizontal: 5}}
-            name="mail-outline"
+            name='mail-outline'
             size={20}
-            color="red"
+            color='red'
           />
           <Text>{item.email}</Text>
         </View>
         <View style={styles.rowItem}>
           <Ionicons
             style={{marginHorizontal: 5}}
-            name="today-outline"
+            name='today-outline'
             size={20}
-            color="red"
+            color='red'
           />
           <Text>{item.birthday}</Text>
         </View>
         <View style={styles.rowItem}>
           <Ionicons
             style={{marginHorizontal: 5}}
-            name="transgender-outline"
+            name='transgender-outline'
             size={20}
-            color="red"
+            color='red'
           />
           <Text>{item.gender}</Text>
         </View>
         <View style={styles.rowItem}>
           <Ionicons
             style={{marginHorizontal: 5}}
-            name="call-outline"
+            name='call-outline'
             size={20}
-            color="red"
+            color='red'
           />
           <Text>{item.phone}</Text>
         </View>
         <View style={styles.rowItem}>
           <Ionicons
             style={{marginHorizontal: 5}}
-            name="navigate-outline"
+            name='navigate-outline'
             size={20}
-            color="red"
+            color='red'
           />
           <Text> {item.address}</Text>
         </View>
@@ -308,22 +293,22 @@ const ViewItem = ({item, navigation, token, idRole}) => {
             Tùy chọn
           </Text>
           <Button
-            title="Xem thông tin người dùng"
+            title='Xem thông tin người dùng'
             onPress={() => navigation.navigate('ShowUser', {data: item})}
           />
           <Text></Text>
           <Button
             onPress={() => handleDeleteRoleUser(item.id)}
-            title="Xóa người dùng khỏi nhóm"
+            title='Xóa người dùng khỏi nhóm'
           />
           <Text></Text>
           <Button
-            title="Ẩn hộp thoại"
+            title='Ẩn hộp thoại'
             onPress={() => refRBSheet.current.close()}
           />
         </View>
       </RBSheet>
     </View>
-  );
-};
+  )
+}
 ///where role_use=3

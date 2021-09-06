@@ -1,4 +1,6 @@
 export * from './Statistical'
 export * from './Customer'
+export * from './Order'
+export * from './Post'
 export {default as ShowUser} from './ShowUser'
 export {default as SettingInfo} from './SettingInfo'

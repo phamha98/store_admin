@@ -2,10 +2,8 @@ import React from 'react'
 import {ViewCore, TextCore, ButtonBasic, Light} from '@component'
 import {isEmpty} from 'underscore'
 import {formatStateBill} from '@utils'
-export default function ContainBill ({item, onPress}) {
+export default function ContainBill ({item, onPress,onPressTwo,titleTwo}) {
   if (isEmpty(item)) return null
-  console.log('item');
-  console.log(item);
   return (
     <ViewCore
       marginBottom={10}
@@ -27,7 +25,10 @@ export default function ContainBill ({item, onPress}) {
       {item.user_confirm && (
         <>
           <RowInfo data={item.user_confirm.name} title='Nhân viên xác nhận' />
-          <RowInfo data={'NV' + item.user_confirm.id} title='Mã nhân viên xác nhận' />
+          <RowInfo
+            data={'NV' + item.user_confirm.id}
+            title='Mã nhân viên xác nhận'
+          />
         </>
       )}
       {item.user_transport && (
@@ -36,11 +37,14 @@ export default function ContainBill ({item, onPress}) {
             data={item.user_transport.name}
             title='Nhân viên giao hàng'
           />
-          <RowInfo data={'NV' + item.user_confirm.id} title='Mã nhân viên giao hàng' />
+          <RowInfo
+            data={'NV' + item.user_confirm.id}
+            title='Mã nhân viên giao hàng'
+          />
         </>
       )}
 
-      <ViewCore alignItems marginTop={10}>
+      <ViewCore alignItems marginTop={10}  row centerHorizontal>
         <ButtonBasic
           title='Chi tiết'
           width={100}
@@ -48,6 +52,15 @@ export default function ContainBill ({item, onPress}) {
           backgroundColor={Light.blue_faint}
           onPress={onPress}
         />
+        {titleTwo && (
+          <ButtonBasic
+            title={titleTwo}
+            width={100}
+            height={30}
+            backgroundColor={Light.blue_faint}
+            onPress={onPressTwo}
+          />
+        )}
       </ViewCore>
     </ViewCore>
   )

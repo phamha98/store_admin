@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useEffect, useContext} from 'react'
 import {
   Button,
   Image,
@@ -10,54 +10,55 @@ import {
   Modal,
   ToastAndroid,
   Alert,
-} from 'react-native';
-import styles from './styles';
-import ImagePicker from 'react-native-image-crop-picker';
-import Header from '../Header';
-import {Picker} from '@react-native-picker/picker';
-import {AppContext} from '../../../../component/AppContext';
-import {apiGoodsMainList, apiInsertGoods} from '../../../../api';
-export default function index({navigation}) {
-  const {token} = useContext(AppContext);
-  const [typeSize, setTypeSize] = useState('');
-  const [load, setLoad] = useState(true);
+} from 'react-native'
+import styles from './styles'
+import ImagePicker from 'react-native-image-crop-picker'
+import Header from '../Header'
+import {Picker} from '@react-native-picker/picker'
+import {apiGoodsMainList, apiInsertGoods} from '@api'
+import {AppContext, HeaderC, Layout, ItemTypeProduct} from '@component'
+import {navigate} from '@navigation'
+export default function index ({navigation}) {
+  const {token} = useContext(AppContext)
+  const [typeSize, setTypeSize] = useState('')
+  const [load, setLoad] = useState(true)
   const [imageTemp, setImageTemp] = useState({
     path: 'https://thailamlandscape.vn/wp-content/uploads/2017/10/no-image.png',
     base64: '',
-  });
-  const [modalVisible, setModalVisible] = useState(false);
-  const [dataMainGood, setDataMainGood] = useState([]);
+  })
+  const [modalVisible, setModalVisible] = useState(false)
+  const [dataMainGood, setDataMainGood] = useState([])
 
   ////Cac thuoc tinh chen:
-  const [typeProduct, setTypeProcuct] = useState();
-  const [name, setName] = useState('fdhdfh');
-  const [details, setDetails] = useState('gsdg');
-  const [price, setPrice] = useState('45235');
-  const [sale, setSale] = useState('56');
-  const [new1, setNew1] = useState('1');
-  const [gender, setGender] = useState('nam');
+  const [typeProduct, setTypeProcuct] = useState()
+  const [name, setName] = useState('fdhdfh')
+  const [details, setDetails] = useState('gsdg')
+  const [price, setPrice] = useState('45235')
+  const [sale, setSale] = useState('56')
+  const [new1, setNew1] = useState('1')
+  const [gender, setGender] = useState('nam')
   const [imageMain, setImageMain] = useState({
     path: '',
     base64: '',
-  });
-  const [imageArray, setImageArray] = useState([]);
-  const [arraySize, setArraySize] = useState([]);
+  })
+  const [imageArray, setImageArray] = useState([])
+  const [arraySize, setArraySize] = useState([])
   ///////////
   const [sizeAlpha, setSizeAlpha] = useState({
-    S: "0",
-    M: "0",
-    L: "0",
-    XL: "0",
-    XXL: "0",
-  });
+    S: '0',
+    M: '0',
+    L: '0',
+    XL: '0',
+    XXL: '0',
+  })
   const [sizeNumber, setSizeNumber] = useState({
-    S40: "0",
-    S41: "0",
-    S42: "0",
-    S43: "0",
-    S44: "0",
+    S40: '0',
+    S41: '0',
+    S42: '0',
+    S43: '0',
+    S44: '0',
     S45: '0',
-  });
+  })
 
   //////////////////////////////////////
   const openCamera = () => {
@@ -71,12 +72,12 @@ export default function index({navigation}) {
         setImageTemp({
           path: image.path,
           base64: 'data:' + image.mime + ';base64,' + image.data,
-        });
+        })
       })
       .catch(err => {
-        console.log('openCamera catch' + err.toString());
-      });
-  };
+        console.log('openCamera catch' + err.toString())
+      })
+  }
   const openLibary = () => {
     ImagePicker.openPicker({
       width: 300,
@@ -89,45 +90,45 @@ export default function index({navigation}) {
         setImageTemp({
           path: image.path,
           base64: 'data:' + image.mime + ';base64,' + image.data,
-        });
+        })
       })
       .catch(err => {
-        console.log('openCamera catch' + err.toString());
-      });
-  };
+        console.log('openCamera catch' + err.toString())
+      })
+  }
   const changeImageMain = () => {
-    if (imageTemp.base64 === '') return null;
-    console.log('changeImageMain');
-    setImageMain(imageTemp);
-  };
+    if (imageTemp.base64 === '') return null
+    console.log('changeImageMain')
+    setImageMain(imageTemp)
+  }
   const InsertImageAlbum = () => {
-    if (imageTemp.base64 === '') return null;
-    console.log('InsertImageAlbum');
-    imageArray.push(imageTemp);
-    console.log(imageArray);
-    console.log(imageArray.length);
-  };
+    if (imageTemp.base64 === '') return null
+    console.log('InsertImageAlbum')
+    imageArray.push(imageTemp)
+    console.log(imageArray)
+    console.log(imageArray.length)
+  }
   const deleteImageAlbum = value => {
-    console.log(value);
-    let temp = imageArray.splice(value, 1);
+    console.log(value)
+    let temp = imageArray.splice(value, 1)
     //setImageArray(imageArray);
     //console.log(temp);
-    setLoad(!load);
-    console.log(imageArray);
+    setLoad(!load)
+    console.log(imageArray)
     // console.log(imageArray.length);
-  };
+  }
   useEffect(() => {
     apiGoodsMainList(token)
       .then(data => {
         if (data.code == 200) {
           // console.log(data.data)
-          setDataMainGood(data.data);
+          setDataMainGood(data.data)
         }
       })
-      .catch(e => console.log(e));
-  }, []);
+      .catch(e => console.log(e))
+  }, [])
   const handleInsert = () => {
-    console.log('insert');
+    console.log('insert')
     //console.log(imageMain);
     if (typeSize === '0') {
       setArraySize([
@@ -151,7 +152,7 @@ export default function index({navigation}) {
           size: 'XXL',
           number: sizeAlpha.XXL,
         },
-      ]);
+      ])
     } else {
       setArraySize([
         {
@@ -178,9 +179,9 @@ export default function index({navigation}) {
           size: '45',
           number: sizeNumber.S45,
         },
-      ]);
+      ])
     }
-    console.log(arraySize);
+    console.log(arraySize)
     apiInsertGoods(
       token,
       typeProduct,
@@ -195,22 +196,22 @@ export default function index({navigation}) {
       arraySize,
     )
       .then(result => {
-        console.log(result);
+        console.log(result)
         if (result.code == 200) {
           ToastAndroid.showWithGravity(
             'Chèn thành công',
             ToastAndroid.LONG,
             ToastAndroid.CENTER,
-          );
+          )
         } else
           ToastAndroid.showWithGravity(
             'Không chèn thành công',
             ToastAndroid.LONG,
             ToastAndroid.CENTER,
-          );
+          )
       })
-      .catch(err => console.log(err));
-  };
+      .catch(err => console.log(err))
+  }
   const handleConfirm = () => {
     Alert.alert(
       'Bạn chắc chắn thêm mặt hàng',
@@ -223,17 +224,11 @@ export default function index({navigation}) {
         },
         {text: 'Tiếp tục, Thêm', onPress: () => handleInsert()},
       ],
-    );
-  };
+    )
+  }
   return (
-    <View style={styles.container}>
-      <Header
-        navigation={navigation}
-        onClickLeft={() => navigation.goBack()}
-        title="Thêm sản phẩm vào kho"
-        rightIcon={true}
-        background="#0D9E00"
-      />
+    <Layout>
+      <HeaderC title='Thêm sản phẩm vào kho' />
       <ScrollView>
         <View style={styles.loaiSp}>
           <Text style={{width: 100}}>Loại mặt hàng:</Text>
@@ -250,7 +245,7 @@ export default function index({navigation}) {
           <Text style={{width: 100}}>Tên sản phẩm:</Text>
           <TextInput
             style={styles.textInput}
-            placeholder="Nhập vào tên sản phâm"
+            placeholder='Nhập vào tên sản phâm'
             value={name}
             onChangeText={text => setName(text)}></TextInput>
         </View>
@@ -258,7 +253,7 @@ export default function index({navigation}) {
           <Text style={{width: 100}}>Thông tin:</Text>
           <TextInput
             style={styles.textInput}
-            placeholder="Nhập vào thông tin sản phâm"
+            placeholder='Nhập vào thông tin sản phâm'
             value={details}
             onChangeText={text => setDetails(text)}
           />
@@ -269,16 +264,16 @@ export default function index({navigation}) {
             style={{width: 200}}
             selectedValue={gender}
             onValueChange={item => setGender(item)}>
-            <Picker.Item label="Dành cho nam" value="nam" />
-            <Picker.Item label="Dành cho nữ" value="nu" />
-            <Picker.Item label="Dành cho tất cả" value="tat" />
+            <Picker.Item label='Dành cho nam' value='nam' />
+            <Picker.Item label='Dành cho nữ' value='nu' />
+            <Picker.Item label='Dành cho tất cả' value='tat' />
           </Picker>
         </View>
         <View style={styles.viewInput}>
           <Text style={{width: 100}}>Giá:</Text>
           <TextInput
             style={styles.textInput}
-            placeholder="Nhập vào giá gốc "
+            placeholder='Nhập vào giá gốc '
             value={price}
             onChangeText={text => setPrice(text)}
           />
@@ -287,7 +282,7 @@ export default function index({navigation}) {
           <Text style={{width: 100}}>Sale:</Text>
           <TextInput
             style={styles.textInput}
-            placeholder="Nhập vào phần trăm sale(khuyến mãi)"
+            placeholder='Nhập vào phần trăm sale(khuyến mãi)'
             value={sale}
             onChangeText={text => setSale(text)}
           />
@@ -298,8 +293,8 @@ export default function index({navigation}) {
             style={{width: 200}}
             selectedValue={new1}
             onValueChange={item => setNew1(item)}>
-            <Picker.Item label="Sản phẩm mới" value="1" />
-            <Picker.Item label="Không phải sản phẩm mới" value="0" />
+            <Picker.Item label='Sản phẩm mới' value='1' />
+            <Picker.Item label='Không phải sản phẩm mới' value='0' />
           </Picker>
         </View>
         <View style={styles.viewInput}>
@@ -341,19 +336,19 @@ export default function index({navigation}) {
           </View>
         )}
         <Modal
-          animationType="slide"
+          animationType='slide'
           transparent={true}
           visible={modalVisible}
           onRequestClose={() => {
-            Alert.alert('Modal has been closed.');
-            setModalVisible(!modalVisible);
+            Alert.alert('Modal has been closed.')
+            setModalVisible(!modalVisible)
           }}>
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
               <Text style={styles.modalText}>Chose img</Text>
-              <Button title="Camera" onPress={openCamera} />
+              <Button title='Camera' onPress={openCamera} />
               <Text></Text>
-              <Button title="Libary" onPress={openLibary} />
+              <Button title='Libary' onPress={openLibary} />
               <Text></Text>
               <Image
                 source={{uri: imageTemp.path}}
@@ -364,17 +359,17 @@ export default function index({navigation}) {
                 }}></Image>
               <Text></Text>
               <Button
-                title="Thay đổi cho ảnh chính"
+                title='Thay đổi cho ảnh chính'
                 onPress={changeImageMain}
               />
               <Text></Text>
               <Button
-                title="Thêm vào album ảnh mô tả"
+                title='Thêm vào album ảnh mô tả'
                 onPress={InsertImageAlbum}
               />
               <Text></Text>
               <Button
-                title="Hinde"
+                title='Hinde'
                 onPress={() => setModalVisible(!modalVisible)}
               />
             </View>
@@ -386,8 +381,8 @@ export default function index({navigation}) {
             style={{width: 200}}
             selectedValue={typeSize}
             onValueChange={item => setTypeSize(item)}>
-            <Picker.Item label="Quần áo" value="0" />
-            <Picker.Item label="Giầy dép" value="1" />
+            <Picker.Item label='Quần áo' value='0' />
+            <Picker.Item label='Giầy dép' value='1' />
           </Picker>
         </View>
         {typeSize === '0' && (
@@ -411,10 +406,10 @@ export default function index({navigation}) {
                     return {
                       ...state,
                       S: text,
-                    };
+                    }
                   })
                 }
-                placeholder="Nhập số lượng size S"
+                placeholder='Nhập số lượng size S'
               />
             </View>
             <View style={styles.rowSize}>
@@ -430,10 +425,10 @@ export default function index({navigation}) {
                     return {
                       ...state,
                       M: text,
-                    };
+                    }
                   })
                 }
-                placeholder="Nhập số lượng size M"
+                placeholder='Nhập số lượng size M'
               />
             </View>
             <View style={styles.rowSize}>
@@ -449,10 +444,10 @@ export default function index({navigation}) {
                     return {
                       ...state,
                       L: text,
-                    };
+                    }
                   })
                 }
-                placeholder="Nhập số lượng size L"
+                placeholder='Nhập số lượng size L'
               />
             </View>
             <View style={styles.rowSize}>
@@ -470,10 +465,10 @@ export default function index({navigation}) {
                     return {
                       ...state,
                       XL: text,
-                    };
+                    }
                   })
                 }
-                placeholder="Nhập số lượng size XL"
+                placeholder='Nhập số lượng size XL'
               />
             </View>
             <View style={styles.rowSize}>
@@ -491,10 +486,10 @@ export default function index({navigation}) {
                     return {
                       ...state,
                       XXL: text,
-                    };
+                    }
                   })
                 }
-                placeholder="Nhập số lượng size XXL"
+                placeholder='Nhập số lượng size XXL'
               />
             </View>
           </View>
@@ -522,10 +517,10 @@ export default function index({navigation}) {
                     return {
                       ...state,
                       S40: text,
-                    };
+                    }
                   })
                 }
-                placeholder="Nhập số lượng size 40"
+                placeholder='Nhập số lượng size 40'
               />
             </View>
             <View style={styles.rowSize}>
@@ -541,10 +536,10 @@ export default function index({navigation}) {
                     return {
                       ...state,
                       S41: text,
-                    };
+                    }
                   })
                 }
-                placeholder="Nhập số lượng size 41"
+                placeholder='Nhập số lượng size 41'
               />
             </View>
             <View style={styles.rowSize}>
@@ -560,10 +555,10 @@ export default function index({navigation}) {
                     return {
                       ...state,
                       S42: text,
-                    };
+                    }
                   })
                 }
-                placeholder="Nhập số lượng size 42"
+                placeholder='Nhập số lượng size 42'
               />
             </View>
             <View style={styles.rowSize}>
@@ -579,10 +574,10 @@ export default function index({navigation}) {
                     return {
                       ...state,
                       S43: text,
-                    };
+                    }
                   })
                 }
-                placeholder="Nhập số lượng size 43"
+                placeholder='Nhập số lượng size 43'
               />
             </View>
             <View style={styles.rowSize}>
@@ -598,10 +593,10 @@ export default function index({navigation}) {
                     return {
                       ...state,
                       S44: text,
-                    };
+                    }
                   })
                 }
-                placeholder="Nhập số lượng size 44"
+                placeholder='Nhập số lượng size 44'
               />
             </View>
             <View style={styles.rowSize}>
@@ -617,10 +612,10 @@ export default function index({navigation}) {
                     return {
                       ...state,
                       S45: text,
-                    };
+                    }
                   })
                 }
-                placeholder="Nhập số lượng size 45"
+                placeholder='Nhập số lượng size 45'
               />
             </View>
           </View>
@@ -632,6 +627,6 @@ export default function index({navigation}) {
         </TouchableOpacity>
         <View style={{marginVertical: 50}}></View>
       </ScrollView>
-    </View>
-  );
+    </Layout>
+  )
 }

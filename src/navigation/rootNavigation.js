@@ -20,6 +20,7 @@ export function popToTop() {
     StackActions.popToTop())
 
 }
+export const navigation =navigationRef.current;
 //NavigationContainer
 // ref={navigationRef}
 // onReady={() => (isReadyRef.current = true)}

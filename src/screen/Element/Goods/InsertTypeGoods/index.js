@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext, useRef} from 'react';
+import React, {useState, useEffect, useContext, useRef} from 'react'
 import {
   Button,
   StyleSheet,
@@ -11,23 +11,24 @@ import {
   Modal,
   ToastAndroid,
   Alert,
-} from 'react-native';
+} from 'react-native'
 
-import RBSheet from 'react-native-raw-bottom-sheet';
-import ImagePicker from 'react-native-image-crop-picker';
-import Header from '../Header';
-import {AppContext} from '../../../../component/AppContext';
-import {apiInsertTypeMain, apiUpdateTypeMain} from '../../../../api';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-export default function index({route, navigation}) {
-  const {idT, nameT, imgT} = route.params;
-  const {token} = useContext(AppContext);
-  const refRBSheet = useRef();
-  const [imageTemp, setImageTemp] = useState(imgT);
-  const [name, setName] = useState(nameT);
-  const [base64, setBase64] = useState('');
-  const [urlImage, setUrlImage] = useState('');
-  const [post, setPost] = useState(false);
+import RBSheet from 'react-native-raw-bottom-sheet'
+import ImagePicker from 'react-native-image-crop-picker'
+import Header from '../Header'
+import {apiInsertTypeMain, apiUpdateTypeMain} from '@api'
+import {AppContext, HeaderC, Layout, ItemTypeProduct} from '@component'
+import {navigate} from '@navigation'
+import Ionicons from 'react-native-vector-icons/Ionicons'
+export default function index ({route, navigation}) {
+  const {idT, nameT, imgT} = route.params
+  const {token} = useContext(AppContext)
+  const refRBSheet = useRef()
+  const [imageTemp, setImageTemp] = useState(imgT)
+  const [name, setName] = useState(nameT)
+  const [base64, setBase64] = useState('')
+  const [urlImage, setUrlImage] = useState('')
+  const [post, setPost] = useState(false)
   const openCamera = () => {
     ImagePicker.openCamera({
       width: 300,
@@ -37,16 +38,16 @@ export default function index({route, navigation}) {
     })
       .then(image => {
         //console.log(image);
-        setImageTemp(image.path);
-        setBase64('data:' + image.mime + ';base64,' + image.data);
-        setPost(true);
-        setUrlImage('');
-        refRBSheet.current.close();
+        setImageTemp(image.path)
+        setBase64('data:' + image.mime + ';base64,' + image.data)
+        setPost(true)
+        setUrlImage('')
+        refRBSheet.current.close()
       })
       .catch(err => {
-        console.log('openCamera catch' + err.toString());
-      });
-  };
+        console.log('openCamera catch' + err.toString())
+      })
+  }
 
   const openLibary = () => {
     ImagePicker.openPicker({
@@ -57,16 +58,16 @@ export default function index({route, navigation}) {
     })
       .then(image => {
         //console.log(image);
-        setImageTemp(image.path);
-        setBase64('data:' + image.mime + ';base64,' + image.data);
-        setPost(true);
-        setUrlImage('');
-        refRBSheet.current.close();
+        setImageTemp(image.path)
+        setBase64('data:' + image.mime + ';base64,' + image.data)
+        setPost(true)
+        setUrlImage('')
+        refRBSheet.current.close()
       })
       .catch(err => {
-        console.log('openCamera catch' + err.toString());
-      });
-  };
+        console.log('openCamera catch' + err.toString())
+      })
+  }
   const openPicker = () => {
     ImagePicker.openPicker({
       width: 300,
@@ -74,67 +75,63 @@ export default function index({route, navigation}) {
       multiple: true,
       includeBase64: true,
     }).then(image => {
-      console.log(image);
-    });
-  };
+      console.log(image)
+    })
+  }
 
   const send = () => {
-    console.log("show post : "+post);
-    console.log(urlImage);
+    console.log('show post : ' + post)
+    console.log(urlImage)
     if (idT === '') {
       apiInsertTypeMain(token, name, base64, imageTemp, post)
         .then(result => {
-          console.log(result);
+          console.log(result)
           if (result.code == 200) {
-            console.log(result);
+            console.log(result)
             ToastAndroid.showWithGravity(
               result.message,
               ToastAndroid.LONG,
               ToastAndroid.CENTER,
-            );
+            )
           } else
             ToastAndroid.showWithGravity(
               result.message,
               ToastAndroid.LONG,
               ToastAndroid.CENTER,
-            );
+            )
         })
-        .catch(err => console.log(err));
+        .catch(err => console.log(err))
     } else {
       apiUpdateTypeMain(token, idT, name, base64, imageTemp, post)
         .then(result => {
           if (result.code == 200) {
-            console.log(result);
+            console.log(result)
             ToastAndroid.showWithGravity(
               result.message,
               ToastAndroid.LONG,
               ToastAndroid.CENTER,
-            );
+            )
           } else
             ToastAndroid.showWithGravity(
               result.message,
               ToastAndroid.LONG,
               ToastAndroid.CENTER,
-            );
+            )
         })
-        .catch(err => console.log(err));
+        .catch(err => console.log(err))
     }
-  };
+  }
 
   return (
-    <View style={styles.container}>
-      <Header
-        navigation={navigation}
+    <Layout>
+      <HeaderC
         title={idT === '' ? 'Thêm Loại hàng mới' : 'Cập nhật Loại Hàng'}
-        rightIcon={true}
-        background="#0D9E00"
-        onClickLeft={() => navigation.goBack()}
       />
       <ScrollView>
         <View style={styles.viewInput}>
           <TextInput
             style={styles.textInput}
-            placeholder="Nhập vào tên loại hàng"
+            placeholder='Nhập vào tên loại hàng'
             value={name}
             onChangeText={text => setName(text)}
           />
@@ -150,7 +147,7 @@ export default function index({route, navigation}) {
           <Text style={[styles.textW, {marginHorizontal: 10}]}>
             {idT === '' ? 'Chọn ảnh' : 'Chỉnh sửa ảnh'}
           </Text>
-          <Ionicons name="image-outline" size={30} color="#BBFF00" />
+          <Ionicons name='image-outline' size={30} color='#BBFF00' />
         </TouchableOpacity>
 
         <View style={styles.viewImage}>
@@ -197,23 +194,23 @@ export default function index({route, navigation}) {
               }}>
               <TextInput
                 style={[styles.textInput, {maxWidth: 280}]}
-                placeholder="Nhập đường dẫn ảnh"
+                placeholder='Nhập đường dẫn ảnh'
                 value={urlImage}
                 onChangeText={text => setUrlImage(text)}
               />
               <TouchableOpacity
                 onPress={() => setUrlImage('')}
                 style={[styles.buttonUrl, {right: 45}]}>
-                <Ionicons name="close-outline" size={30} color="#fff" />
+                <Ionicons name='close-outline' size={30} color='#fff' />
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => {
-                  setImageTemp(urlImage);
-                  setPost(false);
-                  refRBSheet.current.close();
+                  setImageTemp(urlImage)
+                  setPost(false)
+                  refRBSheet.current.close()
                 }}
                 style={styles.buttonUrl}>
-                <Ionicons name="paper-plane-outline" size={30} color="#fff" />
+                <Ionicons name='paper-plane-outline' size={30} color='#fff' />
               </TouchableOpacity>
             </View>
             <TouchableOpacity onPress={openCamera} style={styles.rowSheet}>
@@ -224,7 +221,7 @@ export default function index({route, navigation}) {
                 ]}>
                 Đi đến máy ảnh
               </Text>
-              <Ionicons name="camera-outline" size={30} color="#fff" />
+              <Ionicons name='camera-outline' size={30} color='#fff' />
             </TouchableOpacity>
             <TouchableOpacity
               onPress={openLibary}
@@ -236,7 +233,7 @@ export default function index({route, navigation}) {
                 ]}>
                 Đi đến Thư viện ảnh
               </Text>
-              <Ionicons name="images-outline" size={28} color="#00CCFF" />
+              <Ionicons name='images-outline' size={28} color='#00CCFF' />
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => refRBSheet.current.close()}
@@ -253,8 +250,8 @@ export default function index({route, navigation}) {
           </Text>
         </TouchableOpacity>
       </ScrollView>
-    </View>
-  );
+    </Layout>
+  )
 }
 
 const styles = StyleSheet.create({
@@ -320,7 +317,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#1B1B1B',
   },
-});
+})
 // const handleSubmit=()=>{
 //   if(idT===""){
 //     apiInsertTypeMain(token, name, imageTemp)

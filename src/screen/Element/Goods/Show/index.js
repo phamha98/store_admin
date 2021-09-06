@@ -3,11 +3,10 @@ import {FlatList, Alert} from 'react-native'
 import {AppContext, HeaderC, Layout, ItemTypeProduct} from '@component'
 import {navigate} from '@navigation'
 import {apiGoodsMainList} from '@api'
-export default function index ({navigation}) {
+export default function index () {
   const [progess, setProgess] = useState(true)
   const {token} = useContext(AppContext)
   const [dataMainGood, setDataMainGood] = useState([])
-  const [load, setLoad] = useState(true)
   useEffect(() => {
     apiGoodsMainList(token)
       .then(data => {
@@ -26,11 +25,10 @@ export default function index ({navigation}) {
       .catch(e => console.log(e))
       .finally(() => setProgess(false))
   }, [progess])
-
   return (
     <Layout>
       <HeaderC
-        title='Xem mặt hàng'
+        title='Danh sách mặt hàng'
         rightNameIcon='cloud-download-outline'
         onClickRight={() => setProgess(true)}
       />
@@ -43,7 +41,7 @@ export default function index ({navigation}) {
           <ItemTypeProduct
             item={item}
             onPress={() =>
-              navigation.navigate('ShowGoodMainDetails', {idMain: item.id})
+             navigate('ShowGoodMainDetails', {idMain: item.id,name:item.name})
             }
             onUpdate={() => handleUpdate(item)}
             onRemove={handleRemove}
