@@ -16,7 +16,8 @@ const InputBasic = (
     textTouch,
     valueInit,
     backgroundColor = '#fff',
-    color='#000',
+    color = '#000',
+    style,
     ...res
   },
   ref,
@@ -25,11 +26,9 @@ const InputBasic = (
   const [showPass, setShowPass] = useState(hideEye)
   useImperativeHandle(ref, () => ({
     getValue () {
+      if (isEmpty(value)) return ''
       return value
     },
-    // setValue(newValue){
-    //   setValue(newValue);
-    // }
   }))
   const handleHidePass = () => {
     return setShowPass(!showPass)
@@ -52,18 +51,16 @@ const InputBasic = (
           {
             borderBottomColor: message === '' ? '#DBDADA9D' : 'red',
             backgroundColor: backgroundColor,
-            color:color
+            color: color,
           },
+          style,
         ]}
         secureTextEntry={showPass}
         onChangeText={e => handleChangeText(e)}
         {...res}></TextInput>
       {hideEye && (
         <TouchableOpacity onPress={handleHidePass} style={styles.viewEye}>
-          <Image
-            source={require('@image/eye.png')}
-            style={styles.imageEye}
-          />
+          <Image source={require('@image/eye.png')} style={styles.imageEye} />
         </TouchableOpacity>
       )}
       {rightTouch && (
@@ -82,6 +79,7 @@ const InputBasic = (
 
 export default forwardRef(InputBasic)
 import PropTypes from 'prop-types'
+import {isEmpty} from 'underscore'
 
 InputBasic.defaultProps = {
   rightTouch: false,

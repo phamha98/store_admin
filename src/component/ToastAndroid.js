@@ -35,6 +35,6 @@ export const AlertBasic = (msg1, msg2, onClick) => {
       onPress: () =>{},
       style: 'cancel',
     },
-    {text: 'Đồng ý', onPress: onClick},
+    {text: 'Đồng ý', onPress:()=> onClick},
   ]);
 };

@@ -11,21 +11,11 @@ import {
   InsertGoods,
   UpdateGoods,
   InsertTypeGoods,
-  //*
   ShowGoodAll,
   ShowGoodMainDetails,
   ShowGoodDetails,
 } from './Element/Goods';
 export * from './Element'
-import Staff from './Element/Staff';
-import {
-  HomePermission,
-  ListPermission,
-  ShowPermission,
-  ListUserRole,
-  AddGroup,
-  ChangePermission,
-} from './Element/Permission';
 export {
   Login,
   Home,
@@ -42,12 +32,4 @@ export {
   ShowGoodDetails,
   //
   EditPerson,
-  Staff,
-  //
-  HomePermission,
-  ListPermission,
-  ShowPermission,
-  ListUserRole,
-  AddGroup,
-  ChangePermission,
 };
