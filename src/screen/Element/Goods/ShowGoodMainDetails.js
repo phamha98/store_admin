@@ -3,7 +3,7 @@ import {FlatList} from 'react-native'
 import {apiGoodsMainDetails, apiGoodList} from '@api'
 import {AppContext, HeaderC, Layout, ViewCore} from '@component'
 import {navigate} from '@navigation'
-import ItemProduct from '../component/ItemProduct'
+import ItemProduct from './component/ItemProduct'
 import {isEmpty} from 'underscore'
 export default function ShowGoodMainDetails ({route}) {
   const {idMain, name} = route.params
