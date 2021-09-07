@@ -11,7 +11,6 @@ import {
   InsertGoods,
   UpdateGoods,
   InsertTypeGoods,
-  ShowGoodAll,
   ShowGoodMainDetails,
   ShowGoodDetails,
 } from './Element/Goods';
@@ -27,7 +26,6 @@ export {
   UpdateGoods,
   InsertTypeGoods,
   //*
-  ShowGoodAll,
   ShowGoodMainDetails,
   ShowGoodDetails,
   //

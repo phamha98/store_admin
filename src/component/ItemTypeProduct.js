@@ -1,16 +1,14 @@
 import React from 'react'
 import {StyleSheet, Text, TouchableOpacity} from 'react-native'
- import {ViewCore, TextCore, Light, screen_width, ImageCore} from './index'
+import {ViewCore, TextCore, Light, screen_width, ImageCore} from './index'
 import ButtonBasic from './ButtonBasic'
 import {isEmpty} from 'underscore'
 export default function ItemTypeProduct ({
   item,
   onPress,
   onRemove,
-  onSeen,
   onUpdate,
 }) {
-
   if (isEmpty(item)) return null
   return (
     <TouchableOpacity activeOpacity={0.9} onPress={onPress}>
@@ -36,19 +34,22 @@ export default function ItemTypeProduct ({
         </ViewCore>
 
         <ViewCore row centerHorizontal>
-          <ButtonBasic
-            title={'Sửa'}
-            style={styles.button}
-            backgroundColor={Light.toggle}
-            onPress={onUpdate}
-          />
-          <ButtonBasic
-            title={'Xóa'}
-            style={styles.button}
-            backgroundColor={Light.primary}
-            onPress={onRemove}
-          />
-          <ButtonBasic title={'Xem'} style={styles.button} onPress={onSeen} />
+          {item.id !== -1 && (
+            <>
+              <ButtonBasic
+                title={'Sửa'}
+                style={styles.button}
+                backgroundColor={Light.blue_faint}
+                onPress={onUpdate}
+              />
+              <ButtonBasic
+                title={'Xóa'}
+                style={styles.button}
+                backgroundColor={Light.danger}
+                onPress={onRemove}
+              />
+            </>
+          )}
         </ViewCore>
       </ViewCore>
     </TouchableOpacity>
@@ -64,13 +65,13 @@ ItemTypeProduct.defaultProps = {
 }
 const styles = StyleSheet.create({
   button: {
-    width: 50,
+    width: 80,
     height: 25,
   },
   container: {
     borderRadius: 5,
     borderWidth: 1,
-    borderColor:"#3887ff",
+    borderColor: '#3887ff',
     backgroundColor: '#eceff2',
   },
 })

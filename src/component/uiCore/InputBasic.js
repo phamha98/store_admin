@@ -1,4 +1,4 @@
-import React, {useState, useImperativeHandle, forwardRef} from 'react'
+import React, {useState, useImperativeHandle, forwardRef,useRef} from 'react'
 import {
   StyleSheet,
   Text,
@@ -24,10 +24,14 @@ const InputBasic = (
 ) => {
   const [value, setValue] = useState(valueInit)
   const [showPass, setShowPass] = useState(hideEye)
+  const refInput=useRef()
   useImperativeHandle(ref, () => ({
     getValue () {
       if (isEmpty(value)) return ''
       return value
+    },
+    focus () {
+      setValue("")
     },
   }))
   const handleHidePass = () => {
@@ -45,6 +49,7 @@ const InputBasic = (
   return (
     <View>
       <TextInput
+        ref={refInput}
         value={value}
         style={[
           styles.rowInput,

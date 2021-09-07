@@ -1,24 +1,16 @@
-import HomeGoods from './Home'
-import ShowGoods from './Show'
+export {default as HomeGoods} from './HomeGoods'
+export {default as ShowGoods} from './ShowGoods'
 import SearchGoods from './Search'
 import InsertGoods from './Insert'
 import UpdateGoods from './Update'
-
-import InsertTypeGoods from './InsertTypeGoods';
+export {default as InsertTypeGoods} from './InsertTypeGoods'
 //
-import ShowGoodAll from './Show/ShowGoodAll'
-import ShowGoodMainDetails from './Show/ShowGoodMainDetails'
+export {default as ShowGoodMainDetails} from './ShowGoodMainDetails'
 import ShowGoodDetails from './Show/ShowGoodDetails'
 
-
 export {
-  HomeGoods,
-  ShowGoods,
   SearchGoods,
   InsertGoods,
   UpdateGoods,
-  InsertTypeGoods,
-  ShowGoodAll,
-  ShowGoodMainDetails,
   ShowGoodDetails,
-};
+}

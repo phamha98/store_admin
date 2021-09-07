@@ -14,7 +14,6 @@ import {
 import {isEmpty} from 'underscore'
 
 export default function ItemProduct ({item, onPress}) {
-  console.log(item)
   if (isEmpty(item)) return null
   return (
     <ViewCore

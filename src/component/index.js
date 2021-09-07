@@ -16,3 +16,5 @@ export {default as ContainBill} from './ContainBill'
 export {default as ItemTypeProduct} from './ItemTypeProduct'
 export {default as BoxMenu} from './BoxMenu'
 export {default as RowInfo} from './RowInfo'
+export {default as BottomSheetCamera} from './BottomSheetCamera'
+

@@ -1,33 +1,19 @@
 import React, {useState, useContext, useRef, useEffect} from 'react'
-import {
-  ImageBackground,
-  StatusBar,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-  ScrollView,
-  Dimensions,
-} from 'react-native'
+import {TouchableOpacity, ScrollView, Dimensions} from 'react-native'
 import ImagePicker from 'react-native-image-crop-picker'
-const {width, height} = Dimensions.get('window')
 import {
   HeaderC,
   Layout,
   InputBasic,
   Light,
   ViewCore,
-  TouchableCore,
+  AppContext,
   ImageCore,
+  BottomSheetCamera,
 } from '@component'
-import {AppContext} from '@component/AppContext'
 import {apiPersonUpdate, apiPersonShow} from '@api'
 import {replace, goBack} from '@navigation'
-import BottomSheetCamera from './BottomSheetCamera'
 import {isEmpty} from 'underscore'
-import {ImageComponent} from 'react-native'
-
 export default function index () {
   const {token, idUser, lEP, setLEP} = useContext(AppContext)
   const refName = useRef()
@@ -52,13 +38,12 @@ export default function index () {
   useEffect(() => {
     apiPersonShow(token, idUser)
       .then(r => {
-        console.log(r.data)
+        // console.log(r.data)
         setData(r.data)
         setImg({path: r.data.img, data: '', mime: ''})
       })
       .catch(e => console.log(e))
   }, [])
-  console.log('1.5')
   const gotoCamera = async () => {
     ImagePicker.openCamera({
       width: 300,
@@ -70,9 +55,7 @@ export default function index () {
         setImg(data)
         sheetCam.current.close()
       })
-      .catch(err => {
-        console.log('openCamera catch' + err.toString())
-      })
+      .catch(err => {})
   }
   const gotoLibary = () => {
     ImagePicker.openPicker({
@@ -85,11 +68,8 @@ export default function index () {
         setImg(data)
         sheetCam.current.close()
       })
-      .catch(err => {
-        console.log('openCamera catch' + err.toString())
-      })
+      .catch(err => {})
   }
-  console.log('1.19', data)
   if (isEmpty(data)) return null
   return (
     <Layout>
@@ -102,7 +82,7 @@ export default function index () {
         <ViewCore alignItems marginTop={20}>
           <TouchableOpacity
             activeOpacity={0.8}
-            style={{borderRadius:100,overflow:'hidden'}}
+            style={{borderRadius: 100, overflow: 'hidden'}}
             onPress={() => sheetCam.current.open()}>
             <ImageCore
               source={

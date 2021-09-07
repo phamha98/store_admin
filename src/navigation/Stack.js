@@ -15,7 +15,6 @@ import {
   InsertGoods,
   UpdateGoods,
   InsertTypeGoods,
-  ShowGoodAll,
   ShowGoodMainDetails,
   ShowGoodDetails,
   Statistical_home,
@@ -56,7 +55,6 @@ export default function Stack() {
         <Stack1.Screen name="StateOrder" component={StateOrder} />
         <Stack1.Screen name="HomeGoods" component={HomeGoods} />
         <Stack1.Screen name="ShowGoods" component={ShowGoods} />
-        <Stack1.Screen name="ShowGoodAll" component={ShowGoodAll} />
         <Stack1.Screen
           name="ShowGoodMainDetails"
           component={ShowGoodMainDetails}

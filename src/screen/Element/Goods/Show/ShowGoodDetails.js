@@ -12,7 +12,6 @@ import {
   ScrollView,
   ActivityIndicator,
 } from 'react-native'
-import Header from '../Header'
 import {uriImg} from '@utils'
 import {apiGoodDetails} from '@api'
 import {
