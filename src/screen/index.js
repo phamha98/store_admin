@@ -1,33 +1,7 @@
 
 
-import Login from './Login';
-import Home from './Home';
-import Person from './Person';
-import EditPerson from './EditPerson';
-import {
-  HomeGoods,
-  ShowGoods,
-  SearchGoods,
-  InsertGoods,
-  UpdateGoods,
-  InsertTypeGoods,
-  ShowGoodMainDetails,
-  ShowGoodDetails,
-} from './Element/Goods';
 export * from './Element'
-export {
-  Login,
-  Home,
-  Person,
-  HomeGoods,
-  ShowGoods,
-  SearchGoods,
-  InsertGoods,
-  UpdateGoods,
-  InsertTypeGoods,
-  //*
-  ShowGoodMainDetails,
-  ShowGoodDetails,
-  //
-  EditPerson,
-};
+export {default as Login }from './Login'
+export {default as Person }from './Person'
+export {default as EditPerson }from './EditPerson'
+export {default as Home }from './Home'

@@ -13,7 +13,6 @@ import {
   ShowGoods,
   SearchGoods,
   InsertGoods,
-  UpdateGoods,
   InsertTypeGoods,
   ShowGoodMainDetails,
   ShowGoodDetails,
@@ -62,7 +61,6 @@ export default function Stack() {
         <Stack1.Screen name="ShowGoodDetails" component={ShowGoodDetails} />
         <Stack1.Screen name="SearchGoods" component={SearchGoods} />
         <Stack1.Screen name="InsertGoods" component={InsertGoods} />
-        <Stack1.Screen name="UpdateGoods" component={UpdateGoods} />
         <Stack1.Screen name="InsertTypeGoods" component={InsertTypeGoods} />
         <Stack1.Screen name="ShowUser" component={ShowUser} />
         <Stack1.Screen name="BillDetails" component={BillDetails} />

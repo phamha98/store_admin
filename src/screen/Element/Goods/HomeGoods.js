@@ -19,7 +19,7 @@ export default function index () {
         <BoxMenu
           name='THÊM MẶT HÀNG'
           icon='medkit-outline'
-          onPress={() => navigate('InsertGoods')}
+          onPress={() => navigate('InsertGoods',{data:false})}
         />
         <BoxMenu
           name='THÊM LOẠI HÀNG'

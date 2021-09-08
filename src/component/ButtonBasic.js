@@ -27,7 +27,7 @@ export default function ButtonBasic ({
         styleAdd,
       ]}
       onPress={onPress}>
-      <Text style={[styleTitle, styles.title]}>{title}</Text>
+      <Text style={[ styles.title,styleTitle,]}>{title}</Text>
     </TouchableOpacity>
   )
 }

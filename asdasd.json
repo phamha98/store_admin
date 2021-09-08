@@ -1,38 +1,54 @@
 {
-    "array_size": [
+    "details": "Dép Nam Biti's DPM028344NAU (Nâu)*",
+    "gender": "nu",
+    "id_type_main": 6,
+    "image_albums": [
         {
+            "id": 52,
+            "name": "https://product.hstatic.net/1000230642/product/dpm028344nau__3__01c1f25e94a84e4bab56e77356b7d4e0_1024x1024.jpg"
+        },
+        {
+            "id": 53,
+            "name": "https://product.hstatic.net/1000230642/product/dpm028344nau__4__26ca784bc3f74e69b793f5a869e35266_1024x1024.jpg"
+        },
+        {
+            "id": 54,
+            "name": "https://product.hstatic.net/1000230642/product/dpm028344nau__1__41e1c44a56ef45df816a6e9f1b84dfdf_1024x1024.jpg"
+        },
+        {
+            "id": 55,
+            "name": "https://product.hstatic.net/1000230642/product/dpm028344nau__6__810fd521e30b47a3894bc5817a9f1988_1024x1024.jpg"
+        },
+        {
+            "id": 56,
+            "name": "https://product.hstatic.net/1000230642/product/dpm028344nau__9__8e11a870510c4cae96bb55d3b94ef3ea_1024x1024.jpg"
+        }
+    ],
+    "img": "https://product.hstatic.net/1000230642/product/dpm028344nau__3__01c1f25e94a84e4bab56e77356b7d4e0_1024x1024.jpg",
+    "name": "Dép Nam Biti's DPM028344NAU (Nâu)*",
+    "new": "1",
+    "price": "80000",
+    "products": [
+        {
+            "number": 12,
             "size": "40"
         },
         {
+            "number": 22,
             "size": "41"
         },
         {
+            "number": 72,
             "size": "42"
         },
         {
+            "number": 13,
             "size": "43"
         },
         {
+            "number": 22,
             "size": "44"
         }
     ],
-    "created_at": "2021-08-22 01:11:29",
-    "details": "GIÀY ĐỘN NAM CAO 8CM T81",
-    "gender": "nu",
-    "id": 9,
-    "id_type_main": 5,
-    "img": "https://cdn-img-v2.webbnc.net/uploadv2/web/10/10222/product/2021/05/19/08/42/1621421149_giay-don-nam-t81-0.jpg?v=4",
-    "name": "GIÀY ĐỘN NAM CAO 8CM T81",
-    "new": "1",
-    "price": 299000,
-    "product_type_main": {
-        "name": "Giầy"
-    },
-    "sale": 25,
-    "total_size": {
-        "id_type_details": 9,
-        "total_number": "141"
-    },
-    "type": "open",
-    "updated_at": "2021-08-22 01:11:29"
+    "sale": "15"
 }

@@ -17,4 +17,5 @@ export {default as ItemTypeProduct} from './ItemTypeProduct'
 export {default as BoxMenu} from './BoxMenu'
 export {default as RowInfo} from './RowInfo'
 export {default as BottomSheetCamera} from './BottomSheetCamera'
+export {default as RNSheetImage} from './RNSheetImage'
 

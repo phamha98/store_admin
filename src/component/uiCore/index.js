@@ -15,3 +15,6 @@ export {
   TouchableCore,
 }
 export {default as InputBasic} from './InputBasic'
+export {default as InputLabel} from './InputLabel'
+export {default as LabelPicker} from './LabelPicker'
+export {default as ButtonRadius} from './ButtonRadius'
