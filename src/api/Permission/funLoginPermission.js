@@ -1,6 +1,6 @@
-import localhost from './localhost';
+import {localhost} from './localhost';
 
-const apiLoginPermision = (email, password) =>
+export const apiLoginPermision = (email, password) =>
   fetch(localhost + 'api/acount_customer/login_permision', {
     method: 'POST',
     headers: {
@@ -14,4 +14,4 @@ const apiLoginPermision = (email, password) =>
   })
     .then(response => response.json())
     .catch(err => console.log(err));
-export default apiLoginPermision;
+ 

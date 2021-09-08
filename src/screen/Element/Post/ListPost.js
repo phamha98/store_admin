@@ -1,29 +1,7 @@
 import React, {useState, useEffect} from 'react'
-import {
-  StyleSheet,
-  Text,
-  View,
-  ActivityIndicator,
-  FlatList,
-  TouchableOpacity,
-} from 'react-native'
-import Header from '../Permission/Header'
-import Ionicons from 'react-native-vector-icons/Ionicons'
-import {Fab} from 'native-base'
-import {Card, Button, Icon, Image} from 'react-native-elements'
-import styles from './styles'
-import {apiLoadPost, apiDeletePost} from '../../../api'
-import {ToastAndroidShort} from '../../../component/ToastAndroid'
-import {
-  AppContext,
-  HeaderC,
-  Layout,
-  Light,
-  screen_width,
-  TabCustom,
-  TextCore,
-  ViewCore,
-} from '@component'
+import {FlatList} from 'react-native'
+import {apiLoadPost, apiDeletePost} from '@api'
+import {HeaderC, Layout, Light, TextCore, ViewCore} from '@component'
 import ItemPost from './component/ItemPost'
 import {navigate} from '@navigation'
 export default function ListPost () {
@@ -48,7 +26,7 @@ export default function ListPost () {
     })
   }
   const handleDelete = async item => {
-  await  apiDeletePost(item.id)
+    await apiDeletePost(item.id)
       .then(r => {
         if (r.code === 200) {
           setProcess(true)

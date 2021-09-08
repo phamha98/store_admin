@@ -1,6 +1,6 @@
-import localhost from './localhost';
+import {localhost} from './localhost';
 
-const apiUpdateGoods = (
+export const apiUpdateGoods = (
   token,
   id_type_details,
   id_type_main,
@@ -37,4 +37,4 @@ const apiUpdateGoods = (
   })
     .then(response => response.json())
     .catch(err => console.log(err));
-export default apiUpdateGoods;
+  

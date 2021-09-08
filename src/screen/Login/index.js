@@ -10,27 +10,16 @@ import {
   Alert,
   TouchableWithoutFeedback,
   Keyboard,
-  ActivityIndicator,
 } from 'react-native'
 import styles from './styles'
-import {AppContext} from '@component/AppContext'
-import {apiLogin, apiLoginPermision} from '@api'
+import {apiLoginPermision} from '@api'
 import Spinner from 'react-native-spinkit'
-import NetInfo from '@react-native-community/netinfo'
-import {ToastAndroidShort} from '@component/ToastAndroid'
+import {ToastAndroidShort, AppContext} from '@component'
 import {Fumi} from 'react-native-textinput-effects'
 import {Content} from 'native-base'
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome'
-
-export default function Login ({navigation}) {
-  const [netState, setNetState] = useState(false)
-  useEffect(() => {
-    const unsubscribe = NetInfo.addEventListener(state => {
-      //console.log('Connection type', state.type);
-      //console.log('Is connected?', state.isConnected);
-      return setNetState(state.isConnected)
-    })
-  }, [netState])
+import {navigate} from '@navigation'
+export default function Login () {
   const [email, setEmail] = useState('m')
   const [password, setPassword] = useState('m')
   const [progess, setProgess] = useState(false)
@@ -38,7 +27,6 @@ export default function Login ({navigation}) {
     AppContext,
   )
   const btnLogin = () => {
-    if (!netState) return ToastAndroidShort('Không có kết nối')
     setProgess(true)
     apiLoginPermision(email, password)
       .then(result => {
@@ -52,9 +40,7 @@ export default function Login ({navigation}) {
           }
           let permission1 = result.permission
           let find = permission1.find(item => item.name == 'manager')
-          // console.log(isObject(find));
-          if (isObject(find)) navigation.navigate('Drawer')
-          //navigation.replace('Drawer');
+          if (isObject(find)) navigate('Drawer')
           else {
             Alert.alert('Thông báo', 'Bạn không có quyền truy cập', [
               {
@@ -87,16 +73,8 @@ export default function Login ({navigation}) {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <Content style={{flex: 1, backgroundColor: '#0B193F'}}>
         <View style={styles.container}>
-          <StatusBar hidden={false} backgroundColor='#0B193F'></StatusBar>
-          <View
-            style={{
-              marginHorizontal: 0,
-              height: 50,
-              backgroundColor: 'red',
-            }}></View>
-          <Image
-            style={styles.img}
-            source={require('../../img/aodep.png')}></Image>
+          <StatusBar backgroundColor='#0B193F' />
+          <Image style={styles.img} source={require('@image/aodep.png')} />
           <Fumi
             style={styles.textInput1}
             label={'Email'}

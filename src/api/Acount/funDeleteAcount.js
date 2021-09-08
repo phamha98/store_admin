@@ -1,6 +1,6 @@
-import localhost from './localhost';
+import {localhost} from './localhost';
 
-const apiDeleteAcount = token =>
+export const apiDeleteAcount = token =>
   fetch(localhost + 'api/acount_admin/delete_user_id', {
     method: 'POST',
     headers: {
@@ -11,4 +11,4 @@ const apiDeleteAcount = token =>
   })
     .then(response => response.json())
     .catch(err => console.log(err));
-export default apiDeleteAcount;
+ 

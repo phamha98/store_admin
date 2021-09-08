@@ -18,7 +18,7 @@ export default function index () {
   }, [])
   return (
     <Layout backgroundColor='#C2C2C2'>
-      <HeaderC title='Danh sách đơn hàng' onClickRight={() => {}} />
+      <HeaderC title='Danh sách đơn hàng' />
       <FlatList
         data={datafull}
         keyExtractor={(i, j) => j.toString()}

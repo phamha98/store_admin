@@ -1,4 +1,4 @@
-import localhost from './localhost'
+import {localhost} from './localhost'
 export const apiDeletePost = id =>
   fetch(localhost + 'api/post_tags/delete', {
     method: 'POST',

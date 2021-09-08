@@ -1,4 +1,4 @@
-import localhost from './localhost'
+import {localhost} from './localhost'
 
 export const apiUpdatePost = (id, title, content, img) =>
   fetch(localhost + 'api/post_tags/update', {

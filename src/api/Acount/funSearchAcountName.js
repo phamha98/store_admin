@@ -1,6 +1,6 @@
-import localhost from './localhost';
+import {localhost} from './localhost';
 
-const apiSearchAcountName = (token, key) =>
+export const apiSearchAcountName = (token, key) =>
   fetch(localhost + 'api/acount_admin/search_user_name', {
     method: 'POST',
     headers: {
@@ -14,4 +14,4 @@ const apiSearchAcountName = (token, key) =>
   })
     .then(response => response.json())
     .catch(err => console.log(err));
-export default apiSearchAcountName;
+ 

@@ -1,4 +1,4 @@
-import localhost from './localhost'
+import {localhost} from './localhost'
 export const apiStaticGetCustomer = () =>
   fetch(localhost + '/api/stastic/customer', {
     method: 'POST',

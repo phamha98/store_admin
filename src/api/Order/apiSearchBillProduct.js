@@ -1,6 +1,6 @@
-import localhost from './localhost';
+import {localhost} from './localhost';
 
-const apiSearchBillProduct = (id_product_details, token) =>
+export const apiSearchBillProduct = (id_product_details, token) =>
     fetch(localhost + 'api/orderadmin/search_by_product', {
         method: 'POST',
         headers: {
@@ -14,4 +14,4 @@ const apiSearchBillProduct = (id_product_details, token) =>
     })
         .then(response => response.json())
         .catch(err => console.log(err));
-export default apiSearchBillProduct;
+ 

@@ -1,7 +1,7 @@
   
-import  localhost  from './localhost';
+import {localhost} from './localhost'
 
-const apiSearchBillDate = (token,date_left,date_right) => 
+export const apiSearchBillDate = (token,date_left,date_right) => 
     (fetch(localhost+'api/orderadmin/search_by_date', {
         method: 'POST',
         headers: {
@@ -17,4 +17,4 @@ const apiSearchBillDate = (token,date_left,date_right) =>
         .then(response => response.json())
       .catch(err => console.log(err))
 )
-export default apiSearchBillDate;
+ 

@@ -1,7 +1,5 @@
-
-import  localhost  from './localhost';
-
-const apiPersonUpdate = (token, idUser, name, phone, address, img) =>
+import {localhost} from './localhost'
+export const apiPersonUpdate = (token, idUser, name, phone, address, img) =>
   fetch(localhost + 'api/acount_admin/update_acount', {
     method: 'POST',
     headers: {
@@ -16,5 +14,4 @@ const apiPersonUpdate = (token, idUser, name, phone, address, img) =>
       address: address,
       img: img,
     }),
-  }).catch(err => console.log(err));
-export default apiPersonUpdate;
+  }).catch(err => console.log(err))

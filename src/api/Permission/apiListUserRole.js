@@ -1,6 +1,6 @@
-import localhost from './localhost';
+import {localhost} from './localhost';
 
-const apiListUserRole = (token, idRole) =>
+export const apiListUserRole = (token, idRole) =>
   fetch(localhost + 'api/permission_admin/listuser_group_role', {
     method: 'POST',
     headers: {
@@ -14,4 +14,4 @@ const apiListUserRole = (token, idRole) =>
   })
     .then(response => response.json())
     .catch(err => console.log(err));
-export default apiListUserRole;
+ 

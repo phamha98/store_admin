@@ -1,6 +1,6 @@
-import localhost from './localhost';
+import {localhost} from './localhost';
 
-const apiListGroupUser = token =>
+export const apiListGroupUser = token =>
   fetch(localhost + 'api/permission_admin/list_group_user', {
     method: 'GET',
     headers: {
@@ -11,4 +11,4 @@ const apiListGroupUser = token =>
   })
     .then(response => response.json())
     .catch(err => console.log(err));
-export default apiListGroupUser;
+ 

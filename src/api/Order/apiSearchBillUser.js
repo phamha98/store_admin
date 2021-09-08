@@ -1,6 +1,6 @@
-import localhost from './localhost';
+import {localhost} from './localhost';
 
-const apiSearchBillUser = (id_user_order, token) =>
+export const apiSearchBillUser = (id_user_order, token) =>
     fetch(localhost + 'api/orderadmin/search_by_nameuser', {
         method: 'POST',
         headers: {
@@ -14,4 +14,3 @@ const apiSearchBillUser = (id_user_order, token) =>
     })
         .then(response => response.json())
         .catch(err => console.log(err));
-export default apiSearchBillUser;

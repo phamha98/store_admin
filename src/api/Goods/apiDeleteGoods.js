@@ -1,6 +1,6 @@
-import localhost from './localhost';
+import {localhost} from './localhost';
 
-const apiDeleteGoods = (token, id) =>
+export const apiDeleteGoods = (token, id) =>
   fetch(localhost + 'api/goods_admin/delete_product', {
     method: 'POST',
     headers: {
@@ -14,4 +14,3 @@ const apiDeleteGoods = (token, id) =>
   })
     .then(response => response.json())
     .catch(err => console.log(err));
-export default apiDeleteGoods;

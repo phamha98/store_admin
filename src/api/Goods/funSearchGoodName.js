@@ -1,7 +1,7 @@
   
-import  localhost  from './localhost';
+import {localhost} from './localhost'
 
-const apiSearchGoodName = (token,searchName) => 
+export const apiSearchGoodName = (token,searchName) => 
     (fetch(localhost+'api/goods_admin/search_goods_name', {
       method: 'POST',
       headers: {
@@ -16,4 +16,4 @@ const apiSearchGoodName = (token,searchName) =>
       .then(response => response.json())
       .catch(err => console.log(err))
 )
-export default apiSearchGoodName;
+ 

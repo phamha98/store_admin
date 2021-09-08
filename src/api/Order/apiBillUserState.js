@@ -1,6 +1,6 @@
-import localhost from './localhost';
+import {localhost} from './localhost';
 
-const apiBillUserState = (token, idUser) =>
+export const apiBillUserState = (token, idUser) =>
   fetch(localhost + 'api/orderadmin/bill_user_state', {
     method: 'POST',
     headers: {
@@ -14,4 +14,4 @@ const apiBillUserState = (token, idUser) =>
   })
     .then(response => response.json())
     .catch(err => console.log(err));
-export default apiBillUserState;
+ 

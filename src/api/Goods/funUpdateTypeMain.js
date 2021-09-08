@@ -1,6 +1,6 @@
-import localhost from './localhost';
+import {localhost} from './localhost';
 
-const apiUpdateTypeMain = (token, id, name, base64, url, post) =>
+export const apiUpdateTypeMain = (token, id, name, base64, url, post) =>
   fetch(localhost + 'api/goods_admin/update_type_main', {
     method: 'POST',
     headers: {
@@ -19,4 +19,4 @@ const apiUpdateTypeMain = (token, id, name, base64, url, post) =>
     .then(response => response.json())
     .catch(err => console.log(err));
 
-export default apiUpdateTypeMain;
+ 

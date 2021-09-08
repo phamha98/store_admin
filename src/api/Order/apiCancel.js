@@ -1,6 +1,6 @@
-import localhost from './localhost';
+import {localhost} from './localhost';
 
-const apiCancel = (id_bill, id_user, token) =>
+export const apiCancel = (id_bill, id_user, token) =>
   fetch(localhost + 'api/billstate/admin/update_confirm', {
     method: 'POST',
     headers: {
@@ -17,4 +17,4 @@ const apiCancel = (id_bill, id_user, token) =>
   })
     .then(response => response.json())
     .catch(err => console.log(err));
-export default apiCancel;
+ 

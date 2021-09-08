@@ -1,6 +1,6 @@
-import localhost from './localhost';
+import {localhost} from './localhost';
 
-const apiInsertRole = (token, name, displayName) =>
+export const apiInsertRole = (token, name, displayName) =>
   fetch(localhost + 'api/permission_admin/insert_role', {
     method: 'POST',
     headers: {
@@ -15,4 +15,4 @@ const apiInsertRole = (token, name, displayName) =>
   })
     .then(response => response.json())
     .catch(err => console.log(err));
-export default apiInsertRole;
+ 

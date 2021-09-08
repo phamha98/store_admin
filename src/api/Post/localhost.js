@@ -1,2 +1,1 @@
-import localhost from "../localhost";
-export default localhost;
+export * from '../localhost'

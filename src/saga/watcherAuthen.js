@@ -66,7 +66,7 @@ export function* LoadTokenId() {
     console.log(e);
   }
 }
-import localhost from '../api/localhost';
+import {localhost} from '@api/localhost';
 export function* LoadPerson() {
   try {
     const _token = yield select(state => state._changeState._token);

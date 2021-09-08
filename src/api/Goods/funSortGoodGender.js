@@ -1,7 +1,7 @@
   
-import  localhost  from './localhost';
+import {localhost} from './localhost'
 
-const apiSortGoodGender = (token,gender) => 
+export const apiSortGoodGender = (token,gender) => 
     (fetch(localhost+'api/goods_admin/sort_goods_gender', {
       method: 'POST',
       headers: {
@@ -16,4 +16,4 @@ const apiSortGoodGender = (token,gender) =>
       .then(response => response.json())
       .catch(err => console.log(err))
 )
-export default apiSortGoodGender;
+ 

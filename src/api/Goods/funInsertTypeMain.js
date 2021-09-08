@@ -1,6 +1,6 @@
-import localhost from './localhost';
+import {localhost} from './localhost';
 
-const apiInsertTypeMain = (token, name, base64, url, post) =>
+export const apiInsertTypeMain = (token, name, base64, url, post) =>
   fetch(localhost + 'api/goods_admin/insert_type_main', {
     method: 'POST',
     headers: {
@@ -17,4 +17,4 @@ const apiInsertTypeMain = (token, name, base64, url, post) =>
   })
     .then(response => response.json())
     .catch(err => console.log(err));
-export default apiInsertTypeMain;
+ 

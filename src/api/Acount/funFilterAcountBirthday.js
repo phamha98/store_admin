@@ -1,6 +1,6 @@
-import localhost from './localhost';
+import {localhost} from './localhost';
 
-const apiFilterAcountBirthday = token =>
+export const apiFilterAcountBirthday = token =>
   fetch(localhost + 'api/acount_admin/filter_user_birthday', {
     method: 'GET',
     headers: {
@@ -11,4 +11,4 @@ const apiFilterAcountBirthday = token =>
   })
     .then(response => response.json())
     .catch(err => console.log(err));
-export default apiFilterAcountBirthday;
+ 

@@ -1,4 +1,4 @@
-import localhost from './localhost';
+import {localhost} from './localhost';
 
 export const apiLoadPost = () =>
   fetch (localhost + 'api/post_tags/load', {

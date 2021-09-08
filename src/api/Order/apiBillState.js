@@ -1,7 +1,7 @@
   
-import  localhost  from './localhost';
+import {localhost} from './localhost'
 
-const apiBillState = token =>
+export const apiBillState = token =>
   fetch(localhost + 'api/orderadmin/show_bill_state', {
     method: 'GET',
     headers: {
@@ -12,4 +12,4 @@ const apiBillState = token =>
   })
     .then(response => response.json())
     .catch(err => console.log(err));
-export default apiBillState;
+ 

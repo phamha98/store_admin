@@ -1,29 +1,13 @@
 import React, {useState, useContext, useRef} from 'react'
-import {
-  StyleSheet,
-  Image,
-  Text,
-  View,
-  TouchableOpacity,
-  TextInput,
-  ScrollView,
-  Modal,
-  ToastAndroid,
-  Alert,
-} from 'react-native'
+import {Image, Text, View, TouchableOpacity} from 'react-native'
 
-import {
-  ToastAndroidShort,
-  ToastAndroidLong,
-} from '../../../component/ToastAndroid'
-import Header from '../Permission/Header'
+import {ToastAndroidShort} from '@component'
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import {Fumi, Isao} from 'react-native-textinput-effects'
 import Textarea from 'react-native-textarea'
 import RBSheet from 'react-native-raw-bottom-sheet'
 import ImagePicker from 'react-native-image-crop-picker'
 import styles from './styles'
-import {apiInsertPost, apiUpdatePost} from '../../../api'
+import {apiInsertPost, apiUpdatePost} from '@api'
 import {
   AppContext,
   HeaderC,
@@ -103,7 +87,7 @@ export default function InsertPost ({route, navigation}) {
     }
   }
   return (
-    <Layout backgroundColor="#c7c7c7">
+    <Layout backgroundColor='#c7c7c7'>
       <HeaderC title='Thêm bài' />
       <View style={styles.content}>
         <Textarea

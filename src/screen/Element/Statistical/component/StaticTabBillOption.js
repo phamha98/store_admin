@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {ScrollView, ActivityIndicator} from 'react-native'
 import {Table, Row} from 'react-native-table-component'
 import styles from '../styles'
-import localhost from '@api/localhost'
+import {localhost} from '@api/localhost'
 import {
   ViewCore,
   screen_width,

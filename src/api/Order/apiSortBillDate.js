@@ -1,7 +1,7 @@
   
-import  localhost  from './localhost';
+import {localhost} from './localhost'
 
-const apiSortBillDate = (token,type) => 
+export const apiSortBillDate = (token,type) => 
     (fetch(localhost+'api/orderadmin/sort_by_date', {
         method: 'POST',
         headers: {
@@ -16,4 +16,4 @@ const apiSortBillDate = (token,type) =>
         .then(response => response.json())
       .catch(err => console.log(err))
 )
-export default apiSortBillDate;
+ 

@@ -1,6 +1,6 @@
-import localhost from './localhost';
+import {localhost} from './localhost';
 
-const apiFilterAcountGender = token =>
+export const apiFilterAcountGender = token =>
   fetch(localhost + 'api/acount_admin/filter_user_gender', {
     method: 'GET',
     headers: {
@@ -11,4 +11,4 @@ const apiFilterAcountGender = token =>
   })
     .then(response => response.json())
     .catch(err => console.log(err));
-export default apiFilterAcountGender;
+ 

@@ -1,6 +1,6 @@
-import localhost from './localhost';
+import {localhost} from './localhost';
 
-const apiListStaff = token =>
+export  const apiListStaff = token =>
   fetch(localhost + 'api/permission_admin/list_staff', {
     method: 'GET',
     headers: {
@@ -11,4 +11,4 @@ const apiListStaff = token =>
   })
     .then(response => response.json())
     .catch(err => console.log(err));
-export default apiListStaff;
+ 

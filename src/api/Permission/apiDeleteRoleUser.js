@@ -1,6 +1,6 @@
-import localhost from './localhost';
+import {localhost} from './localhost';
 
-const apiDeleteRoleUser = (token, idRole, idUser) =>
+export const apiDeleteRoleUser = (token, idRole, idUser) =>
   fetch(localhost + 'api/permission_admin/delete_user_role', {
     method: 'POST',
     headers: {
@@ -15,4 +15,4 @@ const apiDeleteRoleUser = (token, idRole, idUser) =>
   })
     .then(response => response.json())
     .catch(err => console.log(err));
-export default apiDeleteRoleUser;
+ 

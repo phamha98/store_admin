@@ -1,7 +1,7 @@
   
-import  localhost  from './localhost';
+import {localhost} from './localhost'
 
-const apiBillDetails = (token, id) =>
+export  const apiBillDetails = (token, id) =>
   fetch(localhost + 'api/bills_customer/show_billdetail', {
     method: 'POST',
     headers: {
@@ -15,4 +15,4 @@ const apiBillDetails = (token, id) =>
   })
     .then(response => response.json())
     .catch(err => console.log(err));
-export default apiBillDetails; 
+ 
