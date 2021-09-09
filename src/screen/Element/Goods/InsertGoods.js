@@ -122,7 +122,7 @@ export default function index ({route}) {
             data={[
               {name: 'Nam', id: 'nam'},
               {name: 'Nữ', id: 'nu'},
-              {name: 'Nữ', id: 'tat'},
+              {name: 'Tất cả', id: 'tat'},
             ]}
             height={55}
           />

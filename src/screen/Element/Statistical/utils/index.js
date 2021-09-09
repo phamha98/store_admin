@@ -8,14 +8,15 @@ export function compareA (a, b) {
 export const formatDataProduct = data => {
   if (isEmpty(data)) return []
   let ldata = []
-  data.map((item, index) => {
+   data.map((item, index) => {
     let temdata = [
       index + 1,
+      item.id_type_details ? 'MLH' + item.id_type_details : '',
       'MH' + item.id,
-      item.detail.name,
-      item.size,
-      formatVND(item.detail.price),
-      item.number,
+      item.detail ? (item.detail.name ? item.detail.name : '') : '',
+      item.size ? item.size : '',
+      formatVND(item.detail ? item.detail.price : 0),
+      item.number ? item.number : '',
       item.quantity_number,
     ]
 
@@ -30,9 +31,9 @@ export const formatDataProduct2 = data => {
     let temdata = [
       index + 1,
       'MH' + item.id,
-      item.detail.name,
+      item.detail ? (item.detail.name ? item.detail.name : '') : '',
       item.size,
-      item.detail.price,
+      item.detail ? item.detail.price : 0,
       item.number,
       item.quantity_number,
     ]
@@ -42,6 +43,7 @@ export const formatDataProduct2 = data => {
   return ldata
 }
 export const formatStaticDetailProduct = data => {
+  console.log('x.1',data);
   let money = {
     max: 0,
     id: null,

@@ -61,7 +61,8 @@ const InputLabel = (
       )}
       <TextInput
         ref={refInput}
-        value={value}
+        value={isString(value)?value:value.toString()}
+         //value={value}
         style={[
           styles.rowInput,
           {
@@ -84,7 +85,7 @@ const InputLabel = (
 
 export default forwardRef(InputLabel)
 import PropTypes from 'prop-types'
-import {isEmpty} from 'underscore'
+import {isEmpty, isString} from 'underscore'
 
 InputLabel.defaultProps = {
   rightTouch: false,

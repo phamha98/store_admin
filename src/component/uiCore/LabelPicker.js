@@ -3,7 +3,7 @@ import {StyleSheet, Text, View} from 'react-native'
 import {Picker} from '@react-native-picker/picker'
 import {isEmpty} from 'underscore'
 import {ViewCore} from './index'
-const LabelPicker = ({data, label, valueInit, ...rest}, ref) => {
+const LabelPicker = ({data, label, valueInit,styleLabel,stylePicker, ...rest}, ref) => {
   //data=[{name/value}]
 
   if (isEmpty(data)) return null
@@ -23,9 +23,9 @@ const LabelPicker = ({data, label, valueInit, ...rest}, ref) => {
       paddingHorizontal={10}
       marginBottom={5}
       {...rest}>
-      <Text style={{width: 100}}>{label}</Text>
+      <Text style={[{width: 100},styleLabel]}>{label}</Text>
       <Picker
-        style={{width: 200}}
+        style={[{width: 200},stylePicker]}
         selectedValue={value}
         onValueChange={setValue}>
         {data.map((item, index) => (

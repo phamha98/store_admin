@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react'
-import {StyleSheet} from 'react-native'
+import {StyleSheet, RefreshControl} from 'react-native'
 import {
   HeaderC,
   Layout,
@@ -11,14 +11,17 @@ import {
   screen_width,
   ButtonBasic,
   screen_height,
+  RowInfo,
 } from '@component'
-import {navigate, goBack,replace} from '@navigation'
+import {navigate, goBack, replace} from '@navigation'
 import {apiPersonShow} from '@api'
+import {uriImg} from '@utils'
+import {ScrollView} from 'react-native'
 
 export default function index () {
-  const {token, idUser, lEP, setLEP} = useContext(AppContext)
+  const {token, idUser} = useContext(AppContext)
   const [data, setData] = useState(null)
-  const [render,setRender]=useState(false)
+  const [render, setRender] = useState(false)
   useEffect(() => {
     apiPersonShow(token, idUser)
       .then(data => {
@@ -26,8 +29,8 @@ export default function index () {
         setData(data.data)
       })
       .catch(e => console.log(e))
+      .finally(() => setRender(false))
   }, [render])
-  console.log('1.4',"person");
   return (
     <Layout>
       <HeaderC
@@ -35,44 +38,49 @@ export default function index () {
         onClickRight={() => setRender(!render)}
       />
       {data && (
-        <ViewCore alignItems marginTop={10} style={styles.content}>
-          <ViewCore alignItems>
-            <ImageCore
-              source={data.img ? data.img : require('@image/noimage.jpg')}
+        <ScrollView
+          refreshControl={
+            <RefreshControl
+              refreshing={render}
+              onRefresh={() => setRender(true)}
             />
-            <TextCore bold color='blue' size={23}>
-              {data.name}
-            </TextCore>
+          }>
+          <ViewCore marginTop={10} alignItems>
+            <ViewCore alignItems>
+              <ViewCore
+                activeOpacity={0.8}
+                borderWidth={2}
+                borderColor='#fff'
+                width={200}
+                height={200}
+                style={{borderRadius: 100, overflow: 'hidden'}}>
+                <ImageCore
+                  source={uriImg(data ? data.img : null)}
+                  width={200}
+                  height={200}
+                />
+              </ViewCore>
+            </ViewCore>
+            <ViewCore width={'90%'}>
+              <RowInfo label={data ? data.name : ''} sizeL={20} />
+              <RowInfo data={data ? data.email : ''} title='✉️ Email ' />
+              <RowInfo data={data ? data.phone : ''} title='📞Phone' />
+              <RowInfo data={data ? data.gender : ''} title='♂️Gender' />
+              <RowInfo data={data ? data.address : ''} title='🗺️Address' />
+              <ButtonBasic
+                title='Chỉnh sửa'
+                onPress={() => navigate('EditPerson')}
+                width={'100%'}
+              />
+              <ButtonBasic
+                marginTop={10}
+                title='Đăng xuất khỏi hệ thống'
+                backgroundColor='gray'
+                width={'100%'}
+              />
+            </ViewCore>
           </ViewCore>
-          <ViewCore width={0.5 * screen_width}>
-            <TextCore style={styles.text}>
-              Email:{data.email ? data.email : '*****'}
-            </TextCore>
-            <TextCore style={styles.text}>
-              Phone:{data.phone ? data.phone : 'Chưa có thông tin'}
-            </TextCore>
-            <TextCore style={styles.text}>
-              Gender:{data.gender ? data.gender : 'Chưa có thông tin'}
-            </TextCore>
-            <TextCore style={styles.text}>
-              Address:{data.address ? data.address : 'Chưa có thông tin'}
-            </TextCore>
-          </ViewCore>
-          <ViewCore>
-            <ButtonBasic
-              backgroundColor='orange'
-              title='Chỉnh sửa'
-              width={0.5 * screen_width}
-              onPress={()=>navigate("EditPerson")}
-            />
-            <ButtonBasic
-              marginTop={10}
-              title='Đăng xuất khỏi hệ thống'
-              width={0.5 * screen_width}
-              backgroundColor='gray'
-            />
-          </ViewCore>
-        </ViewCore>
+        </ScrollView>
       )}
     </Layout>
   )
@@ -90,6 +98,6 @@ const styles = StyleSheet.create({
   text: {
     color: '#05B9E6',
     fontSize: 16,
-    marginVertical:2
+    marginVertical: 2,
   },
 })

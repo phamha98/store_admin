@@ -1,5 +1,5 @@
 import {
-  apiGoodDetails,
+  apiGoodsDetails,
   apiSearchGoodName,
   apiSortGoodGender,
   apiSortGoodNew,
@@ -15,7 +15,7 @@ export const selectApiSearchGoods = (token, type, value_bolean, text_input) => {
   let value = null
   switch (type) {
     case 'searchCode':
-      return apiGoodDetails(token, text_input)
+      return apiGoodsDetails(token, text_input)
     case 'searchName':
       return apiSearchGoodName(token, text_input)
     case 'filterNew':

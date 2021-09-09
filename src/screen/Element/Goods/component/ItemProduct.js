@@ -28,8 +28,10 @@ export default function ItemProduct ({item, onPress}) {
         backgroundColor='#fff'
       />
       <ViewCore row marginTop={10}>
-        <ImageCore source={{uri: item.img}}  height={'100%'}/>
+        <ImageCore source={{uri: item.img}} height={'100%'} />
         <ViewCore flex1 marginLeft={5}>
+          <RowInfo title='MLH' data={item ? item.id : ''} />
+
           <RowInfo title='Giá' data={formatVND(item.price)} />
           {item.array_size && (
             <RowInfo title='Size' data={formatSize(item.array_size)} />

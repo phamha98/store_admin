@@ -25,7 +25,7 @@ export default function StatisticProduct () {
   useEffect(() => {
     apiStaticGetProduct()
       .then(r => {
-        console.log(r)
+       
         if (r.code === 200) {
           if (r.data.length !== 0) {
             setData(r.data)
@@ -87,8 +87,8 @@ class TableProduct extends PureComponent {
           width: screen_width * 2,
         }}>
         <Row
-          data={['STT', 'MH', 'Tên SP', 'Size', 'Giá', 'Kho', 'Bán']}
-          flexArr={[1, 2, 4, 1, 3, 2, 2]}
+          data={['STT', 'MLH','MH', 'Tên SP', 'Size', 'Giá', 'Kho', 'Bán']}
+          flexArr={[1, 2,2, 4, 1, 3, 2, 2]}
           style={styles.head}
           textStyle={styles.text}
         />
@@ -96,7 +96,7 @@ class TableProduct extends PureComponent {
           <Row
             key={index}
             data={item}
-            flexArr={[1, 2, 4, 1, 3, 2, 2]}
+            flexArr={[1,2, 2, 4, 1, 3, 2, 2]}
             style={styles.row}
             textStyle={styles.text}
           />

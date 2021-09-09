@@ -8,7 +8,7 @@ import {
   ActivityIndicator,
 } from 'react-native'
 import {uriImg} from '@utils'
-import {apiGoodDetails} from '@api'
+import {apiGoodsDetails, change_state_product, apiDeleteGoods} from '@api'
 import {Table, Row} from 'react-native-table-component'
 import {
   AppContext,
@@ -19,10 +19,12 @@ import {
   ButtonBasic,
   RowInfo,
   screen_width,
+  ToastAndroidLong,
 } from '@component'
 import {formatTableSize} from './utils'
-import {navigate} from '@navigation'
-import { isEmpty } from 'underscore'
+import {navigate,goBack} from '@navigation'
+import {isEmpty} from 'underscore'
+import {Alert} from 'react-native'
 export default function ShowGoodDetails ({route}) {
   const {idProductDetails, name} = route.params
   const {token} = useContext(AppContext)
@@ -31,7 +33,7 @@ export default function ShowGoodDetails ({route}) {
   const [refreshing, setRefreshing] = useState(true)
 
   useEffect(() => {
-    apiGoodDetails(token, idProductDetails)
+    apiGoodsDetails(token, idProductDetails)
       .then(result => {
         if (result.code === 200) {
           setData(result.data)
@@ -41,6 +43,39 @@ export default function ShowGoodDetails ({route}) {
       .finally(() => setRefreshing(false))
   }, [refreshing])
   // if(isEmpty(idProductDetails))return null
+  const handleChangeStateProduct = () => {
+    if (isEmpty(data) || isEmpty(data.type)) return null
+    if (data.type === 'open')
+      change_state_product(token, data.id, 'close').then(r => {
+        console.log(r)
+        if (r.code === 200) setRefreshing(true)
+        else ToastAndroidLong('Thất bại')
+      })
+    else
+      change_state_product(token, data.id, 'open').then(r => {
+        console.log(r)
+        if (r.code === 200) setRefreshing(true)
+        else ToastAndroidLong('Thất bại')
+      })
+  }
+  const handleDeleteProduct = () => {
+    if (isEmpty(data) || isEmpty(data.id.toString())) return null
+    Alert.alert('Cảnh báo', 'Bạn có chắc chắn muốn xóa', [
+      {
+        text: 'Quay lại',
+      },
+      {
+        text: 'Xóa',
+        onPress: () => {
+          apiDeleteGoods(token, data.id).then(r => {
+            console.log(r)
+            if (r.code === 200) goBack()
+            else ToastAndroidLong('Thất bại')
+          })
+        },
+      },
+    ])
+  }
   return (
     <Layout>
       <HeaderC title={name ? name : 'SP'} />
@@ -111,13 +146,30 @@ export default function ShowGoodDetails ({route}) {
                 textStyle={styles.text}
               />
             </Table>
-            <ViewCore row centerHorizontal paddingHorizontal={10} margin={10}>
+            <ViewCore
+              row
+              centerHorizontal
+              paddingHorizontal={10}
+              margin={10}
+              marginBottom={100}>
               <ButtonBasic
                 title='Cập nhật'
-                onPress={() => navigate('InsertGoods', {dataResult: data,data:data})}
+                onPress={() =>
+                  navigate('InsertGoods', {dataResult: data, data: data})
+                }
                 //onPress={() => console.log(data)}
               />
-              <ButtonBasic title='Xóa' backgroundColor={Light.danger} />
+
+              <ButtonBasic
+                title={data ? (data.type === 'open' ? 'Tắt' : 'Mở') : ''}
+                backgroundColor={Light.primary}
+                onPress={handleChangeStateProduct}
+              />
+              <ButtonBasic
+                title='Xóa'
+                backgroundColor={Light.danger}
+                onPress={handleDeleteProduct}
+              />
             </ViewCore>
           </ViewCore>
         </ScrollView>

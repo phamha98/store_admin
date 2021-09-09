@@ -1,5 +1,5 @@
 import React, {useState, useContext, useRef, useEffect} from 'react'
-import {TouchableOpacity, ScrollView, Dimensions} from 'react-native'
+import {TouchableOpacity, ScrollView, RefreshControl} from 'react-native'
 import ImagePicker from 'react-native-image-crop-picker'
 import {
   HeaderC,
@@ -9,68 +9,57 @@ import {
   ViewCore,
   AppContext,
   ImageCore,
-  BottomSheetCamera,
+  RNSheetImage,
+  LabelPicker,
+  ToastAndroidLong,
 } from '@component'
 import {apiPersonUpdate, apiPersonShow} from '@api'
 import {replace, goBack} from '@navigation'
 import {isEmpty} from 'underscore'
+import {uriImg} from '@utils'
 export default function index () {
-  const {token, idUser, lEP, setLEP} = useContext(AppContext)
+  const {token, idUser} = useContext(AppContext)
   const refName = useRef()
   const refPhone = useRef()
   const refAddress = useRef()
-  const sheetCam = useRef()
-  const [img, setImg] = useState(null)
+  const refGender = useRef()
+  const refImage = useRef()
+  const [refreshing, setRefreshing] = useState(true)
+  const [img, setImg] = useState(false)
   const [data, setData] = useState(null)
   //
   const handleUpdate = () => {
     let name = refName.current.getValue()
     let phone = refPhone.current.getValue()
     let address = refAddress.current.getValue()
-    let image = 'data:' + img.mime + ';base64,' + img.data
-    apiPersonUpdate(token, idUser, name, phone, address, image)
-      .then(r => console.log(r))
+    let gender = refGender.current.getValue()
+    let image = img.path
+    if (img.data) image = 'data:' + img.mime + ';base64,' + img.data
+    // console.log(token, idUser, name, phone, address, gender, image)
+    apiPersonUpdate(token, idUser, name, phone, address, gender, image)
+      .then(r => {
+        if (r.code === 200) ToastAndroidLong('Thành công')
+        else ToastAndroidLong('Thất bại')
+      })
       .catch(e => console.log(e))
-    goBack()
-    setLEP(!lEP)
   }
 
   useEffect(() => {
     apiPersonShow(token, idUser)
       .then(r => {
-        // console.log(r.data)
-        setData(r.data)
-        setImg({path: r.data.img, data: '', mime: ''})
+        if (r.code == 200) {
+          setData(r.data)
+          setImg({path: r.data.img})
+        }
       })
       .catch(e => console.log(e))
-  }, [])
-  const gotoCamera = async () => {
-    ImagePicker.openCamera({
-      width: 300,
-      height: 400,
-      includeBase64: true,
-    })
-      .then(data => {
-        console.log(data)
-        setImg(data)
-        sheetCam.current.close()
-      })
-      .catch(err => {})
+      .finally(() => setRefreshing(false))
+  }, [refreshing])
+  const handleAlow = () => {
+    let tem_img = refImage.current.getImage()
+    setImg(tem_img)
+    refImage.current.close()
   }
-  const gotoLibary = () => {
-    ImagePicker.openPicker({
-      width: 300,
-      height: 400,
-      includeBase64: true,
-    })
-      .then(data => {
-        console.log(data)
-        setImg(data)
-        sheetCam.current.close()
-      })
-      .catch(err => {})
-  }
-  if (isEmpty(data)) return null
   return (
     <Layout>
       <HeaderC
@@ -78,61 +67,79 @@ export default function index () {
         rightNameIcon='checkmark-circle-outline'
         onClickRight={handleUpdate}
       />
-      <ScrollView style={{paddingHorizontal: 10}}>
-        <ViewCore alignItems marginTop={20}>
-          <TouchableOpacity
-            activeOpacity={0.8}
-            style={{borderRadius: 100, overflow: 'hidden'}}
-            onPress={() => sheetCam.current.open()}>
-            <ImageCore
-              source={
-                img
-                  ? img.path
-                    ? {uri: img.path}
-                    : require('@image/noimage.jpg')
-                  : require('@image/noimage.jpg')
-              }
-              width={200}
-              height={200}
+      {data && (
+        <ScrollView
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={() => setRefreshing(true)}
             />
-          </TouchableOpacity>
-        </ViewCore>
+          }
+          style={{paddingHorizontal: 10}}>
+          <ViewCore alignItems marginTop={20}>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              style={{borderRadius: 100, overflow: 'hidden'}}
+              onPress={() => refImage.current.open()}>
+              <ImageCore
+                source={uriImg(img ? img.path : '')}
+                width={200}
+                height={200}
+              />
+            </TouchableOpacity>
+          </ViewCore>
 
-        <InputBasic
-          ref={refName}
-          backgroundColor={Light.blue_faint}
-          color='#fff'
-          placeholderTextColor='#fff'
-          placeholder='Họ tên123'
-          marginTop={10}
-          valueInit={data.name}
-        />
-        <InputBasic
-          valueInit={data.phone}
-          ref={refPhone}
-          backgroundColor={Light.blue_faint}
-          color='#fff'
-          placeholderTextColor='#fff'
-          placeholder='Số điện thoại'
-          marginTop={10}
-        />
-        <InputBasic
-          valueInit={data.address}
-          ref={refAddress}
-          backgroundColor={Light.blue_faint}
-          color='#fff'
-          placeholderTextColor='#fff'
-          placeholder='Địa chỉ'
-          marginTop={10}
-        />
-      </ScrollView>
-      <BottomSheetCamera
-        ref={sheetCam}
-        height={220}
-        openCamera={gotoCamera}
-        openLibary={gotoLibary}
-        onClose={() => sheetCam.current.close()}
-        onPress={() => {}}
+          <InputBasic
+            ref={refName}
+            backgroundColor={Light.blue_faint}
+            color='#fff'
+            placeholderTextColor='#fff'
+            placeholder='Họ tên123'
+            marginVertical={10}
+            valueInit={data ? data.name : ''}
+          />
+          <LabelPicker
+            ref={refGender}
+            label='Giới tính'
+            valueInit={data ? data.gender : 'nam'}
+            data={[
+              {name: 'Nam', id: 'nam'},
+              {name: 'Nữ', id: 'nu'},
+            ]}
+            backgroundColor={Light.blue_faint}
+            marginBottom={10}
+            styleLabel={{color: '#fff', paddingLeft: 10}}
+            stylePicker={{color: '#fff'}}
+          />
+          <InputBasic
+            valueInit={data ? data.phone : ''}
+            ref={refPhone}
+            backgroundColor={Light.blue_faint}
+            color='#fff'
+            placeholderTextColor='#fff'
+            placeholder='Số điện thoại'
+            marginBottom={10}
+            keyboardType='numeric'
+            
+          />
+          <InputBasic
+            valueInit={data ? data.address : ''}
+            ref={refAddress}
+            backgroundColor={Light.blue_faint}
+            color='#fff'
+            placeholderTextColor='#fff'
+            placeholder='Địa chỉ'
+            marginBottom={10}
+            returnKeyType='send'
+            onSubmitEditing={handleUpdate}
+          />
+        </ScrollView>
+      )}
+      <RNSheetImage
+        ref={refImage}
+        height={550}
+        title='Chọn'
+        onPress={handleAlow}
       />
     </Layout>
   )

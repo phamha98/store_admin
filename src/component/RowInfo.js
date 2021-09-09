@@ -23,6 +23,7 @@ export default function RowInfo ({
           borderBottomColor: 'gray',
           paddingHorizontal: 10,
           borderRadius: 5,
+          marginBottom:5,
 
           ...rest,
         }}>
@@ -43,6 +44,7 @@ export default function RowInfo ({
         borderBottomColor: 'gray',
         paddingHorizontal: 10,
         borderRadius: 5,
+        marginBottom:5,
         ...rest,
       }}>
       {title && <TextCore size={14}>{title ? title : ''}</TextCore>}

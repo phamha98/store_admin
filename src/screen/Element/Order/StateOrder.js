@@ -1,6 +1,6 @@
 import React, {useState, useContext, useEffect, useRef} from 'react'
 import {FlatList, Alert} from 'react-native'
-import {apiBillState} from '@api'
+import {apiBillState, apiConfirm, apiTransport} from '@api'
 import {
   AppContext,
   HeaderC,
@@ -38,9 +38,12 @@ export default function index () {
 }
 
 const mt = ['Chờ xác nhận', 'Đang giao', 'Thành công', 'Hủy']
+
+//cac tab mo ta
 const TabStateBill = ({type}) => {
   const {token, permission} = useContext(AppContext)
   const [data, setData] = useState([])
+  const [refreshing, setRefreshing] = useState(true)
   const refModal = useRef()
   useEffect(() => {
     apiBillState(token)
@@ -53,7 +56,8 @@ const TabStateBill = ({type}) => {
         } // else alert(r.code)
       })
       .catch(e => {})
-  }, [])
+      .finally(() => setRefreshing(false))
+  }, [refreshing])
   const handleCheckBills = item => {
     let findPermission = false
     if (type === '1') {
@@ -83,6 +87,8 @@ const TabStateBill = ({type}) => {
   return (
     <>
       <FlatList
+        refreshing={refreshing}
+        onRefresh={() => setRefreshing(true)}
         data={data}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({item}) => (
@@ -105,7 +111,15 @@ const TabStateBill = ({type}) => {
           paddingTop: 10,
         }}
       />
-      <ModalAction ref={refModal} type={type} />
+      <ModalAction
+        ref={refModal}
+        type={type}
+        onClose={() => {
+          refModal.current.close()
+          let send = refModal.current.getSend()
+          if (send) setRefreshing(true)
+        }}
+      />
     </>
   )
 }

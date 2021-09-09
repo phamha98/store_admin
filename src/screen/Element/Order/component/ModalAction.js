@@ -14,12 +14,13 @@ import {
   ToastAndroidLong,
   formatVND,
 } from '@component'
-import {apiConfirm, apiTransport} from '@api'
+import {apiConfirm, apiTransport, apiCancel} from '@api'
 import {isEmpty} from 'underscore'
 import TableDetailState from './TableDetailState'
-const ModalAction = ({type}, ref) => {
+const ModalAction = ({type, onClose}, ref) => {
   const [isModal, setIsModal] = useState(false)
   const [item, setItem] = useState(null)
+  const [send, setSend] = useState(false)
   const {token, idUser} = useContext(AppContext)
   useImperativeHandle(ref, () => ({
     open () {
@@ -31,6 +32,9 @@ const ModalAction = ({type}, ref) => {
     setItem (data) {
       setItem(data)
     },
+    getSend () {
+      return send
+    },
   }))
   if (isEmpty(item)) return null
   const handleConfirm = idBill => {
@@ -39,6 +43,7 @@ const ModalAction = ({type}, ref) => {
         .then(data => {
           if (data.code === 200) {
             ToastAndroidLong('Xác nhận thành công')
+            setSend(true)
           }
         })
         .catch(e => {})
@@ -48,10 +53,19 @@ const ModalAction = ({type}, ref) => {
         .then(data => {
           if (data.code === 200) {
             ToastAndroidLong('Xác nhận thành công')
+            setSend(true)
           }
         })
         .catch(e => {})
     }
+  }
+  const handleDelete = idBill => {
+    apiCancel(idBill, idUser, token).then(r => {
+      if (r.code === 200) {
+        ToastAndroidLong('Hủy thành công')
+        setSend(true)
+      }
+    })
   }
   return (
     <Modal
@@ -80,18 +94,24 @@ const ModalAction = ({type}, ref) => {
           <TableDetailState id={item.id_bill} />
           <ViewCore
             style={{position: 'absolute', bottom: 0, left: 0, right: 0}}>
-            
             <ViewCore row centerHorizontal padding={10}>
               <ButtonBasic
                 title='Quay Lại'
-                onPress={() => setIsModal(false)}
+                onPress={onClose}
                 backgroundColor={Light.border}
               />
               {(type === '1' || type === '2') && (
-                <ButtonBasic
-                  title='Xác nhận'
-                  onPress={() => handleConfirm(item.id_bill)}
-                />
+                <>
+                  <ButtonBasic
+                    title='Xác nhận'
+                    onPress={() => handleConfirm(item.id_bill)}
+                  />
+                  <ButtonBasic
+                    title='Hủy'
+                    onPress={() => handleDelete(item.id_bill)}
+                    backgroundColor={Light.danger}
+                  />
+                </>
               )}
             </ViewCore>
           </ViewCore>

@@ -1,4 +1,4 @@
-import React, {useState, useImperativeHandle, forwardRef,useRef} from 'react'
+import React, {useState, useImperativeHandle, forwardRef, useRef} from 'react'
 import {
   StyleSheet,
   Text,
@@ -24,14 +24,14 @@ const InputBasic = (
 ) => {
   const [value, setValue] = useState(valueInit)
   const [showPass, setShowPass] = useState(hideEye)
-  const refInput=useRef()
+  const refInput = useRef()
   useImperativeHandle(ref, () => ({
     getValue () {
       if (isEmpty(value)) return ''
       return value
     },
     focus () {
-      setValue("")
+      setValue('')
     },
   }))
   const handleHidePass = () => {
@@ -50,6 +50,7 @@ const InputBasic = (
     <View>
       <TextInput
         ref={refInput}
+        // value={isString(value) ? value : value.toString()}
         value={value}
         style={[
           styles.rowInput,
@@ -84,7 +85,7 @@ const InputBasic = (
 
 export default forwardRef(InputBasic)
 import PropTypes from 'prop-types'
-import {isEmpty} from 'underscore'
+import {isEmpty, isString} from 'underscore'
 
 InputBasic.defaultProps = {
   rightTouch: false,

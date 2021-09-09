@@ -1,7 +1,7 @@
 import {localhost} from './localhost';
 
 export const apiCancel = (id_bill, id_user, token) =>
-  fetch(localhost + 'api/billstate/admin/update_confirm', {
+  fetch(localhost + 'api/orderadmin/update_cancel', {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -10,9 +10,8 @@ export const apiCancel = (id_bill, id_user, token) =>
     },
     body: JSON.stringify({
       id_user_confirm: id_user,
-
       id_bill: id_bill,
-      state: '4',
+    
     }),
   })
     .then(response => response.json())

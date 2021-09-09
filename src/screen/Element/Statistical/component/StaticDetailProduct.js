@@ -8,12 +8,12 @@ export default function StaticDetail ({data, ...rest}) {
   if (isEmpty(data) || !isArray(data)) return null
   let l_data = formatStaticDetailProduct(data)
   const table_data = [
-    ['Tổng mặt hàng', data.length],
-    ['Tổng số lượng sản phẩm đã bán', data.length],
-    ['Tổng số lượng sản phẩm còn lại', data.length],
-    ['Mặt hàng đắt nhất', l_data.money.id, l_data.money.name],
-    ['Mặt hàng tồn nhiều nhất', l_data.rest.id, l_data.rest.name],
-    ['Mặt hàng bán nhiều nhất', l_data.sale.id, l_data.sale.name],
+    ['Tổng loại mặt hàng', data.length],
+    ['Tổng số lượng sản phẩm đã bán', l_data.total_sell],
+    ['Tổng số lượng sản phẩm còn lại',l_data.total_rest],
+    ['Mặt hàng đắt nhất', l_data.money.id, l_data.money.name,formatVND(l_data.money.max)],
+    ['Mặt hàng tồn nhiều nhất', l_data.rest.id, l_data.rest.name, l_data.rest.max],
+    ['Mặt hàng bán nhiều nhất', l_data.sale.id, l_data.sale.name,l_data.sale.max],
   ]
   return (
     <ViewCore {...rest}>
@@ -26,7 +26,7 @@ export default function StaticDetail ({data, ...rest}) {
           <Row
             key={index}
             data={item}
-            flexArr={[4, 2, 4]}
+            flexArr={[4, 2, 3,3]}
             style={styles.row}
             textStyle={styles.text}
           />
