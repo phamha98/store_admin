@@ -1,54 +1,842 @@
-{
-    "details": "Dép Nam Biti's DPM028344NAU (Nâu)*",
-    "gender": "nu",
-    "id_type_main": 6,
-    "image_albums": [
-        {
-            "id": 52,
-            "name": "https://product.hstatic.net/1000230642/product/dpm028344nau__3__01c1f25e94a84e4bab56e77356b7d4e0_1024x1024.jpg"
+[
+    {
+        "detail": {
+            "img": "https://static.zara.net/photos///2021/I/0/1/p/4661/708/800/2/w/375/4661708800_1_1_1.jpg?ts=1621238627534",
+            "name": "JOIN LIFE",
+            "price": 145000
         },
-        {
-            "id": 53,
-            "name": "https://product.hstatic.net/1000230642/product/dpm028344nau__4__26ca784bc3f74e69b793f5a869e35266_1024x1024.jpg"
+        "id": 1,
+        "id_type_details": 1,
+        "number": 9,
+        "quantity_number": "3",
+        "size": "M"
+    },
+    {
+        "detail": {
+            "img": "https://static.zara.net/photos///2021/I/0/1/p/4661/708/800/2/w/375/4661708800_1_1_1.jpg?ts=1621238627534",
+            "name": "JOIN LIFE",
+            "price": 145000
         },
-        {
-            "id": 54,
-            "name": "https://product.hstatic.net/1000230642/product/dpm028344nau__1__41e1c44a56ef45df816a6e9f1b84dfdf_1024x1024.jpg"
+        "id": 2,
+        "id_type_details": 1,
+        "number": 22,
+        "quantity_number": 0,
+        "size": "L"
+    },
+    {
+        "detail": {
+            "img": "https://static.zara.net/photos///2021/I/0/1/p/4661/708/800/2/w/375/4661708800_1_1_1.jpg?ts=1621238627534",
+            "name": "JOIN LIFE",
+            "price": 145000
         },
-        {
-            "id": 55,
-            "name": "https://product.hstatic.net/1000230642/product/dpm028344nau__6__810fd521e30b47a3894bc5817a9f1988_1024x1024.jpg"
+        "id": 3,
+        "id_type_details": 1,
+        "number": 64,
+        "quantity_number": "8",
+        "size": "S"
+    },
+    {
+        "detail": {
+            "img": "https://static.zara.net/photos///2021/I/0/1/p/4661/708/800/2/w/375/4661708800_1_1_1.jpg?ts=1621238627534",
+            "name": "JOIN LIFE",
+            "price": 145000
         },
-        {
-            "id": 56,
-            "name": "https://product.hstatic.net/1000230642/product/dpm028344nau__9__8e11a870510c4cae96bb55d3b94ef3ea_1024x1024.jpg"
-        }
-    ],
-    "img": "https://product.hstatic.net/1000230642/product/dpm028344nau__3__01c1f25e94a84e4bab56e77356b7d4e0_1024x1024.jpg",
-    "name": "Dép Nam Biti's DPM028344NAU (Nâu)*",
-    "new": "1",
-    "price": "80000",
-    "products": [
-        {
-            "number": 12,
-            "size": "40"
+        "id": 4,
+        "id_type_details": 1,
+        "number": 13,
+        "quantity_number": 0,
+        "size": "XL"
+    },
+    {
+        "detail": {
+            "img": "https://static.zara.net/photos///2021/I/0/1/p/4661/708/800/2/w/375/4661708800_1_1_1.jpg?ts=1621238627534",
+            "name": "JOIN LIFE",
+            "price": 145000
         },
-        {
-            "number": 22,
-            "size": "41"
+        "id": 5,
+        "id_type_details": 1,
+        "number": 22,
+        "quantity_number": 0,
+        "size": "XXL"
+    },
+    {
+        "detail": {
+            "img": "https://static.zara.net/photos///2021/I/0/1/p/7385/403/712/2/w/1280/7385403712_1_1_1.jpg?ts=1621238625265",
+            "name": "ÁO CHẤM BI DÁNG CROP",
+            "price": 799000
         },
-        {
-            "number": 72,
-            "size": "42"
+        "id": 6,
+        "id_type_details": 2,
+        "number": 12,
+        "quantity_number": 0,
+        "size": "M"
+    },
+    {
+        "detail": {
+            "img": "https://static.zara.net/photos///2021/I/0/1/p/7385/403/712/2/w/1280/7385403712_1_1_1.jpg?ts=1621238625265",
+            "name": "ÁO CHẤM BI DÁNG CROP",
+            "price": 799000
         },
-        {
-            "number": 13,
-            "size": "43"
+        "id": 7,
+        "id_type_details": 2,
+        "number": 22,
+        "quantity_number": 0,
+        "size": "L"
+    },
+    {
+        "detail": {
+            "img": "https://static.zara.net/photos///2021/I/0/1/p/7385/403/712/2/w/1280/7385403712_1_1_1.jpg?ts=1621238625265",
+            "name": "ÁO CHẤM BI DÁNG CROP",
+            "price": 799000
         },
-        {
-            "number": 22,
-            "size": "44"
-        }
-    ],
-    "sale": "15"
-}
+        "id": 8,
+        "id_type_details": 2,
+        "number": 72,
+        "quantity_number": 0,
+        "size": "S"
+    },
+    {
+        "detail": {
+            "img": "https://static.zara.net/photos///2021/I/0/1/p/7385/403/712/2/w/1280/7385403712_1_1_1.jpg?ts=1621238625265",
+            "name": "ÁO CHẤM BI DÁNG CROP",
+            "price": 799000
+        },
+        "id": 9,
+        "id_type_details": 2,
+        "number": 13,
+        "quantity_number": 0,
+        "size": "XL"
+    },
+    {
+        "detail": {
+            "img": "https://static.zara.net/photos///2021/I/0/1/p/7385/403/712/2/w/1280/7385403712_1_1_1.jpg?ts=1621238625265",
+            "name": "ÁO CHẤM BI DÁNG CROP",
+            "price": 799000
+        },
+        "id": 10,
+        "id_type_details": 2,
+        "number": 22,
+        "quantity_number": 0,
+        "size": "XXL"
+    },
+    {
+        "detail": {
+            "img": "https://static.zara.net/photos///2021/I/0/1/p/3067/400/711/2/w/1280/3067400711_2_1_1.jpg?ts=1621423352831",
+            "name": "ÁO CROP TOP VẢI PHA LINEN",
+            "price": 799000
+        },
+        "id": 11,
+        "id_type_details": 3,
+        "number": 10,
+        "quantity_number": "2",
+        "size": "M"
+    },
+    {
+        "detail": {
+            "img": "https://static.zara.net/photos///2021/I/0/1/p/3067/400/711/2/w/1280/3067400711_2_1_1.jpg?ts=1621423352831",
+            "name": "ÁO CROP TOP VẢI PHA LINEN",
+            "price": 799000
+        },
+        "id": 12,
+        "id_type_details": 3,
+        "number": 22,
+        "quantity_number": 0,
+        "size": "L"
+    },
+    {
+        "detail": {
+            "img": "https://static.zara.net/photos///2021/I/0/1/p/3067/400/711/2/w/1280/3067400711_2_1_1.jpg?ts=1621423352831",
+            "name": "ÁO CROP TOP VẢI PHA LINEN",
+            "price": 799000
+        },
+        "id": 13,
+        "id_type_details": 3,
+        "number": 72,
+        "quantity_number": 0,
+        "size": "S"
+    },
+    {
+        "detail": {
+            "img": "https://static.zara.net/photos///2021/I/0/1/p/3067/400/711/2/w/1280/3067400711_2_1_1.jpg?ts=1621423352831",
+            "name": "ÁO CROP TOP VẢI PHA LINEN",
+            "price": 799000
+        },
+        "id": 14,
+        "id_type_details": 3,
+        "number": 13,
+        "quantity_number": 0,
+        "size": "XL"
+    },
+    {
+        "detail": {
+            "img": "https://static.zara.net/photos///2021/I/0/1/p/3067/400/711/2/w/1280/3067400711_2_1_1.jpg?ts=1621423352831",
+            "name": "ÁO CROP TOP VẢI PHA LINEN",
+            "price": 799000
+        },
+        "id": 15,
+        "id_type_details": 3,
+        "number": 22,
+        "quantity_number": 0,
+        "size": "XXL"
+    },
+    {
+        "detail": {
+            "img": "https://static.zara.net/photos///2021/I/0/1/p/7563/242/500/2/w/1280/7563242500_1_1_1.jpg?ts=1621425076700",
+            "name": "MIDI EMBROIDERED SKIRT",
+            "price": 199000
+        },
+        "id": 16,
+        "id_type_details": 4,
+        "number": 12,
+        "quantity_number": 0,
+        "size": "M"
+    },
+    {
+        "detail": {
+            "img": "https://static.zara.net/photos///2021/I/0/1/p/7563/242/500/2/w/1280/7563242500_1_1_1.jpg?ts=1621425076700",
+            "name": "MIDI EMBROIDERED SKIRT",
+            "price": 199000
+        },
+        "id": 17,
+        "id_type_details": 4,
+        "number": 22,
+        "quantity_number": 0,
+        "size": "L"
+    },
+    {
+        "detail": {
+            "img": "https://static.zara.net/photos///2021/I/0/1/p/7563/242/500/2/w/1280/7563242500_1_1_1.jpg?ts=1621425076700",
+            "name": "MIDI EMBROIDERED SKIRT",
+            "price": 199000
+        },
+        "id": 18,
+        "id_type_details": 4,
+        "number": 68,
+        "quantity_number": "4",
+        "size": "S"
+    },
+    {
+        "detail": {
+            "img": "https://static.zara.net/photos///2021/I/0/1/p/7563/242/500/2/w/1280/7563242500_1_1_1.jpg?ts=1621425076700",
+            "name": "MIDI EMBROIDERED SKIRT",
+            "price": 199000
+        },
+        "id": 19,
+        "id_type_details": 4,
+        "number": 13,
+        "quantity_number": 0,
+        "size": "XL"
+    },
+    {
+        "detail": {
+            "img": "https://static.zara.net/photos///2021/I/0/1/p/7563/242/500/2/w/1280/7563242500_1_1_1.jpg?ts=1621425076700",
+            "name": "MIDI EMBROIDERED SKIRT",
+            "price": 199000
+        },
+        "id": 20,
+        "id_type_details": 4,
+        "number": 22,
+        "quantity_number": 0,
+        "size": "XXL"
+    },
+    {
+        "detail": {
+            "img": "https://static.zara.net/photos///2021/I/0/1/p/4387/222/712/3/w/1280/4387222712_1_1_1.jpg?ts=1621410623073",
+            "name": "ĐẦM CAMISOLE RŨ XẾP NẾP",
+            "price": 1299000
+        },
+        "id": 21,
+        "id_type_details": 5,
+        "number": 12,
+        "quantity_number": 0,
+        "size": "M"
+    },
+    {
+        "detail": {
+            "img": "https://static.zara.net/photos///2021/I/0/1/p/4387/222/712/3/w/1280/4387222712_1_1_1.jpg?ts=1621410623073",
+            "name": "ĐẦM CAMISOLE RŨ XẾP NẾP",
+            "price": 1299000
+        },
+        "id": 22,
+        "id_type_details": 5,
+        "number": 22,
+        "quantity_number": 0,
+        "size": "L"
+    },
+    {
+        "detail": {
+            "img": "https://static.zara.net/photos///2021/I/0/1/p/4387/222/712/3/w/1280/4387222712_1_1_1.jpg?ts=1621410623073",
+            "name": "ĐẦM CAMISOLE RŨ XẾP NẾP",
+            "price": 1299000
+        },
+        "id": 23,
+        "id_type_details": 5,
+        "number": 72,
+        "quantity_number": 0,
+        "size": "S"
+    },
+    {
+        "detail": {
+            "img": "https://static.zara.net/photos///2021/I/0/1/p/4387/222/712/3/w/1280/4387222712_1_1_1.jpg?ts=1621410623073",
+            "name": "ĐẦM CAMISOLE RŨ XẾP NẾP",
+            "price": 1299000
+        },
+        "id": 24,
+        "id_type_details": 5,
+        "number": 13,
+        "quantity_number": 0,
+        "size": "XL"
+    },
+    {
+        "detail": {
+            "img": "https://static.zara.net/photos///2021/I/0/1/p/4387/222/712/3/w/1280/4387222712_1_1_1.jpg?ts=1621410623073",
+            "name": "ĐẦM CAMISOLE RŨ XẾP NẾP",
+            "price": 1299000
+        },
+        "id": 25,
+        "id_type_details": 5,
+        "number": 22,
+        "quantity_number": 0,
+        "size": "XXL"
+    },
+    {
+        "detail": {
+            "img": "https://static.zara.net/photos///2021/I/0/1/p/4387/222/712/3/w/1280/4387222712_1_1_1.jpg?ts=1621410623073",
+            "name": "ĐẦM VẢI THÔ CỔ YẾM",
+            "price": 1299000
+        },
+        "id": 26,
+        "id_type_details": 6,
+        "number": 12,
+        "quantity_number": 0,
+        "size": "M"
+    },
+    {
+        "detail": {
+            "img": "https://static.zara.net/photos///2021/I/0/1/p/4387/222/712/3/w/1280/4387222712_1_1_1.jpg?ts=1621410623073",
+            "name": "ĐẦM VẢI THÔ CỔ YẾM",
+            "price": 1299000
+        },
+        "id": 27,
+        "id_type_details": 6,
+        "number": 22,
+        "quantity_number": 0,
+        "size": "L"
+    },
+    {
+        "detail": {
+            "img": "https://static.zara.net/photos///2021/I/0/1/p/4387/222/712/3/w/1280/4387222712_1_1_1.jpg?ts=1621410623073",
+            "name": "ĐẦM VẢI THÔ CỔ YẾM",
+            "price": 1299000
+        },
+        "id": 28,
+        "id_type_details": 6,
+        "number": 72,
+        "quantity_number": 0,
+        "size": "S"
+    },
+    {
+        "detail": {
+            "img": "https://static.zara.net/photos///2021/I/0/1/p/4387/222/712/3/w/1280/4387222712_1_1_1.jpg?ts=1621410623073",
+            "name": "ĐẦM VẢI THÔ CỔ YẾM",
+            "price": 1299000
+        },
+        "id": 29,
+        "id_type_details": 6,
+        "number": 13,
+        "quantity_number": 0,
+        "size": "XL"
+    },
+    {
+        "detail": {
+            "img": "https://static.zara.net/photos///2021/I/0/1/p/4387/222/712/3/w/1280/4387222712_1_1_1.jpg?ts=1621410623073",
+            "name": "ĐẦM VẢI THÔ CỔ YẾM",
+            "price": 1299000
+        },
+        "id": 30,
+        "id_type_details": 6,
+        "number": 22,
+        "quantity_number": 0,
+        "size": "XXL"
+    },
+    {
+        "detail": {
+            "img": "https://static.zara.net/photos///2021/I/0/1/p/1608/223/743/3/w/1280/1608223743_1_1_1.jpg?ts=1621410481119",
+            "name": "QUẦN CẠP CAO CÓ CÁC ĐƯỜNG MAY NỔI",
+            "price": 1500000
+        },
+        "id": 31,
+        "id_type_details": 7,
+        "number": 12,
+        "quantity_number": 0,
+        "size": "M"
+    },
+    {
+        "detail": {
+            "img": "https://static.zara.net/photos///2021/I/0/1/p/1608/223/743/3/w/1280/1608223743_1_1_1.jpg?ts=1621410481119",
+            "name": "QUẦN CẠP CAO CÓ CÁC ĐƯỜNG MAY NỔI",
+            "price": 1500000
+        },
+        "id": 32,
+        "id_type_details": 7,
+        "number": 22,
+        "quantity_number": 0,
+        "size": "L"
+    },
+    {
+        "detail": {
+            "img": "https://static.zara.net/photos///2021/I/0/1/p/1608/223/743/3/w/1280/1608223743_1_1_1.jpg?ts=1621410481119",
+            "name": "QUẦN CẠP CAO CÓ CÁC ĐƯỜNG MAY NỔI",
+            "price": 1500000
+        },
+        "id": 33,
+        "id_type_details": 7,
+        "number": 72,
+        "quantity_number": 0,
+        "size": "S"
+    },
+    {
+        "detail": {
+            "img": "https://static.zara.net/photos///2021/I/0/1/p/1608/223/743/3/w/1280/1608223743_1_1_1.jpg?ts=1621410481119",
+            "name": "QUẦN CẠP CAO CÓ CÁC ĐƯỜNG MAY NỔI",
+            "price": 1500000
+        },
+        "id": 34,
+        "id_type_details": 7,
+        "number": 13,
+        "quantity_number": 0,
+        "size": "XL"
+    },
+    {
+        "detail": {
+            "img": "https://static.zara.net/photos///2021/I/0/1/p/1608/223/743/3/w/1280/1608223743_1_1_1.jpg?ts=1621410481119",
+            "name": "QUẦN CẠP CAO CÓ CÁC ĐƯỜNG MAY NỔI",
+            "price": 1500000
+        },
+        "id": 35,
+        "id_type_details": 7,
+        "number": 22,
+        "quantity_number": 0,
+        "size": "XXL"
+    },
+    {
+        "detail": {
+            "img": "https://static.zara.net/photos///2021/I/0/1/p/7759/812/620/2/w/1280/7759812620_1_1_1.jpg?ts=1621347844405",
+            "name": "QUẦN JOGGER",
+            "price": 2500000
+        },
+        "id": 36,
+        "id_type_details": 8,
+        "number": 12,
+        "quantity_number": 0,
+        "size": "M"
+    },
+    {
+        "detail": {
+            "img": "https://static.zara.net/photos///2021/I/0/1/p/7759/812/620/2/w/1280/7759812620_1_1_1.jpg?ts=1621347844405",
+            "name": "QUẦN JOGGER",
+            "price": 2500000
+        },
+        "id": 37,
+        "id_type_details": 8,
+        "number": 22,
+        "quantity_number": 0,
+        "size": "L"
+    },
+    {
+        "detail": {
+            "img": "https://static.zara.net/photos///2021/I/0/1/p/7759/812/620/2/w/1280/7759812620_1_1_1.jpg?ts=1621347844405",
+            "name": "QUẦN JOGGER",
+            "price": 2500000
+        },
+        "id": 38,
+        "id_type_details": 8,
+        "number": 72,
+        "quantity_number": 0,
+        "size": "S"
+    },
+    {
+        "detail": {
+            "img": "https://static.zara.net/photos///2021/I/0/1/p/7759/812/620/2/w/1280/7759812620_1_1_1.jpg?ts=1621347844405",
+            "name": "QUẦN JOGGER",
+            "price": 2500000
+        },
+        "id": 39,
+        "id_type_details": 8,
+        "number": 13,
+        "quantity_number": 0,
+        "size": "XL"
+    },
+    {
+        "detail": {
+            "img": "https://static.zara.net/photos///2021/I/0/1/p/7759/812/620/2/w/1280/7759812620_1_1_1.jpg?ts=1621347844405",
+            "name": "QUẦN JOGGER",
+            "price": 2500000
+        },
+        "id": 40,
+        "id_type_details": 8,
+        "number": 22,
+        "quantity_number": 0,
+        "size": "XXL"
+    },
+    {
+        "detail": {
+            "img": "https://cdn-img-v2.webbnc.net/uploadv2/web/10/10222/product/2021/05/19/08/42/1621421149_giay-don-nam-t81-0.jpg?v=4",
+            "name": "GIÀY ĐỘN NAM CAO 8CM T81",
+            "price": 299000
+        },
+        "id": 41,
+        "id_type_details": 9,
+        "number": 12,
+        "quantity_number": 0,
+        "size": "40"
+    },
+    {
+        "detail": {
+            "img": "https://cdn-img-v2.webbnc.net/uploadv2/web/10/10222/product/2021/05/19/08/42/1621421149_giay-don-nam-t81-0.jpg?v=4",
+            "name": "GIÀY ĐỘN NAM CAO 8CM T81",
+            "price": 299000
+        },
+        "id": 42,
+        "id_type_details": 9,
+        "number": 22,
+        "quantity_number": 0,
+        "size": "41"
+    },
+    {
+        "detail": {
+            "img": "https://cdn-img-v2.webbnc.net/uploadv2/web/10/10222/product/2021/05/19/08/42/1621421149_giay-don-nam-t81-0.jpg?v=4",
+            "name": "GIÀY ĐỘN NAM CAO 8CM T81",
+            "price": 299000
+        },
+        "id": 43,
+        "id_type_details": 9,
+        "number": 72,
+        "quantity_number": 0,
+        "size": "42"
+    },
+    {
+        "detail": {
+            "img": "https://cdn-img-v2.webbnc.net/uploadv2/web/10/10222/product/2021/05/19/08/42/1621421149_giay-don-nam-t81-0.jpg?v=4",
+            "name": "GIÀY ĐỘN NAM CAO 8CM T81",
+            "price": 299000
+        },
+        "id": 44,
+        "id_type_details": 9,
+        "number": 13,
+        "quantity_number": 0,
+        "size": "43"
+    },
+    {
+        "detail": {
+            "img": "https://cdn-img-v2.webbnc.net/uploadv2/web/10/10222/product/2021/05/19/08/42/1621421149_giay-don-nam-t81-0.jpg?v=4",
+            "name": "GIÀY ĐỘN NAM CAO 8CM T81",
+            "price": 299000
+        },
+        "id": 45,
+        "id_type_details": 9,
+        "number": 22,
+        "quantity_number": 0,
+        "size": "44"
+    },
+    {
+        "detail": {
+            "img": "https://product.hstatic.net/1000230642/product/dpm028344nau__3__01c1f25e94a84e4bab56e77356b7d4e0_1024x1024.jpg",
+            "name": "Dép Nam Biti's",
+            "price": 80000
+        },
+        "id": 46,
+        "id_type_details": 10,
+        "number": 12,
+        "quantity_number": 0,
+        "size": "40"
+    },
+    {
+        "detail": {
+            "img": "https://product.hstatic.net/1000230642/product/dpm028344nau__3__01c1f25e94a84e4bab56e77356b7d4e0_1024x1024.jpg",
+            "name": "Dép Nam Biti's",
+            "price": 80000
+        },
+        "id": 47,
+        "id_type_details": 10,
+        "number": 22,
+        "quantity_number": 0,
+        "size": "41"
+    },
+    {
+        "detail": {
+            "img": "https://product.hstatic.net/1000230642/product/dpm028344nau__3__01c1f25e94a84e4bab56e77356b7d4e0_1024x1024.jpg",
+            "name": "Dép Nam Biti's",
+            "price": 80000
+        },
+        "id": 48,
+        "id_type_details": 10,
+        "number": 72,
+        "quantity_number": 0,
+        "size": "42"
+    },
+    {
+        "detail": {
+            "img": "https://product.hstatic.net/1000230642/product/dpm028344nau__3__01c1f25e94a84e4bab56e77356b7d4e0_1024x1024.jpg",
+            "name": "Dép Nam Biti's",
+            "price": 80000
+        },
+        "id": 49,
+        "id_type_details": 10,
+        "number": 13,
+        "quantity_number": 0,
+        "size": "43"
+    },
+    {
+        "detail": {
+            "img": "https://product.hstatic.net/1000230642/product/dpm028344nau__3__01c1f25e94a84e4bab56e77356b7d4e0_1024x1024.jpg",
+            "name": "Dép Nam Biti's",
+            "price": 80000
+        },
+        "id": 50,
+        "id_type_details": 10,
+        "number": 150,
+        "quantity_number": 0,
+        "size": "44"
+    },
+    {
+        "detail": {
+            "img": "img2021090820542896311200.jpeg",
+            "name": "reqrw",
+            "price": 123
+        },
+        "id": 51,
+        "id_type_details": 11,
+        "number": 1,
+        "quantity_number": 0,
+        "size": "S"
+    },
+    {
+        "detail": {
+            "img": "img2021090820542896311200.jpeg",
+            "name": "reqrw",
+            "price": 123
+        },
+        "id": 52,
+        "id_type_details": 11,
+        "number": 2,
+        "quantity_number": 0,
+        "size": "M"
+    },
+    {
+        "detail": {
+            "img": "img2021090820542896311200.jpeg",
+            "name": "reqrw",
+            "price": 123
+        },
+        "id": 53,
+        "id_type_details": 11,
+        "number": 1,
+        "quantity_number": 0,
+        "size": "L"
+    },
+    {
+        "detail": {
+            "img": "img2021090820542896311200.jpeg",
+            "name": "reqrw",
+            "price": 123
+        },
+        "id": 54,
+        "id_type_details": 11,
+        "number": 2,
+        "quantity_number": 0,
+        "size": "XL"
+    },
+    {
+        "detail": {
+            "img": "img2021090820542896311200.jpeg",
+            "name": "reqrw",
+            "price": 123
+        },
+        "id": 55,
+        "id_type_details": 11,
+        "number": 1,
+        "quantity_number": 0,
+        "size": "XXL"
+    },
+    {
+        "detail": {
+            "img": "img2021090901285589417100.jpeg",
+            "name": "quan bo uk",
+            "price": 100000
+        },
+        "id": 56,
+        "id_type_details": 12,
+        "number": 1,
+        "quantity_number": 0,
+        "size": "S"
+    },
+    {
+        "detail": {
+            "img": "img2021090901285589417100.jpeg",
+            "name": "quan bo uk",
+            "price": 100000
+        },
+        "id": 57,
+        "id_type_details": 12,
+        "number": 1,
+        "quantity_number": 0,
+        "size": "M"
+    },
+    {
+        "detail": {
+            "img": "img2021090901285589417100.jpeg",
+            "name": "quan bo uk",
+            "price": 100000
+        },
+        "id": 58,
+        "id_type_details": 12,
+        "number": 1,
+        "quantity_number": 0,
+        "size": "L"
+    },
+    {
+        "detail": {
+            "img": "img2021090901285589417100.jpeg",
+            "name": "quan bo uk",
+            "price": 100000
+        },
+        "id": 59,
+        "id_type_details": 12,
+        "number": 1,
+        "quantity_number": 0,
+        "size": "XL"
+    },
+    {
+        "detail": {
+            "img": "img2021090901285589417100.jpeg",
+            "name": "quan bo uk",
+            "price": 100000
+        },
+        "id": 60,
+        "id_type_details": 12,
+        "number": 1,
+        "quantity_number": 0,
+        "size": "XXL"
+    },
+    {
+        "detail": null,
+        "id": 61,
+        "id_type_details": 13,
+        "number": 1,
+        "quantity_number": 0,
+        "size": "S"
+    },
+    {
+        "detail": null,
+        "id": 62,
+        "id_type_details": 13,
+        "number": 1,
+        "quantity_number": 0,
+        "size": "M"
+    },
+    {
+        "detail": null,
+        "id": 63,
+        "id_type_details": 13,
+        "number": 1,
+        "quantity_number": 0,
+        "size": "L"
+    },
+    {
+        "detail": null,
+        "id": 64,
+        "id_type_details": 13,
+        "number": 1,
+        "quantity_number": 0,
+        "size": "XL"
+    },
+    {
+        "detail": null,
+        "id": 65,
+        "id_type_details": 13,
+        "number": 1,
+        "quantity_number": 0,
+        "size": "XXL"
+    },
+    {
+        "detail": null,
+        "id": 66,
+        "id_type_details": 14,
+        "number": 1,
+        "quantity_number": 0,
+        "size": "S"
+    },
+    {
+        "detail": null,
+        "id": 67,
+        "id_type_details": 14,
+        "number": 1,
+        "quantity_number": 0,
+        "size": "M"
+    },
+    {
+        "detail": null,
+        "id": 68,
+        "id_type_details": 14,
+        "number": 1,
+        "quantity_number": 0,
+        "size": "L"
+    },
+    {
+        "detail": null,
+        "id": 69,
+        "id_type_details": 14,
+        "number": 1,
+        "quantity_number": 0,
+        "size": "XL"
+    },
+    {
+        "detail": null,
+        "id": 70,
+        "id_type_details": 14,
+        "number": 1,
+        "quantity_number": 0,
+        "size": "XXL"
+    },
+    {
+        "detail": null,
+        "id": 71,
+        "id_type_details": 15,
+        "number": 1,
+        "quantity_number": 0,
+        "size": "S"
+    },
+    {
+        "detail": null,
+        "id": 72,
+        "id_type_details": 15,
+        "number": 1,
+        "quantity_number": 0,
+        "size": "M"
+    },
+    {
+        "detail": null,
+        "id": 73,
+        "id_type_details": 15,
+        "number": 1,
+        "quantity_number": 0,
+        "size": "L"
+    },
+    {
+        "detail": null,
+        "id": 74,
+        "id_type_details": 15,
+        "number": 1,
+        "quantity_number": 0,
+        "size": "XL"
+    },
+    {
+        "detail": null,
+        "id": 75,
+        "id_type_details": 15,
+        "number": 1,
+        "quantity_number": 0,
+        "size": "XXL"
+    }
+]

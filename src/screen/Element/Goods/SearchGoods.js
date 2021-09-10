@@ -10,7 +10,7 @@ export default function SearchGoods () {
   const refType = useRef()
   const [data, setData] = useState([])
   const [refreshing, setRefreshing] = useState(false)
-  const handleSubmit =  () => {
+  const handleSubmit = () => {
     setRefreshing(true)
     const type = refType.current.getType()
     const value_bolean = refType.current.getBolean()
@@ -19,7 +19,16 @@ export default function SearchGoods () {
     selectApiSearchGoods(token, type, value_bolean, text_input)
       .then(r => {
         if (r.code === 200) {
-          if (r.data) setData(r.data)
+          if (r.data) {
+            if (type === 'searchCode') {
+              let last = []
+              last.push(r.data)
+              setData(last)
+            }
+            if (type !== 'searchCode') {
+              setData(r.data)
+            }
+          }
         }
       })
       .finally(() => setRefreshing(false))
