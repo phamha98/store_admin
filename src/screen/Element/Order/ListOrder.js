@@ -6,6 +6,7 @@ import {navigate} from '@navigation'
 export default function index () {
   const {token} = useContext(AppContext)
   const [datafull, setDatafull] = useState([])
+  const [refreshing, setRefreshing] = useState(true)
   useEffect(() => {
     apiListFullBills(token)
       .then(data => {
@@ -15,11 +16,14 @@ export default function index () {
         }
       })
       .catch(e => console.log(e))
-  }, [])
+      .finally(() => setRefreshing(false))
+  }, [refreshing])
   return (
     <Layout backgroundColor='#C2C2C2'>
       <HeaderC title='Danh sách đơn hàng' />
       <FlatList
+        refreshing={refreshing}
+        onRefresh={() => setRefreshing(true)}
         data={datafull}
         keyExtractor={(i, j) => j.toString()}
         renderItem={({item}) => (

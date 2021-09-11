@@ -1,6 +1,6 @@
-import {localhost} from './localhost';
+import {localhost} from './localhost'
 
-export const apiUpdateTypeMain = (token, id, name, base64, url, post) =>
+export const apiUpdateTypeMain = (token, id, name, base64, post, url) =>
   fetch(localhost + 'api/goods_admin/update_type_main', {
     method: 'POST',
     headers: {
@@ -17,6 +17,4 @@ export const apiUpdateTypeMain = (token, id, name, base64, url, post) =>
     }),
   })
     .then(response => response.json())
-    .catch(err => console.log(err));
-
- 
+    .catch(err => console.log(err))

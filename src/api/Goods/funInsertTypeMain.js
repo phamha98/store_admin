@@ -1,6 +1,6 @@
-import {localhost} from './localhost';
+import {localhost} from './localhost'
 
-export const apiInsertTypeMain = (token, name, base64, url, post) =>
+export const apiInsertTypeMain = (token, name, img) =>
   fetch(localhost + 'api/goods_admin/insert_type_main', {
     method: 'POST',
     headers: {
@@ -10,11 +10,8 @@ export const apiInsertTypeMain = (token, name, base64, url, post) =>
     },
     body: JSON.stringify({
       name: name,
-      base64: base64,
-      post: post,
-      url: url,
+      img: img,
     }),
   })
     .then(response => response.json())
-    .catch(err => console.log(err));
- 
+    .catch(err => console.log(err))

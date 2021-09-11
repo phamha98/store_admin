@@ -29,94 +29,70 @@ import {
   ImageCore,
   screen_width,
   BottomSheetCamera,
+  RNSheetImage,
 } from '@component'
-import {navigate} from '@navigation'
+import {goBack, navigate} from '@navigation'
 import {uriImg} from '@utils'
+import {isEmpty} from 'underscore'
 export default function index ({route}) {
   const {type, item} = route.params
+  console.log(item)
   const {token} = useContext(AppContext)
   const refName = useRef()
   const refCamSheet = useRef()
-  const [imageTemp, setImageTemp] = useState(item ? item.img : '')
-  const [base64, setBase64] = useState('')
-  const [urlImage, setUrlImage] = useState('')
-  const [post, setPost] = useState(false)
-  const openCamera = () => {
-    ImagePicker.openCamera({
-      width: 300,
-      height: 400,
-      //cropping: true,
-      includeBase64: true,
-    })
-      .then(image => {
-        //console.log(image);
-        setImageTemp(image.path)
-        setBase64('data:' + image.mime + ';base64,' + image.data)
-        setPost(true)
-        setUrlImage('')
-        refCamSheet.current.close()
-      })
-      .catch(err => {
-        console.log('openCamera catch' + err.toString())
-      })
-  }
-
-  const openLibary = () => {
-    ImagePicker.openPicker({
-      width: 300,
-      height: 400,
-      //cropping: true,
-      includeBase64: true,
-    })
-      .then(image => {
-        //console.log(image);
-        setImageTemp(image.path)
-        setBase64('data:' + image.mime + ';base64,' + image.data)
-        setPost(true)
-        setUrlImage('')
-        refCamSheet.current.close()
-      })
-      .catch(err => {
-        console.log('openCamera catch' + err.toString())
-      })
-  }
+  const [image, setImage] = useState({path: item ? item.img : '', data: false})
 
   const handleSubmit = () => {
     let name = refName.current.getValue()
+    let image_send = ''
+    if (isEmpty(image.path)) return ToastAndroidLong('Vui lòng chọn ảnh mô tả!')
+    if (image.data) {
+      image_send = 'data:' + image.mime + ';base64,' + image.data
+    }
     if (item && type === 'update') {
-      console.log('x.1');
-      apiUpdateTypeMain(token, item.id, name, base64, imageTemp, post)
-        .then(result => {
-          if (result.code == 200) {
-            console.log(result)
-            ToastAndroidLong(result.message)
-          }
-        })
-        .catch(err => console.log(err))
-    } else {
-      apiInsertTypeMain(token, name, base64, imageTemp, post)
+      console.log('x.1')
+      apiUpdateTypeMain(token, item.id, name, image_send)
         .then(result => {
           console.log(result)
           if (result.code == 200) {
             console.log(result)
-            ToastAndroidLong(result.message)
+            ToastAndroidLong('Cập nhật thành công mặt hàng.')
+            goBack()
+          } else {
+            ToastAndroidLong('Đã xảy ra lỗi vui lòng thử lại sau!')
           }
         })
-        .catch(err => console.log(err))
+        .catch(e => console.log(e))
+    } else {
+      apiInsertTypeMain(token, name, image_send)
+        .then(result => {
+          console.log(result)
+          if (result.code == 200) {
+            console.log(result)
+            ToastAndroidLong('Thêm thành công mặt hàng.')
+            goBack()
+          } else {
+            ToastAndroidLong('Đã xảy ra lỗi vui lòng thử lại sau!')
+          }
+        })
+        .catch(e => console.log(e))
     }
   }
   const handleSetLink = () => {
     let url = refCamSheet.current.getInput()
-    setUrlImage(url)
+    console.log(url)
+    setImage({path: url, data: false})
+    refCamSheet.current.close()
+  }
+  const handleChoseImage = () => {
+    let _image = refCamSheet.current.getImage()
+    setImage(_image)
+    refCamSheet.current.close()
   }
   return (
     <Layout backgroundColor={Light.border}>
       <HeaderC
-        title={
-          item
-            ? 'Cập nhật ' + (item.name ? item.name : '')
-            : 'Thêm mới'
-        }
+        title={item ? 'Cập nhật ' + (item.name ? item.name : '') : 'Thêm mới'}
       />
 
       <ViewCore margin={10} marginTop={30} alignItems flex1>
@@ -142,20 +118,18 @@ export default function index ({route}) {
           onPress={handleSubmit}
         />
         <ImageCore
-          source={uriImg(imageTemp)}
+          source={uriImg(image.path)}
           width={screen_width * 0.8}
           height={screen_width * 0.8}
         />
       </ViewCore>
-      <BottomSheetCamera
+      <RNSheetImage
         ref={refCamSheet}
-        height={500}
-        openCamera={openCamera}
-        openLibary={openLibary}
-        onClose={() => refCamSheet.current.close()}
+        onPressInput={handleSetLink}
+        onPress={handleChoseImage}
         input
         placeholder='Nhập vào đường dẫn'
-        onPressInput={handleSetLink}
+        height={600}
       />
     </Layout>
   )

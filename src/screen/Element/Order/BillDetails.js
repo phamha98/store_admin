@@ -1,6 +1,6 @@
 import React, {useEffect, useState, useContext} from 'react'
 import {ScrollView, StyleSheet, Text, View, Image} from 'react-native'
-import {AppContext, HeaderC, Layout, ViewCore, TextCore} from '@component'
+import {AppContext, HeaderC, Layout, ViewCore, formatVND} from '@component'
 import {apiBillDetails} from '@api'
 
 export default function index ({route}) {
@@ -55,7 +55,7 @@ export default function index ({route}) {
                       {item.product_details.price}
                     </Text>
                     <Text style={{width: 60}}>{item.number}</Text>
-                    <Text style={{width: 100}}>{item.price}</Text>
+                    <Text style={{width: 100}}>{formatVND(item.price)}</Text>
                   </View>
                 </View>
               </View>
@@ -64,7 +64,9 @@ export default function index ({route}) {
               <View style={{flexDirection: 'row'}}>
                 <Text style={styles.font2}>Tổng tiền hàng:</Text>
                 <Text style={styles.font3}>
-                  {data.bill_details.total_price}
+                  {data.bill_details.total_price
+                    ? formatVND(data.bill_details.total_price)
+                    : formatVND(0)}
                 </Text>
               </View>
               <View style={{flexDirection: 'row'}}>
@@ -74,7 +76,9 @@ export default function index ({route}) {
               <View style={{flexDirection: 'row'}}>
                 <Text style={styles.font2}>Tổng thanh toán:{}</Text>
                 <Text style={styles.font3}>
-                  {data.bill_details.total_price}
+                  {data.bill_details.total_price
+                    ? formatVND(data.bill_details.total_price)
+                    : formatVND(0)}
                 </Text>
               </View>
             </View>

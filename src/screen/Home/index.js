@@ -22,7 +22,7 @@ export default function Home () {
         keyExtractor={(i, j) => j.toString()}
         renderItem={({item}) => <ItemHome item={item} />}
         numColumns={2}
-        contentContainerStyle={{marginTop: 10}}
+        contentContainerStyle={{marginTop: 10,minHeight:900}}
       />
     </Layout>
   )

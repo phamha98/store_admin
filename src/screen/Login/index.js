@@ -27,9 +27,13 @@ export default function Login () {
     AppContext,
   )
   const btnLogin = () => {
+    if (email.trim() === '') return ToastAndroidShort('Bạn cần nhập Email!')
+    if (password.trim() === '')
+      return ToastAndroidShort('Bạn cần nhập mật khẩu!')
     setProgess(true)
     apiLoginPermision(email, password)
       .then(result => {
+        console.log(result)
         if (result.code === 200) {
           setToken(result.data.token)
           setPermission(result.permission)
@@ -65,7 +69,7 @@ export default function Login () {
           ])
         }
       })
-      .catch(e => console.log(e))
+      .catch(e =>ToastAndroidShort("Quássss trình xảy ra lỗi! Xin vuii lòng thử lại sau."))
       .finally(() => setProgess(false))
   }
 

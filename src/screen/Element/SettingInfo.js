@@ -26,7 +26,7 @@ export default function SettingInfo () {
         <InputBasic placeholder='Tên shop' />
         <InputBasic placeholder='Link Google Map' />
         <InputBasic placeholder='Link Web' />
-        <InputBasic placeholder='Phone' />
+        <InputBasic placeholder='Phone'  keyboardType="numeric"/>
       </ViewCore>
     </Layout>
   )

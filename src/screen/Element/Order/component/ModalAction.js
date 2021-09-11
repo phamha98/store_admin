@@ -17,6 +17,8 @@ import {
 import {apiConfirm, apiTransport, apiCancel} from '@api'
 import {isEmpty} from 'underscore'
 import TableDetailState from './TableDetailState'
+import {formatGender} from '@utils'
+import {Alert} from 'react-native'
 const ModalAction = ({type, onClose}, ref) => {
   const [isModal, setIsModal] = useState(false)
   const [item, setItem] = useState(null)
@@ -38,6 +40,17 @@ const ModalAction = ({type, onClose}, ref) => {
   }))
   if (isEmpty(item)) return null
   const handleConfirm = idBill => {
+    Alert.alert('Thông báo', 'Bạn xác nhận đơn đơn hàng!', [
+      {
+        text: 'Quay lại',
+      },
+      {
+        text: 'Đồng ý',
+        onPress: () => handleSubmitConfirm(idBill),
+      },
+    ])
+  }
+  const handleSubmitConfirm = idBill => {
     if (type === '1') {
       return apiConfirm(idBill, idUser, token)
         .then(data => {
@@ -60,6 +73,17 @@ const ModalAction = ({type, onClose}, ref) => {
     }
   }
   const handleDelete = idBill => {
+    Alert.alert('Cảnh báo', 'Bạn muốn hủy đơn hàng!', [
+      {
+        text: 'Quay lại',
+      },
+      {
+        text: 'Đồng ý',
+        onPress: () => handleSubmitDelete(idBill),
+      },
+    ])
+  }
+  const handleSubmitDelete = idBill => {
     apiCancel(idBill, idUser, token).then(r => {
       if (r.code === 200) {
         ToastAndroidLong('Hủy thành công')
@@ -88,7 +112,10 @@ const ModalAction = ({type, onClose}, ref) => {
           <RowInfo data={item.user_order.name} title='Tên khách hàng' />
           <RowInfo data={item.user_order.phone} title={'Số điện thoại'} />
           <RowInfo data={item.user_order.address} title={'Địa chỉ'} />
-          <RowInfo data={item.user_order.gender} title={'Giới tính'} />
+          <RowInfo
+            data={formatGender(item.user_order.gender)}
+            title={'Giới tính'}
+          />
 
           <ViewCore height={10} />
           <TableDetailState id={item.id_bill} />

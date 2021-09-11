@@ -5,7 +5,7 @@ import {Light} from '@component'
 import {ViewCore, ButtonIcon, ButtonBasic} from '@component'
 import {IconCore, ImageCore, InputBasic} from './uiCore'
 import {isEmpty} from 'underscore'
-import {screen_width} from './Color'
+import {screen_height, screen_width} from './Color'
 import {ScrollView} from 'react-native'
 import ImagePicker from 'react-native-image-crop-picker'
 import {uriImg} from '@utils'
@@ -33,7 +33,6 @@ const RNSheetImage = (
       refC.current.close()
     },
     getInput () {
-      if (isEmpty(input)) return ''
       return refInput.current.getValue()
     },
     getImage () {
@@ -72,7 +71,7 @@ const RNSheetImage = (
       height={height}
       openDuration={openDuration}>
       <ScrollView style={{flex: 1, backgroundColor: Light.border}}>
-        <ViewCore alignItems marginBottom={100}>
+        <ViewCore alignItems marginBottom={100} minHeight={screen_height}>
           {input && (
             <ViewCore
               row

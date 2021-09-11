@@ -15,7 +15,7 @@ import {
 } from '@component'
 import {navigate, goBack, replace} from '@navigation'
 import {apiPersonShow} from '@api'
-import {uriImg} from '@utils'
+import {formatGender, uriImg} from '@utils'
 import {ScrollView} from 'react-native'
 
 export default function index () {
@@ -65,7 +65,7 @@ export default function index () {
               <RowInfo label={data ? data.name : ''} sizeL={20} />
               <RowInfo data={data ? data.email : ''} title='✉️ Email ' />
               <RowInfo data={data ? data.phone : ''} title='📞Phone' />
-              <RowInfo data={data ? data.gender : ''} title='♂️Gender' />
+              <RowInfo data={data ? formatGender(data.gender) : ''} title='♂️Gender' />
               <RowInfo data={data ? data.address : ''} title='🗺️Address' />
               <ButtonBasic
                 title='Chỉnh sửa'

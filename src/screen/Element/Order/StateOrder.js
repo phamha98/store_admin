@@ -109,6 +109,7 @@ const TabStateBill = ({type}) => {
           minHeight: screen_height,
           paddingHorizontal: 10,
           paddingTop: 10,
+          paddingBottom:300
         }}
       />
       <ModalAction
