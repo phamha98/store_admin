@@ -14,6 +14,7 @@ import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
 import com.react.rnspinkit.RNSpinkitPackage; 
 import com.github.wuxudong.rncharts.MPAndroidChartPackage;
+import com.reactnativecommunity.asyncstorage.AsyncStoragePackage;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;

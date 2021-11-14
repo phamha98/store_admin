@@ -119,9 +119,9 @@ export const fetchInsertProduct = (
     price: price,
     sale: sale,
     new: newProduct,
-    img: "mainImage",
+    img: mainImage,
     gender: gender,
-    image_albums: "arrayImage",
+    image_albums: arrayImage,
     products: arraySize,
   })
   
@@ -156,6 +156,7 @@ export const fetchInsertProduct = (
       .then(result => {
         console.log(result)
         if (result.code == 200) {
+          
           ToastAndroidLong('Chèn thành công')
         } else ToastAndroidLong('Thất bại')
       })

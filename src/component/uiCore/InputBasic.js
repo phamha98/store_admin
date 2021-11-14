@@ -30,6 +30,10 @@ const InputBasic = (
       if (isEmpty(value)) return ''
       return value
     },
+    setValue (v) {
+      if (isEmpty(v)) return null
+      setValue(v)
+    },
     focus () {
       setValue('')
     },

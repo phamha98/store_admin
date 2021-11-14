@@ -14,13 +14,13 @@ export default function ItemTypeProduct ({
     <TouchableOpacity activeOpacity={0.9} onPress={onPress}>
       <ViewCore
         width={screen_width / 2 - 10}
-        height={150}
+        minHeight={150}
         margin={5}
         spaceBetween
         padding={5}
         style={styles.container}>
         <ViewCore alignItems>
-          <ImageCore source={{uri: item.img}} />
+          <ImageCore source={{uri: item.img}}  width='100%' height={200}  />
         </ViewCore>
         <ViewCore
           position='absolute'
@@ -33,7 +33,7 @@ export default function ItemTypeProduct ({
           </TextCore>
         </ViewCore>
 
-        <ViewCore row centerHorizontal>
+        <ViewCore row centerHorizontal marginTop={10}>
           {item.id !== -1 && (
             <>
               <ButtonBasic

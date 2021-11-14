@@ -1,22 +1,17 @@
 import React, {useState, useEffect, useContext} from 'react'
-import {StyleSheet, RefreshControl} from 'react-native'
+import {ScrollView, RefreshControl} from 'react-native'
 import {
   HeaderC,
   Layout,
-  Light,
   AppContext,
   ViewCore,
-  TextCore,
   ImageCore,
-  screen_width,
   ButtonBasic,
-  screen_height,
   RowInfo,
 } from '@component'
 import {navigate, goBack, replace} from '@navigation'
 import {apiPersonShow} from '@api'
 import {formatGender, uriImg} from '@utils'
-import {ScrollView} from 'react-native'
 
 export default function index () {
   const {token, idUser} = useContext(AppContext)
@@ -62,11 +57,17 @@ export default function index () {
               </ViewCore>
             </ViewCore>
             <ViewCore width={'90%'}>
-              <RowInfo label={data ? data.name : ''} sizeL={20} />
-              <RowInfo data={data ? data.email : ''} title='✉️ Email ' />
-              <RowInfo data={data ? data.phone : ''} title='📞Phone' />
-              <RowInfo data={data ? formatGender(data.gender) : ''} title='♂️Gender' />
-              <RowInfo data={data ? data.address : ''} title='🗺️Address' />
+              <RowInfo label={data.name ? data.name : ''} sizeL={20} />
+              <RowInfo data={data.email ? data.email : ''} title='✉️ Email ' />
+              <RowInfo data={data.phone ? data.phone : ''} title='📞Phone' />
+              <RowInfo
+                data={data.gender ? formatGender(data.gender) : ''}
+                title='♂️Gender'
+              />
+              <RowInfo
+                data={data.address ? data.address : ''}
+                title='🗺️Address'
+              />
               <ButtonBasic
                 title='Chỉnh sửa'
                 onPress={() => navigate('EditPerson')}
@@ -85,19 +86,3 @@ export default function index () {
     </Layout>
   )
 }
-
-const styles = StyleSheet.create({
-  content: {
-    backgroundColor: Light.background,
-    marginHorizontal: 30,
-    paddingVertical: 30,
-    borderRadius: 5,
-    justifyContent: 'space-between',
-    height: 0.8 * screen_height,
-  },
-  text: {
-    color: '#05B9E6',
-    fontSize: 16,
-    marginVertical: 2,
-  },
-})

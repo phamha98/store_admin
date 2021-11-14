@@ -1,6 +1,6 @@
 import {localhost} from './localhost'
 
-export const apiInsertTypeMain = (token, name, img) =>
+export const apiInsertTypeMain = (token, name, url, type) =>
   fetch(localhost + 'api/goods_admin/insert_type_main', {
     method: 'POST',
     headers: {
@@ -10,7 +10,8 @@ export const apiInsertTypeMain = (token, name, img) =>
     },
     body: JSON.stringify({
       name: name,
-      img: img,
+      url: url,
+      type: type,
     }),
   })
     .then(response => response.json())

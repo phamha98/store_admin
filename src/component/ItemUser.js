@@ -8,6 +8,7 @@ import {
   ButtonBasic,
   IconCore,
 } from '@component'
+import {uriImg} from '@utils'
 import {navigate} from '@navigation'
 export function ItemUser ({item, onPress}) {
   const handleRemove = () => {}
@@ -24,11 +25,7 @@ export function ItemUser ({item, onPress}) {
           borderRadius: 6,
           padding: 10,
         }}>
-        <ImageCore
-          width={100}
-          height={100}
-          source={item.img ? item.img : require('@image/avatar.jpeg')}
-        />
+        <ImageCore width={100} height={100} source={uriImg(item.img)} />
         <ViewCore marginLeft={10} style={{flex: 1}}>
           <TextCore>🆔 {item.id}</TextCore>
           <TextCore>👤 {item.name}</TextCore>

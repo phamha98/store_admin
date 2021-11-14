@@ -3,6 +3,11 @@ import {FlatList, Alert} from 'react-native'
 import {AppContext, HeaderC, Layout, ItemTypeProduct} from '@component'
 import {navigate} from '@navigation'
 import {apiGoodsMainList} from '@api'
+const tatca = {
+  id: -1,
+  name: 'Tất cả',
+  img: 'https://toplist.vn/images/800px/doc-menwear-323919.jpg',
+}
 export default function index () {
   const [progess, setProgess] = useState(true)
   const {token} = useContext(AppContext)
@@ -10,14 +15,10 @@ export default function index () {
   useEffect(() => {
     apiGoodsMainList(token)
       .then(data => {
+        console.log(data);
         if (data.code == 200) {
           let temp = data.data
-          let ptx = {
-            id: -1,
-            name: 'Tất cả',
-            img: 'https://toplist.vn/images/800px/doc-menwear-323919.jpg',
-          }
-          temp.splice(0, 0, ptx)
+          temp.splice(0, 0, tatca)
           setDataMainGood(temp)
         }
       })
